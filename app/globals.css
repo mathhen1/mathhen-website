@@ -6,6 +6,19 @@
 
   --animate-intro: intro 1.5s forwards;
   --animate-opacity: opacity 0.8s ease-in;
+  --animate-reveal: reveal 1.2s ease-in-out forwards;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 
 @keyframes opacity {
