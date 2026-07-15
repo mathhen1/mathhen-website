@@ -5,7 +5,8 @@
   --font-mono: var(--font-geist-mono);
 
   --animate-intro: intro 1.5s forwards;
-  --animate-opacity: opacity 0.8s ease-in;
+  --animate-opacity: opacity 0.8s ease-in-out;
+  --animate-hero: opacity 1.6s ease-in-out;
   --animate-reveal: reveal 1.2s ease-in-out forwards;
 }
 
