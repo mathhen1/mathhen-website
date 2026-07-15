@@ -1,0 +1,12 @@
+export const linkIconInsta = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ig-instagram-icon.png"
+export const linkIconWpp = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/whatsapp-color-icon.png"
+export const linkIconEmail = "https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/red-mail-icon.png"
+export const linkIconInstaBlack = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/black-instagram-icon.png"
+export const linkIconTel = "https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/calling-icon.png"
+export const linkIconEmailBlack = "https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/envelope-line-icon.png"
+export const linkIconTelBlack = "https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/ringing-phone-outline-icon.png"
+export const linkIconLinkedin = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/linkedin-app-icon.png"
+export const linkIconLinkedinBlack = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/linkedin-square-icon.png"
+export const linkIconWppBlack = "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/whatsapp-icon.png"
+
+export const linkWpp = "https://wa.me/55081997347970"
