@@ -6,6 +6,9 @@ import Services from "./Components/Services";
 import { useEffect, useState } from "react";
 import Intro from "./Components/Intro";
 import MoreAboutMe from "./Components/MoreAboutMe";
+import MoreService from "./Components/MoreService";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 
 export default function Home() {
 
@@ -43,6 +46,9 @@ export default function Home() {
       <AboutMe />
       <MoreAboutMe />
       <Services />
+      <MoreService />
+      <Contact />
+      <Footer />
     </div>
   );
 }
