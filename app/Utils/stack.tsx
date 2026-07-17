@@ -1,4 +1,4 @@
-const techsList = [{
+const stackList = [{
     id: 0,
     category: "principal",
     title: "Typescript",
@@ -96,4 +96,4 @@ const techsList = [{
 },
 ]
 
-export { techsList }
+export { stackList }
