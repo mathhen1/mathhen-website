@@ -1,14 +1,28 @@
+@import url("https://googleapis.com");
 @import "tailwindcss";
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-roboto: "Roboto Mono", monospace;
 
   --animate-intro: intro 1.5s forwards;
   --animate-opacity: opacity 0.8s ease-in-out;
   --animate-hero: opacity 1.6s ease-in-out;
   --animate-reveal: reveal 1.2s ease-in-out forwards;
+  --animate-reveal-r: reveal-r 1.2s ease-in-out forwards;
+  --animate-reveal-l: reveal-l 1.2s ease-in-out forwards;
+  --animate-expansion: expansion 1.6s ease-in-out forwards;
 }
+
+@keyframes expansion {
+    0% {
+      width: 0.5px;
+    }
+    100% {
+      width: 100%;
+    }
+  }
 
 @keyframes reveal {
   0% {
@@ -19,6 +33,30 @@
   100% {
     opacity: 1;
     transform: translateY(0%);
+  }
+}
+
+@keyframes reveal-r {
+  0% {
+    opacity: 0;
+    transform: translateX(30%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes reveal-l {
+  0% {
+    opacity: 0;
+    transform: translateX(-30%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
   }
 }
 
