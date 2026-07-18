@@ -25,21 +25,33 @@ const MoreService = () => {
 
             <div className="flex flex-col gap-2 w-10/12 items-start ml-2 pl-1">
 
-                <p className="reveal-l opacity-0 text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
-                    <span className="text-sm font-bold">Briefing </span> &mdash; Coleta de informações sobre você e o seu negócio.
-                </p>
-                <p className="reveal-l opacity-0 text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
-                    <span className="text-sm font-bold">Copywriting </span> &mdash; Adaptação e estruturação dos textos usados para conversão de clientes.
-                </p>
-                <p className="reveal-l opacity-0 text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
-                    <span className="text-sm font-bold">Coding </span> &mdash; O processo real de desenvolvimento do site.
-                </p>
-                <p className="reveal-l opacity-0 text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
-                    <span className="text-sm font-bold">Hospedagem e DNS </span> &mdash; É o responsavel por dar nome ao seu site, e deixar ele ativo 24 horas.
-                </p>
-                <p className="reveal-l opacity-0 text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
-                    <span className="text-sm font-bold">Finalização </span> &mdash; Na etapa final, te apresento o projeto e ele passa a ser liberado para uso oficial.
-                </p>
+                <span className="reveal-l opacity-0">
+                    <p className="text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
+                        <span className="text-sm font-bold">Briefing </span> &mdash; Coleta de informações sobre você e o seu negócio.
+                    </p>
+                </span>
+                <span className="reveal-l opacity-0">
+                    <p className="text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
+                        <span className="text-sm font-bold">Copywriting </span> &mdash; Adaptação e estruturação dos textos usados para conversão de clientes.
+                    </p>
+                </span>
+                <span className="reveal-l opacity-0">
+                    <p className="text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
+                        <span className="text-sm font-bold">Coding </span> &mdash; O processo real de desenvolvimento do site.
+                    </p>
+                </span>
+
+                <span className="reveal-l opacity-0">
+                    <p className="text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
+                        <span className="text-sm font-bold">Hospedagem e DNS </span> &mdash; É o responsavel por dar nome ao seu site, e deixar ele ativo 24 horas.
+                    </p>
+                </span>
+
+                <span className="reveal-l opacity-0">
+                    <p className="text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
+                        <span className="text-sm font-bold">Finalização </span> &mdash; Na etapa final, te apresento o projeto e ele passa a ser liberado para uso oficial.
+                    </p>
+                </span>
 
             </div>
 

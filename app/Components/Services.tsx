@@ -19,7 +19,7 @@ const Services = () => {
                     Direcione seus clientes até a venda do seu produto
                 </h3>
 
-                <p className="reveal opacity-0 text-sm text-start self-start tracking-tighter font-mono w-10/12 pl-2">
+                <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
                     Site objetivo e atraente. O foco está na conversão, que direciona o usuario até uma ação, convertendo-o em um consumidor.
                 </p>
 
@@ -49,7 +49,7 @@ const Services = () => {
                     Construa sua vitrine profissional de forma digital
                 </h3>
 
-                <p className="reveal opacity-0 text-sm text-start self-start tracking-tighter font-mono w-10/12 pl-2">
+                <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
                     Demonstre suas capacidades, experiência e conhecimentos de forma chamativa por meio de um curriculo digital.
                 </p>
 
@@ -79,7 +79,7 @@ const Services = () => {
                     Consolide o valor do seu negócio criando uma forte presença digital
                 </h3>
 
-                <p className="reveal opacity-0 text-sm text-start self-start tracking-tighter font-mono w-10/12 pl-2">
+                <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
                     Transmita credibilidade para o seu negocio com uma identidade online, apresentando seus valores e serviços.
                 </p>
 
@@ -109,7 +109,7 @@ const Services = () => {
                     Garanta que a sua marca tenha um serviço digital único
                 </h3>
 
-                <p className="reveal opacity-0 text-sm text-start self-start tracking-tighter font-mono w-10/12 pl-2">
+                <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
                     Sistema desenvolvido de forma exclusiva para refletir os objetivos de um produto ou marca.
                 </p>
 

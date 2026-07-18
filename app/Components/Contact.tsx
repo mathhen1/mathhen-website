@@ -1,16 +1,14 @@
-import { linkIconInsta } from "../Utils/links"
-
 const Contact = () => {
     return (
         <div className="bg-black text-white h-full flex flex-col gap-5">
-            <h1 className="border-b-2 pt-2 self-center text-2xl font-bold">
+            <h1 className="reveal opacity-0 border-b-2 pt-2 self-center text-2xl font-bold">
                 Social
             </h1>
-            <h2 className="text-base text-center font-mono tracking-tighter font-bold">
+            <h2 className="reveal opacity-0 text-base text-center font-mono tracking-tighter font-bold">
                 Confira minhas redes
             </h2>
             <div className="flex flex-row gap-2 w-full">
-                <div className="text-xs grid grid-rows-3 justify-items-center gap-3 p-5 w-1/2">
+                <div className="reveal-l opacity-0 text-xs grid grid-rows-3 justify-items-center gap-3 p-5 w-1/2">
                     <a href="" className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5">
                         Instagram
                     </a>
@@ -22,7 +20,7 @@ const Contact = () => {
                     </a>
                 </div>
 
-                <div className="grid grid-rows-3 justify-items-start items-center text-xs font-mono font-extrabold">
+                <div className="reveal-r opacity-0 grid grid-rows-3 justify-items-start items-center text-xs font-mono font-extrabold">
                     <p>
                         @theteuzz
                     </p>
@@ -35,11 +33,11 @@ const Contact = () => {
                 </div>
             </div>
 
-            <h2 className="text-xs text-center font-mono tracking-tighter font-bold">
+            <h2 className="reveal opacity-0 text-xs text-center font-mono tracking-tighter font-bold">
                 Você também pode deixar seu recado diretamente
             </h2>
 
-            <form className="self-center p-2 w-10/12 flex flex-col gap-2 text-sm">
+            <form className="reveal opacity-0 self-center p-2 w-10/12 flex flex-col gap-2 text-sm">
                 <label htmlFor="nome">
                     Nome:
                 </label>
@@ -60,7 +58,7 @@ const Contact = () => {
                 </button>
             </form>
 
-            <span className="mb-2 h-px w-3/4 border-t-2 self-center"></span>
+            <span className="reveal opacity-0 mb-2 h-px w-3/4 border-t-2 self-center"></span>
         </div>
     )
 }
