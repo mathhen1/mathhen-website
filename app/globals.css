@@ -13,16 +13,30 @@
   --animate-reveal-r: reveal-r 1.2s ease-in-out forwards;
   --animate-reveal-l: reveal-l 1.2s ease-in-out forwards;
   --animate-expansion: expansion 1.6s ease-in-out forwards;
+  --animate-bg: bg 3s infinite ease-in-out;
+}
+
+@keyframes bg {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+
+  50% {
+    background-size: 200% 200%;
+    background-position: center right;
+  }
 }
 
 @keyframes expansion {
-    0% {
-      width: 0.5px;
-    }
-    100% {
-      width: 100%;
-    }
+  0% {
+    width: 0.5px;
   }
+
+  100% {
+    width: 100%;
+  }
+}
 
 @keyframes reveal {
   0% {
@@ -83,4 +97,9 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+img {
+  pointer-events: none;
 }
