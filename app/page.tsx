@@ -9,6 +9,7 @@ import MoreAboutMe from "./Components/MoreAboutMe";
 import MoreService from "./Components/MoreService";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
+import Projects from "./Components/Projects";
 
 export default function Home() {
 
@@ -16,13 +17,20 @@ export default function Home() {
 
   useEffect(() => {
 
-    const root = document.querySelectorAll(".reveal")
+    const root = document.querySelectorAll(".reveal, .reveal-r, .reveal-l")
 
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate-reveal")
-          console.log(entry.target.classList)
+          if (entry.target.classList.contains("reveal")) {
+            entry.target.classList.add("animate-reveal")
+          }
+          if (entry.target.classList.contains("reveal-r")) {
+            entry.target.classList.add("animate-reveal-r")
+          }
+          if (entry.target.classList.contains("reveal-l")) {
+            entry.target.classList.add("animate-reveal-l")
+          }
         }
       })
     }, { threshold: 0.8 })
@@ -45,6 +53,7 @@ export default function Home() {
       <NavBar />
       <AboutMe />
       <MoreAboutMe />
+      <Projects />
       <Services />
       <MoreService />
       <Contact />
