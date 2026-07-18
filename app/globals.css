@@ -5,6 +5,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-roboto: "Roboto Mono", monospace;
+  --font-nz: "Playwrite NZ Basic", cursive;
 
   --animate-intro: intro 1.5s forwards;
   --animate-opacity: opacity 0.8s ease-in-out;
@@ -14,6 +15,12 @@
   --animate-reveal-l: reveal-l 1.2s ease-in-out forwards;
   --animate-expansion: expansion 1.6s ease-in-out forwards;
   --animate-bg: bg 3s infinite ease-in-out;
+}
+
+@layer base {
+  *[id] {
+    scroll-margin-top: 50px;
+  }
 }
 
 @keyframes bg {
