@@ -11,7 +11,7 @@ const Services = () => {
 
             {/* Landing Pages */}
 
-            <div className="reveal opacity-0 w-11/12 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+            <div className="reveal opacity-0 w-11/12 sm:w-3/4 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                 <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                     Landing Page
                 </h1>
@@ -41,7 +41,7 @@ const Services = () => {
 
             {/* portfolios */}
 
-            <div className="reveal opacity-0 w-11/12 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+            <div className="reveal opacity-0 w-11/12 sm:w-3/4 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                 <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                     Portfolio
                 </h1>
@@ -71,7 +71,7 @@ const Services = () => {
 
             {/* site institucional */}
 
-            <div className="reveal opacity-0 w-11/12 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+            <div className="reveal opacity-0 w-11/12 sm:w-3/4 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                 <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                     Site Institucional
                 </h1>
@@ -101,7 +101,7 @@ const Services = () => {
 
             {/* site personalizado */}
 
-            <div className="reveal opacity-0 w-11/12 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2 mb-2">
+            <div className="reveal opacity-0 w-11/12 sm:w-3/4 self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2 mb-2">
                 <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                     Site Personalizado
                 </h1>
@@ -140,7 +140,7 @@ const SeeMore = () => {
             <a href="" className="reveal opacity-0 w-full flex flex-row items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2">
                 Veja mais <ArrowUpRight className="w-5" />
             </a>
-            <span className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full">
+            <span className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2">
                 <a className="animate-pulse font-black" href={linkWpp}>
                     Quero meu site
                 </a>

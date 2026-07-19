@@ -7,8 +7,8 @@ const Contact = () => {
             <h2 className="reveal opacity-0 text-base text-center font-mono tracking-tighter font-bold">
                 Confira minhas redes
             </h2>
-            <div className="flex flex-row gap-2 w-full">
-                <div className="reveal-l opacity-0 text-xs grid grid-rows-3 justify-items-center gap-3 p-5 w-1/2">
+            <div className="flex flex-row gap-2 w-full sm:justify-center">
+                <div className="reveal-l opacity-0 text-xs grid grid-rows-3 justify-items-center sm:justify-items-start gap-3 p-5 w-1/2">
                     <a href="" className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5">
                         Instagram
                     </a>
@@ -33,7 +33,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <h2 className="reveal opacity-0 text-xs text-center font-mono tracking-tighter font-bold">
+            <h2 className="reveal opacity-0 text-xs sm:text-base text-center font-mono tracking-tighter font-bold">
                 Você também pode deixar seu recado diretamente
             </h2>
 
@@ -53,7 +53,7 @@ const Contact = () => {
                 </label>
                 <textarea id="content" className="text-xs border rounded-md p-2" maxLength={200} placeholder="digite seu recado" />
 
-                <button className="w-2/3 self-center p-2 mt-2 rounded-4xl border">
+                <button className="w-2/3 sm:w-1/3 self-center p-2 mt-2 rounded-4xl border">
                     Enviar
                 </button>
             </form>

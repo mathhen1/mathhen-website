@@ -23,13 +23,15 @@ const MoreAboutMe = () => {
 
             <span className="reveal opacity-0 w-10/12 border-t border-gray-400 h-px"></span>
 
-            <h2 className="reveal opacity-0 text-xl border-b-2 font-bold">Tecnologias</h2>
+            <h2 className="reveal opacity-0 text-xl border-b-2 font-bold">
+                Tecnologias
+            </h2>
 
-            <div className="grid grid-cols-5 w-11/12 gap-2">
+            <div className="grid grid-cols-5 sm:grid-cols-7 w-11/12 sm:w-3/4 gap-2">
                 {stackList.map(skill => (
                     <div key={skill.id} className="reveal opacity-0 border-2 p-2 pb-1 flex flex-col justify-center gap-2 items-center">
                         <img src={skill.src} alt="" className="reveal opacity-0 " />
-                        <p className="reveal opacity-0 text-[clamp(0.5rem,2vw,1rem)]">{skill.title}</p>
+                        <p className="reveal opacity-0 text-[clamp(0.5rem,2vw,1rem)] sm:text-xs">{skill.title}</p>
                     </div>
                 ))}
             </div>

@@ -16,7 +16,7 @@ const Projects = () => {
                 </span>
             </p>
 
-            <div className="grid grid-row-2 gap-3 mb-6">
+            <div className="grid grid-row-2 gap-3 mb-6 sm:flex sm:justify-center sm:flex-row sm:w-11/12 sm:self-center">
                 <div className="reveal-r opacity-0 flex flex-col items-center gap-2 justify-center w-11/12 
                 border place-self-center bg-black text-white rounded-md">
                     <img src={listProjects[0].src} alt="" className="rounded-xl p-2" />

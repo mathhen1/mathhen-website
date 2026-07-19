@@ -118,7 +118,7 @@ const ProjectsPage = () => {
 
             </div>
 
-            <span className="animate-reveal h-px w-3/4 border-t boder-gray-400 self-center"></span>
+            <span className="animate-reveal h-px w-3/4 border-t boder-gray-400 self-center mb-5 mt-5"></span>
 
             <Footer />
         </div>

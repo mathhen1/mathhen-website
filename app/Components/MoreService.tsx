@@ -23,7 +23,7 @@ const MoreService = () => {
                 Como funciona o processo de criação?
             </h1>
 
-            <div className="flex flex-col gap-2 w-10/12 items-start ml-2 pl-1">
+            <div className="flex flex-col gap-2 w-10/12 items-start ml-2 pl-1 items-stretch">
 
                 <span className="reveal-l opacity-0">
                     <p className="text-xs p-2 border-2 -skew-x-3 border-b-4 border-r-4">
@@ -59,7 +59,7 @@ const MoreService = () => {
                 Você tem interesse em um projeto?
             </h2>
 
-            <a href={linkWpp} target="_blank" className="reveal-l opacity-0 mb-6 w-3/4 border bg-black text-white font-black rounded-4xl p-2 text-center self-center font-mono">
+            <a href={linkWpp} target="_blank" className="reveal-l opacity-0 mb-6 w-3/4 sm:w-1/3 border bg-black text-white font-black rounded-4xl p-2 text-center self-center font-mono">
                 <span className="animate-pulse">
                     Fale comigo
                 </span>
