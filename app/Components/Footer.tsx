@@ -1,5 +1,10 @@
+import { useRouter } from "next/navigation"
+import { scrollTo } from "../Utils/funcs"
+
 const Footer = () => {
     const year = new Date().getFullYear()
+    const router = useRouter()
+
     return (
         <div className="bg-white text-black font-mono flex flex-col p-2">
             <div className="flex flex-col gap-2 p-2 tracking-tight">
@@ -8,10 +13,10 @@ const Footer = () => {
                 </h1>
 
                 <ul className="flex flex-col w-max text-sm pl-2 gap-2">
-                    <span className="border-b">
+                    <span className="border-b" onClick={() => scrollTo("homepage")}>
                         Homepage
                     </span>
-                    <span className="border-b">
+                    <span className="border-b" onClick={() => router.push("/Projects")}>
                         Projetos
                     </span>
                     <span className="border-b">
