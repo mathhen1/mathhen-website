@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react"
+import { linkWpp } from "../Utils/links"
 
 const Services = () => {
     return (
@@ -23,7 +24,7 @@ const Services = () => {
                     Site objetivo e atraente. O foco está na conversão, que direciona o usuario até uma ação, convertendo-o em um consumidor.
                 </p>
 
-                <ul className="pl-1 text-xs font-semibold font-roboto self-start gap-1">
+                <ul className="reveal opacity-0 pl-1 text-xs font-semibold font-roboto self-start gap-1">
                     <li>
                         &bull; Call To Action
                     </li>
@@ -140,7 +141,9 @@ const SeeMore = () => {
                 Veja mais <ArrowUpRight className="w-5" />
             </a>
             <span className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full">
-                <span className="animate-pulse font-black">Quero meu site</span>
+                <a className="animate-pulse font-black" href={linkWpp}>
+                    Quero meu site
+                </a>
             </span>
         </div>
     )

@@ -2,7 +2,7 @@ import { stackList } from "../Utils/stack"
 
 const MoreAboutMe = () => {
     return (
-        <div id="about-me" className="flex flex-col items-center gap-5 border-t border-black">
+        <div id="about-me" className="flex flex-col items-center gap-5 bg-white text-black border-t border-black">
             <h1 className="reveal opacity-0 self-start ml-2 text-3xl pl-2 border-l-3 font-bold mt-6 mb-3">
                 Sobre mim
             </h1>

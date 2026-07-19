@@ -13,7 +13,7 @@ const Intro = () => {
     }, [])
 
     return (
-        <div className="h-screen w-screen flex items-center justify-center bg-black">
+        <div className="h-[95vh] w-screen flex items-center justify-center bg-black">
             <div ref={introRef} className="h-full w-screen flex items-center justify-center bg-black">
                 <h1 className="animate-opacity text-3xl font-black tracking-wide text-white">
                     <span className="flex flex-col gap-1 group">
