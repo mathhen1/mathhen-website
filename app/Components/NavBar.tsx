@@ -1,13 +1,16 @@
 "use client"
 
-import { Menu } from "lucide-react"
+import { Home, Laptop, Menu, StickyNoteCheck, X } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { scrollTo } from "../Utils/funcs"
+import { linkWpp } from "../Utils/links"
 
 const NavBar = () => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
-
     const menuIsOpen = menuOpen ? "block" : "hidden"
+    const router = useRouter()
 
     const handleMenu = () => {
         if (menuOpen === true) {
@@ -20,7 +23,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className="relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-slate-800 text-white">
+        <div className="relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
             <div className="flex flex-row items-center w-11/12">
                 <h3 className="text-2xl font-black tracking-wider flex-1 pl-2 p-2">
                     <a href="">
@@ -31,19 +34,49 @@ const NavBar = () => {
                 <Menu className="" onClick={handleMenu} />
             </div>
 
-            <div className={"absolute z-20 w-3/4 flex flex-col text-black items-center bg-slate-800 h-screen top-0 right-0 p-2 gap-2 " + menuIsOpen}>
-                <Menu onClick={() => setMenuOpen(false)} />
-                <ul className="flex flex-col gap-2 text-lg items-center">
-                    <a href="">
-                        Home
+            <div className={"absolute z-20 backdrop-blur w-full flex flex-col text-white items-center h-screen top-0 right-0 " + menuIsOpen}>
+                <div className="absolute w-3/4 flex flex-col text-white items-center bg-black h-screen top-0 right-0 p-2 gap-5">
+                    <X className="mt-2" onClick={() => setMenuOpen(false)} />
+                    <img src="hero-mathen.jpg" alt=""
+                        className="w-2/3 rounded-full border-2" />
+                    <span className="w-1/2 h-px border-b border-gray-400"></span>
+
+                    <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
+                        <span onClick={() => {
+                            scrollTo("homepage")
+                            setMenuOpen(false)
+                        }} className="flex flex-row gap-2">
+                            Homepage <Home className="w-5" />
+                        </span>
+
+                        <span onClick={() => {
+                            router.push("/Projects")
+                            setMenuOpen(false)
+                        }} className="flex flex-row gap-2">
+                            Projetos <StickyNoteCheck className="w-5" />
+                        </span>
+                        <span onClick={() => {
+                            router.push("/Services")
+                            setMenuOpen(false)
+                        }} className="flex flex-row gap-2">
+                            Serviços <Laptop className="w-5" />
+                        </span>
+                    </ul>
+
+                    <span className="w-1/2 h-px border-b border-gray-400"></span>
+
+                    <Logo />
+
+                    <a href={linkWpp} target="_blank" className="bg-white text-black rounded-4xl p-2 w-1/2 text-center text-xs font-black">
+                        Fale comigo
                     </a>
-                    <a href="">
-                        Projetos
-                    </a>
-                    <a href="">
-                        Serviços
-                    </a>
-                </ul>
+
+                    <p className="text-white text-sm font-roboto font-bold w-11/12 text-wrap text-center p-2">
+                        developed by <br /> <span className="text-emerald-500 font-bold">&lt;&lt; me &gt;&gt;</span>
+                    </p>
+
+                    <span className="w-10/12 border-t h-px border-gray-300"></span>
+                </div>
             </div>
 
         </div>
@@ -51,3 +84,16 @@ const NavBar = () => {
 }
 
 export default NavBar
+
+const Logo = () => {
+    return (
+        <div className="w-full text-center flex flex-col items-center">
+            <h1 className="font-nz font-black text-5xl bg-clip-text text-transparent bg-gradient-to-b from-white via-slate-300 to-slate-400">
+                Mathhen
+            </h1>
+            <h2 className="text-sm font-roboto tracking-tight">
+                <span className="text-gray-100">Fullstack</span> <span className="font-black text-emerald-400">Developer</span>
+            </h2>
+        </div>
+    )
+}
