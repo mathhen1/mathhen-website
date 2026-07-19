@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { listProjects } from "../Utils/projects"
 import { ArrowLeftCircle } from "lucide-react"
+import Footer from "../Components/Footer"
 
 
 const ProjectsPage = () => {
@@ -24,46 +25,10 @@ const ProjectsPage = () => {
                 Conheça melhor <span className="font-black">todos</span> os meus <span className="text-emerald-400 font-black">projetos</span> em maiores detalhes
             </p>
 
-            <span className="animate-reveal border-t w-3/4 mt-2 mb-2 self-center border-gray-400"></span>
+            <span className="animate-reveal border-t w-3/4 mt-2 self-center border-gray-400"></span>
 
-            <span className="animate-pulse text-gray-600 self-center text-xs">
-                &lt; arraste para os lados &gt;
-            </span>
-
-            <div className="bg-black h-full w-full flex flex-row gap-2 p-2 items-stretch overflow-x-auto 
-            scrollbar-none snap-x snap-mandatory">
-
-                {listProjects.map(p =>
-                    <div key={p.id} className="animate-reveal w-11/12 border rounded-lg self-stretch
-                    flex-shrink-0 snap-center snap-always border
-                    flex flex-col gap-3 p-2 bg-white text-black">
-
-                        <img src={p.src} alt="" className="animate-reveal border rounded-md" />
-
-                        <h1 className="animate-reveal-r self-center font-black tracking-wide text-sm">
-                            {p.name}
-                        </h1>
-                        <p className="animate-reveal-l text-xs font-semibold">
-                            {p.desc}
-                        </p>
-
-                        <ul className="pl-2 grid grid-flow-col grid-[3,max-content] justify-start gap-2 w-3/4 text-center">
-                            {p.stack.map(node =>
-                                <p key={node.id} className="animate-reveal text-xs p-1 pr-2 pl-2 -skew-x-5 border-2 border-b-3 border-r-3 bg-gray-200 font-bold">
-                                    {node.title}
-                                </p>
-                            )}
-                        </ul>
-
-                    </div>
-                )}
-
-            </div>
-
-            <span className="animate-reveal h-px w-3/4 border-t boder-gray-400 self-center"></span>
-
-            <p className="animate-reveal-r text-center">
-                Selecione os modelos de projeto
+            <p className="animate-reveal-r font-extralight text-center pl-4 text-xs w-10/12 self-center">
+                Filtro de categorias
             </p>
 
             <div className="grid grid-cols-3 gap-2 text-xs w-10/12 self-center">
@@ -116,6 +81,46 @@ const ProjectsPage = () => {
                 </label>
 
             </div>
+
+            <span className="animate-reveal border-t w-3/4 mt-2 mb-2 self-center border-gray-400"></span>
+
+            <span className="animate-pulse text-gray-600 self-center text-xs">
+                &lt; arraste para os lados &gt;
+            </span>
+
+            <div className="bg-black h-full w-full flex flex-row gap-2 p-2 items-stretch overflow-x-auto 
+            overflow-y-hidden scrollbar-none snap-x snap-mandatory">
+
+                {listProjects.map(p =>
+                    <div key={p.id} className="animate-reveal w-11/12 border rounded-lg self-stretch
+                    flex-shrink-0 snap-center snap-always border
+                    flex flex-col gap-3 p-2 bg-white text-black">
+
+                        <img src={p.src} alt="" className="animate-reveal border rounded-md" />
+
+                        <h1 className="animate-reveal-r self-center font-black tracking-wide text-sm">
+                            {p.name}
+                        </h1>
+                        <p className="animate-reveal-l text-xs font-semibold">
+                            {p.desc}
+                        </p>
+
+                        <ul className="pl-2 grid grid-flow-col grid-[3,max-content] justify-start gap-2 w-3/4 text-center">
+                            {p.stack.map(node =>
+                                <p key={node.id} className="animate-reveal text-xs p-1 pr-2 pl-2 -skew-x-5 border-2 border-b-3 border-r-3 bg-gray-200 font-bold">
+                                    {node.title}
+                                </p>
+                            )}
+                        </ul>
+
+                    </div>
+                )}
+
+            </div>
+
+            <span className="animate-reveal h-px w-3/4 border-t boder-gray-400 self-center"></span>
+
+            <Footer />
         </div>
     )
 }
