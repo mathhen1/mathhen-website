@@ -8,12 +8,20 @@ const Footer = () => {
     return (
         <div className="bg-white text-black font-mono flex flex-col p-2">
             <div className="flex flex-col gap-2 p-2 tracking-tight">
+
+                <Logo />
+
                 <h1 className="border-l-2 pl-2 font-semibold">
-                    Links da Pagina
+                    Links de Navegação
                 </h1>
 
                 <ul className="flex flex-col w-max text-sm pl-2 gap-2">
-                    <span className="border-b" onClick={() => scrollTo("homepage")}>
+                    <span className="border-b" onClick={() => {
+                        const a = scrollTo("homepage")
+                        if (a === false) {
+                            router.push("/")
+                        }
+                    }}>
                         Homepage
                     </span>
                     <span className="border-b" onClick={() => router.push("/Projects")}>
@@ -30,7 +38,7 @@ const Footer = () => {
             <div className="tracking-tighter flex flex-col gap-2 p-2">
 
                 <h1 className="border-l-2 pl-2 font-semibold">
-                    Contatos rapidos
+                    Links para Contato
                 </h1>
 
                 <ul className="flex flex-col w-max text-sm pl-2 gap-2">
@@ -62,3 +70,16 @@ const Footer = () => {
 }
 
 export default Footer
+
+const Logo = () => {
+    return (
+        <div className="w-full text-center flex flex-col items-center mb-1 mt-1 self-center">
+            <h1 className="font-nz font-black text-5xl bg-clip-text text-transparent bg-gradient-to-b from-slate-600 via-slate-500 to-black">
+                Mathhen
+            </h1>
+            <h2 className="text-sm font-roboto tracking-tighter">
+                <span className="text-gray-900">Fullstack</span> <span className="font-black text-emerald-600">Developer</span>
+            </h2>
+        </div>
+    )
+}
