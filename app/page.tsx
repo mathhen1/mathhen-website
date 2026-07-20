@@ -49,7 +49,7 @@ export default function Home() {
     )
   }
   return (
-    <div className="relative h-full w-screen flex flex-col">
+    <div className="relative h-full w-screen flex flex-col lg:font-roboto">
       <NavBar />
       <AboutMe />
       <MoreAboutMe />

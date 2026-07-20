@@ -6,19 +6,19 @@ const Footer = () => {
     const router = useRouter()
 
     return (
-        <div className="bg-white text-black font-mono flex flex-col p-2">
+        <div className="bg-white text-black font-mono flex flex-col p-2 lg:gap-2">
 
             <Logo />
 
-            <div className="flex flex-col sm:flex-row ">
-                <div className="flex flex-col gap-2 p-2 tracking-tight sm:w-1/2">
+            <div className="flex flex-col sm:flex-row lg:flex-col lg:w-3/4 lg:self-center">
+                <div className="flex flex-col lg:items-center gap-2 p-2 tracking-tight sm:w-1/2">
 
                     <h1 className="border-l-2 pl-2 font-semibold">
                         Links de Navegação
                     </h1>
 
-                    <ul className="flex flex-col w-max text-sm pl-2 gap-2">
-                        <span className="border-b" onClick={() => {
+                    <ul className="flex flex-col lg:flex-row w-max text-sm pl-2 gap-2">
+                        <span className="max-lg:border-b" onClick={() => {
                             const a = scrollTo("homepage")
                             if (a === false) {
                                 router.push("/")
@@ -26,48 +26,55 @@ const Footer = () => {
                         }}>
                             Homepage
                         </span>
-                        <span className="border-b" onClick={() => router.push("/Projects")}>
+                        <span className="max-lg:border-b" onClick={() => router.push("/Projects")}>
                             Projetos
                         </span>
-                        <span className="border-b">
+                        <span className="max-lg:border-b">
                             Serviços
                         </span>
                     </ul>
                 </div>
 
-                <span className="sm:hidden h-px w-11/12 border-t border-gray-400 self-center mb-2 mt-2"></span>
+                <span className="sm:hidden lg:block h-px w-11/12 lg:w-3/4 border-t border-gray-400 self-center mb-2 mt-2"></span>
 
-                <div className="tracking-tighter flex flex-col gap-2 p-2 sm:w-1/2">
+                <div className="tracking-tighter flex flex-col lg:items-center gap-2 p-2 sm:w-1/2">
 
                     <h1 className="border-l-2 pl-2 font-semibold">
                         Links para Contato
                     </h1>
 
-                    <ul className="flex flex-col w-max text-sm pl-2 gap-2">
-                        <span className="border-b">
+                    <ul className="flex flex-col lg:flex-row w-max text-sm pl-2 gap-2">
+                        <span className="max-lg:border-b">
                             Instagram
                         </span>
-                        <span className="border-b">
+                        <span className="max-lg:border-b">
                             WhatsApp
                         </span>
-                        <span className="border-b">
+                        <span className="max-lg:border-b">
                             Linkedin
                         </span>
                     </ul>
                 </div>
             </div>
 
-            <span className="h-px w-3/4 self-center border-t mt-2 mb-2 border-black"></span>
+            <span className="h-px w-3/4 lg:w-1/3 self-center border-t mt-2 mb-2 border-black"></span>
 
-            <p className="text-sm self-center">
-                Copyrigth © {year} <span className="font-black tracking-widest">Mathen</span>;
-            </p>
-            <p className="text-sm self-center">
-                Todos os direitos reservados.
-            </p>
-            <p className="text-sm font-semibold self-center border-b pb-2 tracking-tighter">
-                Developed w/ NextJs, React & Tailwind.
-            </p>
+            <div className="flex flex-col items-center">
+                <p className="hidden lg:block text-sm font-semibold self-center max-lg:border-b max-lg:pb-2 tracking-tighter">
+                    Developed w/ NextJs, React & Tailwind.
+                </p>
+                <div className="flex flex-col lg:flex-row">
+                    <p className="text-sm self-center">
+                        Copyrigth © {year} <span className="font-black tracking-widest">Mathen</span>;
+                    </p>
+                    <p className="text-sm self-center">
+                        Todos os direitos reservados.
+                    </p>
+                </div>
+                <p className="block lg:hidden text-sm font-semibold self-center max-lg:border-b max-lg:pb-2 tracking-tighter">
+                    Developed w/ NextJs, React & Tailwind.
+                </p>
+            </div>
         </div>
     )
 }
@@ -76,7 +83,7 @@ export default Footer
 
 const Logo = () => {
     return (
-        <div className="w-full text-center flex flex-col items-center mb-1 mt-1 self-center">
+        <div className="w-full text-center flex flex-col items-center max-lg:mb-1 max-lg:mt-1 self-center">
             <h1 className="font-nz font-black text-5xl bg-clip-text text-transparent bg-gradient-to-b from-slate-600 via-slate-500 to-black">
                 Mathhen
             </h1>
