@@ -67,45 +67,54 @@ const NavBar = () => {
             <div className={"absolute z-20 backdrop-blur w-full flex flex-col text-white items-center h-screen top-0 right-0 " + menuIsOpen}>
                 <div className="absolute w-3/4 flex flex-col text-white items-center bg-black h-screen top-0 right-0 p-2 gap-5">
                     <X className="mt-2" onClick={() => setMenuOpen(false)} />
-                    <img src="hero-mathen.jpg" alt=""
-                        className="w-2/3 rounded-full border-2" />
-                    <span className="w-1/2 h-px border-b border-gray-400"></span>
 
-                    <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
-                        <span onClick={() => {
-                            scrollTo("homepage")
-                            setMenuOpen(false)
-                        }} className="flex flex-row gap-2">
-                            Homepage <Home className="w-5" />
-                        </span>
+                    <div className="flex flex-col sm:flex-row gap-5 items-center sm:justify-center">
+                        <img src="hero-mathen.jpg" alt=""
+                            className="w-2/3 sm:w-1/4 rounded-full border-2" />
+                            
+                        <span className="sm:hidden w-1/2 h-px border-b border-gray-400"></span>
 
-                        <span onClick={() => {
-                            router.push("/Projects")
-                            setMenuOpen(false)
-                        }} className="flex flex-row gap-2">
-                            Projetos <StickyNoteCheck className="w-5" />
-                        </span>
-                        <span onClick={() => {
-                            router.push("/Services")
-                            setMenuOpen(false)
-                        }} className="flex flex-row gap-2">
-                            Serviços <Laptop className="w-5" />
-                        </span>
-                    </ul>
 
-                    <span className="w-1/2 h-px border-b border-gray-400"></span>
+                        <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
+                            <span onClick={() => {
+                                scrollTo("homepage")
+                                setMenuOpen(false)
+                            }} className="flex flex-row gap-2">
+                                Homepage <Home className="w-5" />
+                            </span>
 
-                    <Logo />
+                            <span onClick={() => {
+                                router.push("/Projects")
+                                setMenuOpen(false)
+                            }} className="flex flex-row gap-2">
+                                Projetos <StickyNoteCheck className="w-5" />
+                            </span>
+                            <span onClick={() => {
+                                router.push("/Services")
+                                setMenuOpen(false)
+                            }} className="flex flex-row gap-2">
+                                Serviços <Laptop className="w-5" />
+                            </span>
+                        </ul>
 
-                    <a href={linkWpp} target="_blank" className="bg-white text-black rounded-4xl p-2 w-1/2 text-center text-xs font-black">
-                        Fale comigo
-                    </a>
+                        <span className="sm:hidden w-1/2 h-px border-b border-gray-400"></span>
 
-                    <p className="text-white text-sm font-roboto font-bold w-11/12 text-wrap text-center p-2">
-                        developed by <br /> <span className="text-emerald-500 font-bold">&lt;&lt; me &gt;&gt;</span>
-                    </p>
+                        <Logo />
+                    </div>
 
-                    <span className="w-10/12 border-t h-px border-gray-300"></span>
+                    <div className="flex flex-col sm:flex-row gap-5 items-center w-full sm:w-3/4 sm:justify-center">
+
+                        <a href={linkWpp} target="_blank" className="bg-white text-black rounded-4xl p-2 w-1/2 text-center text-xs font-black">
+                            Fale comigo
+                        </a>
+
+                        <p className="text-white text-sm font-roboto font-bold w-11/12 text-wrap text-center p-2">
+                            developed by <br /> <span className="text-emerald-500 font-bold">&lt;&lt; me &gt;&gt;</span>
+                        </p>
+
+                        <span className="sm:hidden w-10/12 border-t h-px border-gray-300"></span>
+
+                    </div>
                 </div>
             </div>
 
@@ -117,7 +126,7 @@ export default NavBar
 
 const Logo = () => {
     return (
-        <div className="w-full text-center flex flex-col items-center">
+        <div className="w-full sm:w-max text-center flex flex-col items-center">
             <h1 className="font-nz font-black text-5xl bg-clip-text text-transparent bg-gradient-to-b from-white via-slate-300 to-slate-400">
                 Mathhen
             </h1>
