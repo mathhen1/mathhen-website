@@ -1,3 +1,5 @@
+import { linkInsta, linkMailTo, linkWpp } from "../Utils/links"
+
 const Contact = () => {
     return (
         <div className="bg-black text-white h-full flex flex-col gap-5 lg:gap-3">
@@ -12,13 +14,19 @@ const Contact = () => {
                     </h2>
                     <div className="flex flex-row gap-2 w-full sm:justify-center">
                         <div className="reveal-l opacity-0 text-xs grid grid-rows-3 justify-items-center sm:justify-items-start gap-3 p-5 w-1/2">
-                            <a href="" className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5">
+                            <a href={linkInsta} className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5
+                            transition duration-300 hover:transition hover:duration-300 
+                            hover:bg-white hover:text-black hover:border-white hover:font-black">
                                 Instagram
                             </a>
-                            <a href="" className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5">
+                            <a href={linkWpp} className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5
+                            transition duration-300 hover:transition hover:duration-300 
+                            hover:bg-white hover:text-black hover:border-white hover:font-black">
                                 WhatsApp
                             </a>
-                            <a href="" className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5">
+                            <a href={linkMailTo} className="p-2 border-2 w-1/2 text-center -skew-y-5 -skew-x-5
+                            transition duration-300 hover:transition hover:duration-300 
+                            hover:bg-white hover:text-black hover:border-white hover:font-black">
                                 E-Mail
                             </a>
                         </div>
@@ -59,7 +67,9 @@ const Contact = () => {
                         </label>
                         <textarea id="content" className="reveal opacity-0 text-xs border rounded-md p-2" maxLength={200} placeholder="digite seu recado" />
 
-                        <button className="reveal opacity-0 w-2/3 sm:w-1/3 self-center p-2 mt-2 rounded-4xl border">
+                        <button className="reveal opacity-0 w-2/3 sm:w-1/3 self-center p-2 mt-2 rounded-4xl border
+                        transition duration-300 hover:transition hover:duration-300 hover:cursor-pointer
+                        hover:bg-white hover:text-black hover:font-black">
                             Enviar
                         </button>
                     </form>

@@ -66,7 +66,8 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <span onClick={() => router.push("/Projects")} className="reveal opacity-0 border-2 border-b-4 p-2 w-10/12 lg:w-1/3 self-center font-roboto font-black text-sm mb-10 flex flex-row justify-center items-center gap-2">
+                <span onClick={() => router.push("/Projects")} className="reveal opacity-0 border-2 border-b-4 p-2 w-10/12 lg:w-1/3 self-center font-roboto font-black text-sm mb-10 flex flex-row justify-center items-center gap-2 hover:bg-gray-700 hover:border-black hover:text-white hover:cursor-pointer
+                transition duration-300 hover:transition hover:duration-300">
                     Ver todos os projetos <ArrowRightSquare className="w-5" />
                 </span>
             </div>

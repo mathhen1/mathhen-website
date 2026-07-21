@@ -18,19 +18,22 @@ const Footer = () => {
                     </h1>
 
                     <ul className="flex flex-col lg:flex-row w-max text-sm pl-2 gap-2">
-                        <span className="max-lg:border-b" onClick={() => {
+                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer" onClick={() => {
                             const a = scrollTo("homepage")
                             if (a === false) {
                                 router.push("/")
                             }
                         }}>
                             Homepage
+                            <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
-                        <span className="max-lg:border-b" onClick={() => router.push("/Projects")}>
+                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer" onClick={() => router.push("/Projects")}>
                             Projetos
+                            <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
-                        <span className="max-lg:border-b">
+                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             Serviços
+                            <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
                     </ul>
                 </div>
@@ -44,14 +47,17 @@ const Footer = () => {
                     </h1>
 
                     <ul className="flex flex-col lg:flex-row w-max text-sm pl-2 gap-2">
-                        <span className="max-lg:border-b">
+                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             Instagram
+                            <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
-                        <span className="max-lg:border-b">
+                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             WhatsApp
+                            <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
-                        <span className="max-lg:border-b">
+                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             Linkedin
+                            <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
                     </ul>
                 </div>

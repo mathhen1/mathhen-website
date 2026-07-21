@@ -73,7 +73,7 @@ const Services = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-5 lg:gap-3 lg:h-full lg:items-stretch lg:gap-3 lg:w-10/12 lg:self-center">
-            
+
                 {/* site institucional */}
 
                 <div className="reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
@@ -144,14 +144,16 @@ const Services = () => {
 const SeeMore = () => {
     return (
         <div className="flex flex-row w-full">
-            <a href="" className="reveal opacity-0 w-full flex flex-row items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2">
-                Veja mais <ArrowUpRight className="w-5" />
+            <a href="" className="group reveal opacity-0 w-full flex flex-row lg:items-start lg:flex-col items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2">
+                <span className="flex flex-row gap-1">Veja mais <ArrowUpRight className="w-5" /></span>
+                <span className="h-0.5 w-0 bg-emerald-500 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:w-1/4"></span>
             </a>
-            <span className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2">
-                <a className="animate-pulse font-black" href={linkWpp}>
+            <a className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2 transition duration-200 hover:transition hover:duration-200
+            hover:bg-emerald-800" href={linkWpp}>
+                <span className="animate-pulse font-black">
                     Quero meu site
-                </a>
-            </span>
+                </span>
+            </a>
         </div>
     )
 }

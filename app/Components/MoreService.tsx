@@ -66,7 +66,9 @@ const MoreService = () => {
                 Você tem interesse em um projeto?
             </h2>
 
-            <a href={linkWpp} target="_blank" className="reveal-l opacity-0 mb-6 w-3/4 sm:w-1/3 border bg-black text-white font-black rounded-4xl p-2 text-center self-center font-mono">
+            <a href={linkWpp} target="_blank" className="reveal-l opacity-0 mb-6 w-3/4 sm:w-1/4 border bg-black text-white font-black rounded-4xl p-2 text-center self-center font-mono 
+            transition duration-300 hover:transition hover:duration-300
+            hover:bg-emerald-500 hover:text-black">
                 <span className="animate-pulse">
                     Fale comigo
                 </span>
