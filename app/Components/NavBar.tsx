@@ -25,14 +25,44 @@ const NavBar = () => {
     return (
         <div className="relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
             <div className="flex flex-row items-center w-11/12">
-                <h3 className="text-2xl font-black tracking-wider flex-1 pl-2 p-2">
+                <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 pl-2 lg:pl-5 p-2">
                     <a href="">
                         dev mathen
                     </a>
                 </h3>
 
-                <Menu className="" onClick={handleMenu} />
+                {/* Mobile Bar */}
+
+                <Menu className="lg:hidden" onClick={handleMenu} />
+
+                {/* Desktop Bar */}
+
+                <ul className="hidden lg:flex lg:flex-row lg:gap-10">
+                    <li>
+                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => scrollTo("homepage")}>
+                            HomePage
+                            <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => router.push("/Projects")}>
+                            Projetos
+                            <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => router.push("/Services")}>
+                            Serviços
+                            <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
+                        </span>
+                    </li>
+                </ul>
+
             </div>
+
+            {/* Menu Mobile */}
 
             <div className={"absolute z-20 backdrop-blur w-full flex flex-col text-white items-center h-screen top-0 right-0 " + menuIsOpen}>
                 <div className="absolute w-3/4 flex flex-col text-white items-center bg-black h-screen top-0 right-0 p-2 gap-5">
