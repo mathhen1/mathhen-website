@@ -23,7 +23,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className="relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
+        <div className="animate-hero relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
             <div className="flex flex-row items-center w-11/12">
                 <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 pl-2 lg:pl-5 p-2">
                     <a href="">
@@ -71,7 +71,7 @@ const NavBar = () => {
                     <div className="flex flex-col sm:flex-row gap-5 items-center sm:justify-center">
                         <img src="hero-mathen.jpg" alt=""
                             className="w-2/3 sm:w-1/4 rounded-full border-2" />
-                            
+
                         <span className="sm:hidden w-1/2 h-px border-b border-gray-400"></span>
 
 
