@@ -4,7 +4,7 @@ const AboutMe = () => {
     return (
         <div id="homepage" className="animate-hero relative min-h-[95vh] bg-black text-white flex flex-col lg:flex-row gap-5">
 
-            <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2">
+            <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2 lg:pl-3">
                 <h1 className="text-5xl text-start lg:text-center mt-3 font-bold pl-2 text-wrap">
                     Construo sites <span className="font-extrabold text-emerald-500">modernos</span> e profissionais
                 </h1>
