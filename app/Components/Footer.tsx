@@ -24,15 +24,15 @@ const Footer = () => {
                                 router.push("/")
                             }
                         }}>
-                            Homepage
+                            <span className="hidden lg:inline">&bull;</span> Homepage
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
                         <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer" onClick={() => router.push("/Projects")}>
-                            Projetos
+                            <span className="hidden lg:inline">&bull;</span> Projetos
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
-                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
-                            Serviços
+                        <span onClick={() => router.push("/Services")} className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
+                            <span className="hidden lg:inline">&bull;</span> Serviços
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
                     </ul>
@@ -48,15 +48,15 @@ const Footer = () => {
 
                     <ul className="flex flex-col lg:flex-row w-max text-sm pl-2 gap-2">
                         <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
-                            Instagram
+                            <span className="hidden lg:inline">&bull;</span> Instagram
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
                         <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
-                            WhatsApp
+                            <span className="hidden lg:inline">&bull;</span> WhatsApp
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
                         <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
-                            Linkedin
+                            <span className="hidden lg:inline">&bull;</span> Linkedin
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
                     </ul>
