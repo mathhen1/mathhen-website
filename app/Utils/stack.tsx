@@ -74,7 +74,7 @@ const stackList = [{
     id: 12,
     category: "database",
     title: "PrismaORM",
-    src: "prismORM.png"
+    src: "https://img.icons8.com/?size=100&id=zJh5Gyrd6ZKu&format=png&color=000000"
 },
 {
     id: 13,
@@ -92,7 +92,7 @@ const stackList = [{
     id: 15,
     category: "database",
     title: "PostgreSQL",
-    src: "postgre.png"
+    src: "https://img.icons8.com/?size=100&id=JRnxU7ZWP4mi&format=png&color=000000"
 },
 ]
 
