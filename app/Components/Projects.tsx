@@ -79,10 +79,12 @@ const Projects = () => {
 export default Projects
 
 const SeeMore = () => {
+    const router = useRouter()
     return (
-        <a className="flex flex-row items-center self-end pr-3 gap-2 
-                    text-emerald-500 font-sans font-semibold tracking-wider text-sm mb-2">
+        <span onClick={() => router.push("/Projects")} className="flex flex-row items-center self-end pr-3 gap-2 
+                    text-emerald-500 font-sans font-semibold tracking-wider text-sm mb-2
+                    transition-all duration-300 hover:cursor-pointer hover:text-emerald-800">
             Veja mais aqui <ArrowUpRightSquare className="w-5" />
-        </a>
+        </span>
     )
 }
