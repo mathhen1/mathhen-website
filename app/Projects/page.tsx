@@ -88,11 +88,11 @@ const ProjectsPage = () => {
                 &lt; arraste para os lados &gt;
             </span>
 
-            <div className="bg-black h-full w-full sm:w-10/12 sm:self-center flex flex-row gap-2 p-2 items-stretch overflow-x-auto 
-            overflow-y-hidden scrollbar-none snap-x snap-mandatory">
+            <div className="bg-black h-full w-full sm:w-10/12 sm:self-center flex flex-row gap-2 p-2 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory 
+            lg:grid lg:grid-cols-3 lg:justify-items-center lg:p-0">
 
                 {listProjects.map(p =>
-                    <div key={p.id} className="animate-reveal w-11/12 sm:w-5/6 border rounded-lg self-stretch
+                    <div key={p.id} className="animate-reveal w-11/12 sm:w-5/6 lg:w-full border rounded-lg self-stretch
                     flex-shrink-0 snap-center snap-always border
                     flex flex-col gap-3 p-2 bg-white text-black">
 
