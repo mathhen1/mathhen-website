@@ -8,6 +8,7 @@ const Intro = () => {
         if (introRef.current) {
             setTimeout(() => {
                 introRef.current?.classList.add("animate-intro")
+                sessionStorage.setItem("init", "used")
             }, 1800);
         }
     }, [])

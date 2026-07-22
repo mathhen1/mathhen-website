@@ -14,11 +14,15 @@ import Projects from "./Components/Projects";
 export default function Home() {
 
   const [useIntro, setUseIntro] = useState<boolean>(true)
+  const [verifyIntro, setVerifyIntro] = useState<string | null>(null)
 
   useEffect(() => {
 
-    const root = document.querySelectorAll(".reveal, .reveal-r, .reveal-l")
+    // setting intro was used
+    setVerifyIntro(sessionStorage.getItem("init"))
 
+    // ANIMATION REVEAL W/ INTERSECTION OBSERVER
+    const root = document.querySelectorAll(".reveal, .reveal-r, .reveal-l")
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -34,16 +38,18 @@ export default function Home() {
         }
       })
     }, { threshold: 0.8 })
-
     root.forEach(node => {
       obs.observe(node)
     })
+
+    // INTRO ANIMATION
     setTimeout(() => {
       setUseIntro(false)
     }, 2200);
+
   }, [useIntro])
 
-  if (useIntro) {
+  if (useIntro && verifyIntro === null) {
     return (
       <Intro />
     )
