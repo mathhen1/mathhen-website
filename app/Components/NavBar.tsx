@@ -26,7 +26,7 @@ const NavBar = () => {
         <div className="animate-hero relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
             <div className="flex flex-row items-center w-11/12">
                 <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 pl-2 lg:pl-5 p-2">
-                    <a href="">
+                    <a href="/">
                         dev mathen
                     </a>
                 </h3>
@@ -39,7 +39,12 @@ const NavBar = () => {
 
                 <ul className="hidden lg:flex lg:flex-row lg:gap-10">
                     <li>
-                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => scrollTo("homepage")}>
+                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => {
+                            const a = scrollTo("homepage")
+                            if(a === false) {
+                                router.push("/")
+                            }
+                            }}>
                             HomePage
                             <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
                         </span>
