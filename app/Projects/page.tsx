@@ -4,10 +4,26 @@ import { useRouter } from "next/navigation"
 import { listProjects } from "../Utils/projects"
 import { ArrowLeftCircle } from "lucide-react"
 import Footer from "../Components/Footer"
+import React, { useEffect, useState } from "react"
 
 
 const ProjectsPage = () => {
-    const categoriesStyle = "animate-reveal peer-checked:bg-emerald-500 peer-checked:text-black p-2 border text-center bg-black text-emerald-500 font-black peer-checked:transition transition peer-checked:duration-500 duration-500 transition-all hover:bg-emerald-500 hover:text-black"
+    const [list, setList] = useState<any>(listProjects)
+
+    useEffect(() => {
+        setList(list)
+    }, [list])
+
+    const filterList = (e: React.PointerEvent<HTMLInputElement>) => {
+        // console.log(list)
+        const refreshedList = listProjects.filter(p => p.category.includes(e.currentTarget.value.toLowerCase()))
+        setList(refreshedList)
+        console.log(refreshedList)
+
+        if(e.currentTarget.value.includes("Todos")) setList(listProjects)
+    }
+
+    const categoriesStyle = "animate-reveal block peer-checked:bg-emerald-500 peer-checked:text-black p-2 border text-center bg-black text-emerald-500 font-black peer-checked:transition transition peer-checked:duration-500 duration-500 transition-all hover:bg-emerald-500 hover:text-black"
     const router = useRouter()
 
     return (
@@ -33,51 +49,51 @@ const ProjectsPage = () => {
 
             <div className="grid grid-cols-3 gap-2 text-xs w-10/12 sm:w-2/3 lg:w-1/3 self-center">
                 <label className="block cursor-pointer">
-                    <input type="radio" defaultChecked={true} name="btn" className="peer sr-only">
+                    <input type="radio" defaultChecked={true} value={"Todos"} onClick={filterList} name="btn" className="peer sr-only">
                     </input>
-                    <p className={categoriesStyle}>
+                    <span className={categoriesStyle}>
                         Todos
-                    </p>
+                    </span>
                 </label>
 
                 <label className="block cursor-pointer">
-                    <input type="radio" name="btn" className="peer sr-only">
+                    <input type="radio" name="btn" value={"Web"} onClick={filterList} className="peer sr-only">
                     </input>
-                    <p className={categoriesStyle}>
+                    <span className={categoriesStyle}>
                         Web
-                    </p>
+                    </span>
                 </label>
 
                 <label className="block cursor-pointer">
-                    <input type="radio" name="btn" className="peer sr-only">
+                    <input type="radio" name="btn" value={"Desktop"} onClick={filterList} className="peer sr-only">
                     </input>
-                    <p className={categoriesStyle}>
+                    <span className={categoriesStyle}>
                         Desktop
-                    </p>
+                    </span>
                 </label>
 
                 <label className="block cursor-pointer">
-                    <input type="radio" name="btn" className="peer sr-only">
+                    <input type="radio" name="btn" value={"VibeCoding"} onClick={filterList} className="peer sr-only">
                     </input>
-                    <p className={categoriesStyle}>
-                        Automação
-                    </p>
+                    <span className={categoriesStyle} >
+                        VibeCoding
+                    </span>
                 </label>
 
                 <label className="block cursor-pointer">
-                    <input type="radio" name="btn" className="peer sr-only">
+                    <input type="radio" name="btn" value={"IA"} onClick={filterList} className="peer sr-only">
                     </input>
-                    <p className={categoriesStyle}>
+                    <span className={categoriesStyle}>
                         IA
-                    </p>
+                    </span>
                 </label>
 
                 <label className="block cursor-pointer">
-                    <input type="radio" name="btn" className="peer sr-only">
+                    <input type="radio" name="btn" value={"Mobile"} onClick={filterList} className="peer sr-only">
                     </input>
-                    <p className={categoriesStyle}>
+                    <span className={categoriesStyle}>
                         Mobile
-                    </p>
+                    </span>
                 </label>
 
             </div>
@@ -91,7 +107,7 @@ const ProjectsPage = () => {
             <div className="bg-black h-full w-full sm:w-10/12 sm:self-center flex flex-row gap-2 p-2 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory 
             lg:grid lg:grid-cols-3 lg:justify-items-center lg:p-0">
 
-                {listProjects.map(p =>
+                {list.map(p =>
                     <div key={p.id} className="animate-reveal w-11/12 sm:w-5/6 lg:w-full border rounded-lg self-stretch
                     flex-shrink-0 snap-center snap-always border
                     flex flex-col gap-3 p-2 bg-white text-black">
@@ -112,6 +128,10 @@ const ProjectsPage = () => {
                                 </p>
                             )}
                         </ul>
+
+                        <p className="pl-2 ml-2 text-sm font-bold p-1 border-2 border-b-4 border-l-4 w-max">
+                            categoria do sistema: <span className="font-black text-base tracking-widest">{p.category}</span>
+                        </p>
 
                     </div>
                 )}
