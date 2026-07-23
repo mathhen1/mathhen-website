@@ -82,7 +82,10 @@ const NavBar = () => {
 
                         <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
                             <span onClick={() => {
-                                scrollTo("homepage")
+                                const a = scrollTo("homepage")
+                                if(a === false) {
+                                    router.push("/")
+                                }
                                 setMenuOpen(false)
                             }} className="flex flex-row gap-2">
                                 Homepage <Home className="w-5" />
