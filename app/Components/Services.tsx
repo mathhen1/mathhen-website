@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 import { linkWpp } from "../Utils/links"
+import { useRouter } from "next/navigation"
 
 const Services = () => {
     return (
@@ -142,12 +143,13 @@ const Services = () => {
 }
 
 const SeeMore = () => {
+    const router = useRouter()
     return (
         <div className="flex flex-row w-full">
-            <a href="" className="group reveal opacity-0 w-full flex flex-row lg:items-start lg:flex-col items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2">
+            <span onClick={() => router.push("/Services")} className="group reveal opacity-0 w-full flex flex-row lg:items-start lg:flex-col items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2 hover:cursor-pointer">
                 <span className="flex flex-row gap-1">Veja mais <ArrowUpRight className="w-5" /></span>
                 <span className="h-0.5 w-0 bg-emerald-500 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:w-1/4"></span>
-            </a>
+            </span>
             <a className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2 transition duration-200 hover:transition hover:duration-200
             hover:bg-emerald-800" href={linkWpp}>
                 <span className="animate-pulse font-black">
