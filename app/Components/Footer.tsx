@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation"
 import { scrollTo } from "../Utils/funcs"
+import { linkInsta, linkLinkedin, linkWpp } from "../Utils/links"
 
 const Footer = () => {
     const year = new Date().getFullYear()
@@ -47,18 +48,18 @@ const Footer = () => {
                     </h1>
 
                     <ul className="flex flex-col lg:flex-row w-max text-sm pl-2 gap-2">
-                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
+                        <a href={linkInsta} className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             <span className="hidden lg:inline">&bull;</span> Instagram
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
-                        </span>
-                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
+                        </a>
+                        <a href={linkWpp} className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             <span className="hidden lg:inline">&bull;</span> WhatsApp
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
-                        </span>
-                        <span className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
+                        </a>
+                        <a href={linkLinkedin} className="max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
                             <span className="hidden lg:inline">&bull;</span> Linkedin
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
-                        </span>
+                        </a>
                     </ul>
                 </div>
             </div>
