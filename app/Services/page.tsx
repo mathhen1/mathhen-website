@@ -24,10 +24,8 @@ const Services = () => {
 
                     <div className="lg:w-10/12 flex flex-col lg:flex-row gap-6 lg:gap-0 lg:self-center">
 
-                        <div className="flex flex-col lg:justify-center gap-6 lg:w-1/2">
-                            <h1 className="mt-5 ml-3 text-5xl font-black font-nz lg:italic bg-gradient-to-t bg-clip-text from-white via-gray-200 to-gray-400 text-transparent p-2">
-                                Landing Page
-                            </h1>
+                        <div className="flex flex-col lg:justify-start gap-6 lg:w-1/2">
+                            <img src="landingpage.png" alt="" className="w-3/4 sm:w-1/3 lg:w-2/3 rounded-full" />
 
                             <p className="ml-2 text-4xl font-semibold text-wrap w-4/5 tracking-tighter lg:font-roboto 
                     bg-gradient-to-r bg-clip-text text-transparent from-slate-300 via-slate-200 to-purple-400">
@@ -38,7 +36,7 @@ const Services = () => {
 
                         <span className="lg:hidden h-px w-10/12 border-t self-center border-gray-400"></span>
 
-                        <div className="ml-2 flex flex-col gap-2 lg:w-1/2">
+                        <div className="ml-2 flex flex-col lg:justify-center gap-2 lg:w-1/2">
                             <h2 className="text-xl">
                                 &bull; O que é uma Landing Page &#40;LP&#41;?
                             </h2>
@@ -73,17 +71,16 @@ const Services = () => {
                     </div>
                 </div>
 
-                <span className="hidden lg:block w-1/2 border-t border-gray-500 self-center"></span>
+                <span className="hidden lg:block mt-2 mb-2 w-1/2 border-t border-gray-500 self-center"></span>
 
                 {/* Portfolio */}
 
                 <div className="w-full flex flex-col gap-6">
 
                     <div className="flex flex-col lg:flex-row gap-6 lg:w-10/12 lg:self-center">
-                        <div className="flex flex-col lg:justify-center gap-6 lg:w-1/2">
-                            <h1 className="mt-5 ml-3 text-5xl font-black font-nz lg:italic bg-gradient-to-t bg-clip-text from-white via-gray-200 to-gray-400 text-transparent p-2">
-                                Portfolio
-                            </h1>
+                        <div className="flex flex-col lg:justify-start gap-6 lg:w-1/2">
+
+                            <img src="portfolio.png" alt="" className="w-3/4 sm:w-1/3 lg:w-2/3 rounded-full" />
 
                             <p className="ml-2 text-4xl font-semibold text-wrap w-4/5 tracking-tighter 
                     bg-gradient-to-r bg-clip-text text-transparent from-slate-300 via-slate-200 to-purple-400">
@@ -94,7 +91,7 @@ const Services = () => {
 
                         <span className="lg:hidden h-px w-10/12 border-t self-center border-gray-400"></span>
 
-                        <div className="ml-3 flex flex-col gap-2 lg:w-1/2">
+                        <div className="ml-3 flex flex-col lg:justify-center gap-2 lg:w-1/2">
                             <h2 className="text-xl">
                                 &bull; O que é um Portfolio?
                             </h2>
@@ -130,17 +127,16 @@ const Services = () => {
                     </div>
                 </div>
 
-                <span className="hidden lg:block w-1/2 border-t border-gray-500 self-center"></span>
+                <span className="hidden lg:block mt-2 mb-2 w-1/2 border-t border-gray-500 self-center"></span>
 
                 {/* Institucional */}
 
                 <div className="w-full flex flex-col gap-6">
 
                     <div className="flex flex-col lg:flex-row gap-6 lg:w-10/12 lg:self-center">
-                        <div className="flex flex-col lg:justify-center gap-6 lg:w-1/2">
-                            <h1 className="mt-5 ml-3 text-5xl font-black font-nz lg:italic bg-gradient-to-t bg-clip-text from-white via-gray-200 to-gray-400 text-transparent p-2">
-                                Institucional
-                            </h1>
+                        <div className="flex flex-col lg:justify-start gap-6 lg:w-1/2">
+                            
+                            <img src="institucional.png" alt="" className="w-3/4 sm:w-1/3 lg:w-2/3 rounded-full" />
 
                             <p className="ml-2 text-4xl font-semibold text-wrap w-4/5 tracking-tighter 
                     bg-gradient-to-r bg-clip-text text-transparent from-slate-300 via-slate-200 to-purple-400">
@@ -151,7 +147,7 @@ const Services = () => {
 
                         <span className="lg:hidden h-px w-10/12 border-t self-center border-gray-400"></span>
 
-                        <div className="ml-3 flex flex-col gap-2 lg:w-1/2">
+                        <div className="ml-3 flex flex-col lg:justify-center gap-2 lg:w-1/2">
                             <h2 className="text-xl">
                                 &bull; O que é um site Institucional?
                             </h2>
@@ -187,7 +183,7 @@ const Services = () => {
                     </div>
                 </div>
 
-                <span className="hidden lg:block w-1/2 border-t border-gray-500 self-center"></span>
+                <span className="hidden lg:block mt-2 mb-2 w-1/2 border-t border-gray-500 self-center"></span>
 
                 {/* Personalizado */}
 
