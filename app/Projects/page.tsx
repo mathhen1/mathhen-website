@@ -5,6 +5,7 @@ import { listProjects } from "../Utils/projects"
 import { ArrowLeftCircle } from "lucide-react"
 import Footer from "../Components/Footer"
 import React, { useEffect, useState } from "react"
+import NavBar from "../Components/NavBar"
 
 
 const ProjectsPage = () => {
@@ -15,7 +16,6 @@ const ProjectsPage = () => {
     }, [list])
 
     const filterList = (e: React.PointerEvent<HTMLInputElement>) => {
-        // console.log(list)
         const refreshedList = listProjects.filter(p => p.category.includes(e.currentTarget.value.toLowerCase()))
         setList(refreshedList)
         console.log(refreshedList)
@@ -28,7 +28,8 @@ const ProjectsPage = () => {
 
     return (
         <div className="overflow-x-hidden w-screen min-h-screen flex flex-col gap-3 bg-black text-white font-mono">
-            <div className="w-full flex flex-row items-center sm:justify-center mt-5 mb-3">
+            <NavBar />
+            <div className="w-full flex flex-row items-center sm:justify-center mb-3">
                 <span className="animate-reveal-r w-1/3 pl-3 sm:w-max sm:absolute sm:left-3 hover:cursor-pointer">
                     <ArrowLeftCircle onClick={() => router.back()} />
                 </span>
