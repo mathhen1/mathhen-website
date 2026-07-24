@@ -2,13 +2,14 @@
 
 import { Home, Laptop, Menu, StickyNoteCheck, X } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { scrollTo } from "../Utils/funcs"
 import { linkWpp } from "../Utils/links"
 
 const NavBar = () => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
+    const [valueNav, setValueNav] = useState<string>("HomePage")
     const menuIsOpen = menuOpen ? "block" : "hidden"
     const router = useRouter()
 
@@ -21,6 +22,18 @@ const NavBar = () => {
             setMenuOpen(true)
         }
     }
+
+    const handleNav = (e: React.PointerEvent<HTMLInputElement>) => {
+        sessionStorage.setItem("nav", e.currentTarget.value)
+    }
+
+    useEffect(() => {
+        const a = sessionStorage.getItem("nav")
+        if (typeof a === "string") {
+            setValueNav(a)
+        }
+
+    }, [valueNav])
 
     return (
         <div className="animate-hero lg:font-roboto relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
@@ -39,29 +52,41 @@ const NavBar = () => {
 
                 <ul className="hidden lg:flex lg:flex-row lg:gap-10">
                     <li>
-                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => {
-                            const a = scrollTo("homepage")
-                            if(a === false) {
-                                router.push("/")
-                            }
+                        <label>
+                            <input type="radio" name="btn-nav" className="peer sr-only"
+                                value={"HomePage"} onClick={handleNav} onChange={(e) => e.target.checked} checked={valueNav?.includes("HomePage")} />
+                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => {
+                                const a = scrollTo("homepage")
+                                if (a === false) {
+                                    router.push("/")
+                                }
                             }}>
-                            HomePage
-                            <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
-                        </span>
+                                HomePage
+                                <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
+                            </span>
+                        </label>
                     </li>
 
                     <li>
-                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => router.push("/Projects")}>
-                            Projetos
-                            <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
-                        </span>
+                        <label>
+                            <input type="radio" name="btn-nav" className="peer sr-only"
+                                value={"Projects"} onClick={handleNav} onChange={(e) => e.target.checked} checked={valueNav?.includes("Projects")} />
+                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/Projects")}>
+                                Projetos
+                                <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
+                            </span>
+                        </label>
                     </li>
 
                     <li>
-                        <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500" onClick={() => router.push("/Services")}>
-                            Serviços
-                            <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
-                        </span>
+                        <label>
+                            <input type="radio" name="btn-nav" className="peer sr-only"
+                                value={"Services"} onClick={handleNav} onChange={(e) => e.target.checked} checked={valueNav?.includes("Services")} />
+                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/Services")}>
+                                Serviços
+                                <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
+                            </span>
+                        </label>
                     </li>
                 </ul>
 
@@ -83,7 +108,7 @@ const NavBar = () => {
                         <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
                             <span onClick={() => {
                                 const a = scrollTo("homepage")
-                                if(a === false) {
+                                if (a === false) {
                                     router.push("/")
                                 }
                                 setMenuOpen(false)
