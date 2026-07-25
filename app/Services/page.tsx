@@ -4,6 +4,7 @@ import { ArrowLeftCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavBar from "../Components/NavBar"
 import Footer from "../Components/Footer"
+import { linkWpp } from "../Utils/links"
 
 const Services = () => {
     const router = useRouter()
@@ -62,6 +63,8 @@ const Services = () => {
                             </p>
                         </div>
                     </div>
+
+                    <GetWebsite text={"Garantir minha Landing Page"} />
                 </div>
 
                 <span className="hidden lg:block mt-5 mb-5 w-1/2 border-t border-gray-500 self-center"></span>
@@ -110,6 +113,8 @@ const Services = () => {
                             </p>
                         </div>
                     </div>
+
+                    <GetWebsite text={"Garantir meu Portfolio"} />
                 </div>
 
                 <span className="hidden lg:block mt-5 mb-5 w-1/2 border-t border-gray-500 self-center"></span>
@@ -160,6 +165,8 @@ const Services = () => {
                         </div>
 
                     </div>
+
+                    <GetWebsite text={"Garantir meu site Institucional"} />
                 </div>
 
                 <span className="hidden lg:block mt-5 mb-5 w-1/2 border-t border-gray-500 self-center"></span>
@@ -169,7 +176,7 @@ const Services = () => {
                 <div className="w-full flex flex-col gap-3 mt-2 mb-2">
                     <div className="flex flex-col lg:flex-row gap-3 lg:w-10/12 lg:self-center">
                         <div className="flex flex-col lg:justify-center gap-3 lg:w-1/2">
-                            <h1 className="mt-5 ml-3 text-5xl font-black font-nz lg:italic bg-gradient-to-t bg-clip-text from-white via-gray-200 to-gray-400 text-transparent p-2">
+                            <h1 className="ml-3 text-5xl font-black font-nz lg:italic bg-gradient-to-t bg-clip-text from-slate-300 via-slate-400 to-slate-600 text-transparent p-2">
                                 Personalizado
                             </h1>
 
@@ -208,6 +215,8 @@ const Services = () => {
 
                         </div>
                     </div>
+
+                    <GetWebsite text={"Preciso de um sistema Personalizado"} />
                 </div>
 
                 <span className="hidden lg:block w-1/2 border-t border-gray-500 self-center"></span>
@@ -218,3 +227,14 @@ const Services = () => {
 }
 
 export default Services
+
+const GetWebsite = (props: any) => {
+    return (
+        <a href={linkWpp} className="mt-2 mb-5 w-10/12 sm:w-2/3 lg:w-1/3 -ml-4 self-center text-center font-roboto 
+            font-extrabold p-3 outline text-sm outline-2 text-red-500 bg-black text-nowrap">
+            <span className="animate-pulse">
+                {props.text}
+            </span>
+        </a>
+    )
+}
