@@ -101,28 +101,38 @@ const NavBar = () => {
 
 
                         <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
-                            <span onClick={() => {
-                                const a = scrollTo("homepage")
-                                if (a === false) {
-                                    router.push("/")
-                                }
-                                setMenuOpen(false)
-                            }} className="flex flex-row gap-2">
-                                Homepage <Home className="w-5" />
-                            </span>
+                            <label>
+                                <input type="radio" onChange={(e) => e.target.checked} checked={valueNav.includes("/")} name="btn-nav-mobile" className="sr-only peer" />
+                                <span onClick={() => {
+                                    const a = scrollTo("homepage")
+                                    if (a === false) {
+                                        router.push("/")
+                                    }
+                                    setMenuOpen(false)
+                                }} className="flex flex-row gap-2 peer-checked:text-emerald-500">
+                                    Homepage <Home className="w-5" />
+                                </span>
+                            </label>
 
-                            <span onClick={() => {
-                                router.push("/Projects")
-                                setMenuOpen(false)
-                            }} className="flex flex-row gap-2">
-                                Projetos <StickyNoteCheck className="w-5" />
-                            </span>
-                            <span onClick={() => {
-                                router.push("/Services")
-                                setMenuOpen(false)
-                            }} className="flex flex-row gap-2">
-                                Serviços <Laptop className="w-5" />
-                            </span>
+                            <label>
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("Projects")} name="btn-nav-mobile"/>
+                                <span onClick={() => {
+                                    router.push("/Projects")
+                                    setMenuOpen(false)
+                                }} className="flex flex-row gap-2 peer-checked:text-emerald-500">
+                                    Projetos <StickyNoteCheck className="w-5" />
+                                </span>
+                            </label>
+
+                            <label>
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("Services")} name="btn-nav-mobile"/>
+                                <span onClick={() => {
+                                    router.push("/Services")
+                                    setMenuOpen(false)
+                                }} className="flex flex-row gap-2 peer-checked:text-emerald-500">
+                                    Serviços <Laptop className="w-5" />
+                                </span>
+                            </label>
                         </ul>
 
                         <span className="sm:hidden w-1/2 h-px border-b border-gray-400"></span>
