@@ -1,7 +1,7 @@
 "use client"
 
 import { Home, Laptop, Menu, StickyNoteCheck, X } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { useParams, usePathname, useRouter } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { scrollTo } from "../Utils/funcs"
 import { linkWpp } from "../Utils/links"
@@ -9,7 +9,7 @@ import { linkWpp } from "../Utils/links"
 const NavBar = () => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
-    const [valueNav, setValueNav] = useState<string>("HomePage")
+    const [valueNav, setValueNav] = useState<string>("/")
     const menuIsOpen = menuOpen ? "block" : "hidden"
     const router = useRouter()
 
@@ -23,15 +23,10 @@ const NavBar = () => {
         }
     }
 
-    const handleNav = (e: React.PointerEvent<HTMLInputElement>) => {
-        sessionStorage.setItem("nav", e.currentTarget.value)
-    }
+    const path = usePathname()
 
     useEffect(() => {
-        const a = sessionStorage.getItem("nav")
-        if (typeof a === "string") {
-            setValueNav(a)
-        }
+        setValueNav(path)
 
     }, [valueNav])
 
@@ -54,7 +49,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"HomePage"} onClick={handleNav} onChange={(e) => e.target.checked} checked={valueNav?.includes("HomePage")} />
+                                value={"HomePage"} onChange={(e) => e.target.checked} checked={valueNav?.includes("/")} />
                             <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => {
                                 const a = scrollTo("homepage")
                                 if (a === false) {
@@ -70,7 +65,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"Projects"} onClick={handleNav} onChange={(e) => e.target.checked} checked={valueNav?.includes("Projects")} />
+                                value={"Projects"} onChange={(e) => e.target.checked} checked={valueNav?.includes("Projects")} />
                             <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/Projects")}>
                                 Projetos
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
@@ -81,7 +76,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"Services"} onClick={handleNav} onChange={(e) => e.target.checked} checked={valueNav?.includes("Services")} />
+                                value={"Services"} onChange={(e) => e.target.checked} checked={valueNav?.includes("Services")} />
                             <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/Services")}>
                                 Serviços
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
