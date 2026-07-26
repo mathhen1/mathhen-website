@@ -4,15 +4,29 @@ import { useRouter } from "next/navigation"
 import { listProjects } from "../Utils/projects"
 import { ArrowLeftCircle } from "lucide-react"
 import Footer from "../Components/Footer"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import NavBar from "../Components/NavBar"
-
 
 const ProjectsPage = () => {
     const [list, setList] = useState<any>(listProjects)
+    const rootRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         setList(list)
+
+        const obs = new IntersectionObserver(entries => entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-reveal")
+            }
+        }))
+
+        if (rootRef.current) {
+            const root = rootRef.current.querySelectorAll(".reveal, .reveal-r, .reveal-l")
+            root.forEach(node => {
+                obs.observe(node)
+            })
+
+        }
     }, [list])
 
     const filterList = (e: React.PointerEvent<HTMLInputElement>) => {
@@ -20,14 +34,14 @@ const ProjectsPage = () => {
         setList(refreshedList)
         console.log(refreshedList)
 
-        if(e.currentTarget.value.includes("Todos")) setList(listProjects)
+        if (e.currentTarget.value.includes("Todos")) setList(listProjects)
     }
 
     const categoriesStyle = "animate-reveal block peer-checked:bg-emerald-500 peer-checked:text-black p-2 border text-center bg-black text-emerald-500 font-black peer-checked:transition transition peer-checked:duration-500 duration-500 transition-all hover:bg-emerald-500 hover:text-black"
     const router = useRouter()
 
     return (
-        <div className="overflow-x-hidden w-screen min-h-screen flex flex-col gap-3 bg-black text-white font-mono">
+        <div ref={rootRef} className="overflow-x-hidden w-screen min-h-screen flex flex-col gap-3 bg-black text-white font-mono">
             <NavBar />
             <div className="w-full flex flex-row items-center sm:justify-center mb-3">
                 <span className="animate-reveal-r w-1/3 pl-3 sm:w-max sm:absolute sm:left-3 hover:cursor-pointer">
