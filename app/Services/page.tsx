@@ -14,7 +14,15 @@ const Services = () => {
     useEffect(() => {
         const obs = new IntersectionObserver(entries => entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("animate-reveal")
+                if (entry.target.classList.contains("reveal")) {
+                    entry.target.classList.add("animate-reveal")
+                }
+                if (entry.target.classList.contains("reveal-r")) {
+                    entry.target.classList.add("animate-reveal-r")
+                }
+                if (entry.target.classList.contains("reveal-l")) {
+                    entry.target.classList.add("animate-reveal-l")
+                }
             }
         }))
         if (rootRef.current) {
