@@ -13,13 +13,19 @@ import Projects from "./Components/Projects";
 
 export default function Home() {
 
-  const [useIntro, setUseIntro] = useState<boolean>(true)
+  const [useIntro, setUseIntro] = useState<boolean | null>(null)
   const [verifyIntro, setVerifyIntro] = useState<string | null>(null)
 
   useEffect(() => {
 
-    // setting intro was used
-    setVerifyIntro(sessionStorage.getItem("init"))
+    // setting intro used or not used
+    const used = sessionStorage.getItem("init")
+    if (used) {
+      setVerifyIntro(used)
+      setUseIntro(false)
+    } else {
+      setUseIntro(true)
+    }
 
     // ANIMATION REVEAL W/ INTERSECTION OBSERVER
     const root = document.querySelectorAll(".reveal, .reveal-r, .reveal-l")
@@ -48,6 +54,10 @@ export default function Home() {
     }, 2200);
 
   }, [useIntro])
+
+  if (useIntro === null) {
+    return <></>
+  }
 
   if (useIntro && verifyIntro === null) {
     return (
