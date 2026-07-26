@@ -239,7 +239,7 @@ const Services = () => {
                         </div>
                     </div>
 
-                    <GetWebsite text={"Preciso de um sistema Personalizado"} />
+                    <GetWebsite text={"Garantir meu sistema Personalizado"} />
                 </div>
 
                 <span className="reveal opacity-0 hidden lg:block w-1/2 border-t border-gray-500 self-center"></span>
@@ -253,8 +253,8 @@ export default Services
 
 const GetWebsite = (props: any) => {
     return (
-        <a href={linkWpp} className="reveal opacity-0 mt-2 mb-5 w-10/12 sm:w-2/3 lg:w-1/3 -ml-4 self-center text-center font-roboto 
-            font-extrabold p-3 outline text-sm outline-2 text-red-500 bg-black text-nowrap">
+        <a href={linkWpp} className="reveal opacity-0 mt-2 mb-5 w-10/12 sm:w-2/3 lg:w-1/3 -ml-4 self-center text-center font-roboto font-extrabold p-3 outline text-sm outline-2 text-red-500 bg-black text-nowrap
+        hover:bg-emerald-500 hover:text-black">
             <span className="animate-pulse">
                 {props.text}
             </span>
