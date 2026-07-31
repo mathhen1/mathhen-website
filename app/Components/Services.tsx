@@ -151,7 +151,7 @@ const SeeMore = () => {
                 <span className="h-0.5 w-0 bg-emerald-500 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:w-1/4"></span>
             </span>
             <a className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2 transition duration-200 hover:transition hover:duration-200
-            hover:bg-emerald-800" href={linkWpp}>
+            hover:bg-emerald-800" href={linkWpp} target="_blank">
                 <span className="animate-pulse font-black">
                     Quero meu site
                 </span>
