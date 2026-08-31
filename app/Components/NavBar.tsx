@@ -65,7 +65,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"Projects"} onChange={(e) => e.target.checked} checked={valueNav?.includes("Projects")} />
+                                value={"projects"} onChange={(e) => e.target.checked} checked={valueNav?.includes("projects")} />
                             <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/projects")}>
                                 Projetos
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
@@ -115,7 +115,7 @@ const NavBar = () => {
                             </label>
 
                             <label>
-                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("Projects")} name="btn-nav-mobile"/>
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("projects")} name="btn-nav-mobile"/>
                                 <span onClick={() => {
                                     router.push("/projects")
                                     setMenuOpen(false)
