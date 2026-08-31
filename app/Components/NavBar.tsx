@@ -78,7 +78,7 @@ const NavBar = () => {
                             <input type="radio" name="btn-nav" className="peer sr-only"
                                 value={"about"} onChange={(e) => e.target.checked} checked={valueNav?.includes("about")} />
                             <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/about")}>
-                                Serviços
+                                Sobre mim
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
                             </span>
                         </label>
@@ -130,7 +130,7 @@ const NavBar = () => {
                                     router.push("/about")
                                     setMenuOpen(false)
                                 }} className="flex flex-row gap-2 peer-checked:text-emerald-500">
-                                    Serviços <Laptop className="w-5" />
+                                    Sobre mim <Laptop className="w-5" />
                                 </span>
                             </label>
                         </ul>

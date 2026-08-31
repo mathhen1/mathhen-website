@@ -33,7 +33,7 @@ const Footer = () => {
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
                         <span onClick={() => router.push("/about")} className="reveal-l opacity-0 max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer">
-                            <span className="hidden lg:inline">&bull;</span> Serviços
+                            <span className="hidden lg:inline">&bull;</span> Sobre mim
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
                     </ul>
