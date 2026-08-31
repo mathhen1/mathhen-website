@@ -54,7 +54,7 @@ const AboutMe = () => {
 
                 <span className="mt-5 pt-5 h-px w-10/12 border-t border-gray-400 self-center"></span>
             </div>
-            <div className="hidden lg:flex justify-center items-center lg:w-1/2 p-3">
+            <div className="hidden lg:flex justify-center items-center lg:w-1/2 p-15">
                 <img src="hero-mathen.jpg" alt=""
                     className="w-2/3 rounded-full border-3 border-emerald-600 self-center" />
             </div>
