@@ -76,8 +76,8 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"Services"} onChange={(e) => e.target.checked} checked={valueNav?.includes("Services")} />
-                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/Services")}>
+                                value={"about"} onChange={(e) => e.target.checked} checked={valueNav?.includes("about")} />
+                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/about")}>
                                 Serviços
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
                             </span>
@@ -115,7 +115,7 @@ const NavBar = () => {
                             </label>
 
                             <label>
-                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("projects")} name="btn-nav-mobile"/>
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("projects")} name="btn-nav-mobile" />
                                 <span onClick={() => {
                                     router.push("/projects")
                                     setMenuOpen(false)
@@ -125,9 +125,9 @@ const NavBar = () => {
                             </label>
 
                             <label>
-                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("Services")} name="btn-nav-mobile"/>
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("about")} name="btn-nav-mobile" />
                                 <span onClick={() => {
-                                    router.push("/Services")
+                                    router.push("/about")
                                     setMenuOpen(false)
                                 }} className="flex flex-row gap-2 peer-checked:text-emerald-500">
                                     Serviços <Laptop className="w-5" />
