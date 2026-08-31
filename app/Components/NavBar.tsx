@@ -66,7 +66,7 @@ const NavBar = () => {
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
                                 value={"Projects"} onChange={(e) => e.target.checked} checked={valueNav?.includes("Projects")} />
-                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/Projects")}>
+                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/projects")}>
                                 Projetos
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
                             </span>
@@ -117,7 +117,7 @@ const NavBar = () => {
                             <label>
                                 <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("Projects")} name="btn-nav-mobile"/>
                                 <span onClick={() => {
-                                    router.push("/Projects")
+                                    router.push("/projects")
                                     setMenuOpen(false)
                                 }} className="flex flex-row gap-2 peer-checked:text-emerald-500">
                                     Projetos <StickyNoteCheck className="w-5" />

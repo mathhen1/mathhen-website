@@ -28,7 +28,7 @@ const Footer = () => {
                             <span className="hidden lg:inline">&bull;</span> Homepage
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full group-hover:cursor-pointer"></span>
                         </span>
-                        <span className="reveal-l opacity-0 max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer" onClick={() => router.push("/Projects")}>
+                        <span className="reveal-l opacity-0 max-lg:border-b group hover:text-emerald-800 hover:cursor-pointer" onClick={() => router.push("/projects")}>
                             <span className="hidden lg:inline">&bull;</span> Projetos
                             <span className="block h-0.5 w-0 bg-emerald-800 transition-all group-hover:w-full"></span>
                         </span>
