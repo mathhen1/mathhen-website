@@ -14,7 +14,7 @@ const Services = () => {
 
                 {/* Landing Pages */}
 
-                <div className="reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                     <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                         Landing Page
                     </h1>
@@ -44,7 +44,7 @@ const Services = () => {
 
                 {/* portfolios */}
 
-                <div className="reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                     <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                         Portfolio
                     </h1>
@@ -77,7 +77,7 @@ const Services = () => {
 
                 {/* site institucional */}
 
-                <div className="reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                     <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                         Site Institucional
                     </h1>
@@ -107,7 +107,7 @@ const Services = () => {
 
                 {/* site personalizado */}
 
-                <div className="reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
+                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
                     <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
                         Site Personalizado
                     </h1>
@@ -145,11 +145,15 @@ const Services = () => {
 const SeeMore = () => {
     const router = useRouter()
     return (
-        <div className="flex flex-row w-full">
-            <span onClick={() => router.push("/Services")} className="group reveal opacity-0 w-full flex flex-row lg:items-start lg:flex-col items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2 hover:cursor-pointer">
-                <span className="flex flex-row gap-1">Veja mais <ArrowUpRight className="w-5" /></span>
-                <span className="h-0.5 w-0 bg-emerald-500 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:w-1/4"></span>
-            </span>
+        <div className="relative bottom-0 flex flex-row w-full mt-auto">
+            <div className="w-full flex flex-row items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2">
+                <span onClick={() => router.push("/projects")}
+                    className="flex lg:flex-col hover:cursor-pointer transition-all duration-300 hover:text-emerald-800">
+                    <span className="flex flex-row gap-1 flex items-center">
+                        Veja meus projetos <ArrowUpRight className="w-5" />
+                    </span>
+                </span>
+            </div>
             <a className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2 transition duration-200 hover:transition hover:duration-200
             hover:bg-emerald-800" href={linkWpp} target="_blank">
                 <span className="animate-pulse font-black">
