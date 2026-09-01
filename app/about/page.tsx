@@ -133,7 +133,7 @@ const AboutMePage = () => {
 
                     <div className="flex flex-col w-full gap-2">
 
-                        <div className="flex gap-2 items-center justify-center w-1/3 self-center">
+                        <div className="flex gap-2 items-center justify-center w-1/3 sm:w-1/6 self-center">
                             <a className="group" href={linkLinkedin} target="_blank">
                                 <img src={linkIconLinkedinBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
                             </a>
