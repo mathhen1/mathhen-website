@@ -119,7 +119,7 @@ const ProjectsPage = () => {
 
             <span className="animate-reveal border-t w-3/4 mt-2 mb-2 self-center border-gray-400"></span>
 
-            <span className="animate-pulse text-gray-600 self-center text-xs">
+            <span className="block lg:hidden animate-pulse text-gray-600 self-center text-xs">
                 &lt; arraste para os lados &gt;
             </span>
 
