@@ -131,54 +131,52 @@ const AboutMePage = () => {
                                 ))}
                             </ul>
 
-                        </div>
+                            <span className="block lg:hidden reveal opacity-0 border-dashed border w-3/4 lg:w-1/3 self-center mt-2"></span>
 
-                    </div>
+                            {/* Bloco de Contato */}
 
-                    <span className="reveal opacity-0 border-dashed border w-3/4 lg:w-1/3 self-center mt-2"></span>
+                            <div className="flex flex-col w-full gap-2">
 
-                    {/* Bloco de Contato */}
+                                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-start gap-2">
 
-                    <div className="flex flex-col w-full gap-2">
-
-                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-2">
-
-                            <div className="flex flex-col gap-2 lg:w-max">
-                                <div className="flex gap-2 items-center justify-center 
+                                    <div className="flex flex-col gap-2 lg:w-max">
+                                        <div className="flex gap-2 items-center justify-center 
                                 w-1/3 sm:w-1/6 lg:w-2/3 self-center">
-                                    <a className="reveal opacity-0 group" href={linkLinkedin} target="_blank">
-                                        <img src={linkIconLinkedinBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
-                                    </a>
-                                    <a className="reveal opacity-0 group" href={linkGithub} target="_blank">
-                                        <img src={linkIconGithubBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
-                                    </a>
+                                            <a className="reveal opacity-0 group" href={linkLinkedin} target="_blank">
+                                                <img src={linkIconLinkedinBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
+                                            </a>
+                                            <a className="reveal opacity-0 group" href={linkGithub} target="_blank">
+                                                <img src={linkIconGithubBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
+                                            </a>
+                                        </div>
+
+                                        <span className="reveal opacity-0 text-center font-black">
+                                            Gostou do que viu?
+                                        </span>
+                                    </div>
+
+                                    <div className="flex flex-col gap-2 lg:w-max">
+                                        <a href={linkWpp} target="_blank"
+                                            className="reveal opacity-0 self-center p-1 border-2 border-b-4 w-3/4 lg:w-max lg:pr-2 lg:pl-2 font-extrabold -skew-x-5 flex justify-center gap-2 items-center hover:bg-black hover:text-emerald-500 transition-all duration-200 hover:border-black">
+                                            me envie uma mensagem <MessageSquare size={20} />
+                                        </a>
+
+                                        <a href="CurriculoMathen.pdf" download="CurriculoMathen.pdf"
+                                            className="reveal opacity-0 p-3 pr-4 pl-4 lg:pr-6 lg:pl-6 w-3/4 lg:w-max self-center flex items-center text-sm justify-center gap-2 font-black tracking-wider text-white bg-black rounded-md hover:bg-emerald-500 hover:text-black hover:outline-black hover:outline transition-all duration-200">
+                                            Baixe meu currículo <ArrowDownToLine />
+                                        </a>
+                                    </div>
+
                                 </div>
-
-                                <span className="reveal opacity-0 text-center font-black">
-                                    Gostou do que viu?
-                                </span>
-                            </div>
-
-                            <div className="flex flex-col gap-2 lg:w-max">
-                                <a href={linkWpp} target="_blank"
-                                    className="reveal opacity-0 self-center p-1 border-2 border-b-4 w-3/4 lg:w-max lg:pr-2 lg:pl-2 font-extrabold -skew-x-5 flex justify-center gap-2 items-center hover:bg-black hover:text-emerald-500 transition-all duration-200 hover:border-black">
-                                    me envie uma mensagem <MessageSquare size={20} />
-                                </a>
-
-                                <a href="CurriculoMathen.pdf" download="CurriculoMathen.pdf"
-                                    className="reveal opacity-0 p-3 pr-4 pl-4 lg:pr-6 lg:pl-6 w-3/4 lg:w-max self-center flex items-center text-sm justify-center gap-2 font-black tracking-wider text-white bg-black rounded-md hover:bg-emerald-500 hover:text-black hover:outline-black hover:outline transition-all duration-200">
-                                    Baixe meu currículo <ArrowDownToLine />
-                                </a>
                             </div>
 
                         </div>
+
                     </div>
 
-                    <span className="border-t w-full self-center"></span>
+                    <span className="lg:mt-8 lg:mb-3 lg:border-dashed lg:w-2/3 border-t w-full self-center"></span>
                 </div>
-
             </div>
-
             <Footer />
         </div>
     )
