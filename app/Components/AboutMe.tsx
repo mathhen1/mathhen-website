@@ -1,4 +1,6 @@
+import Image from "next/image"
 import { linkGithub, linkIconGithubBlack, linkIconInstaBlack, linkIconLinkedinBlack, linkIconWppBlack, linkInsta, linkLinkedin, linkWpp } from "../Utils/links"
+import heroMathen from "../../public/hero-mathen.jpg"
 
 const AboutMe = () => {
     return (
@@ -17,8 +19,8 @@ const AboutMe = () => {
                 bg-gradient-to-r from-gray-500 via-gray-400 to-gray-300">Solucionando problemas.</span>
                 </p>
 
-                <img src="hero-mathen.jpg" alt=""
-                    className="lg:hidden w-1/2 sm:w-1/4 rounded-full border-2 border-emerald-600 self-center" />
+                <Image priority placeholder="blur" src={heroMathen} alt=""
+                    className="lg:hidden w-1/2 sm:w-1/4 rounded-full border-2 border-emerald-600 self-center backdrop-blur-md" />
 
                 <div className="grid grid-cols-4 self-center gap-2 w-1/2 sm:w-1/4">
                     <a className="group" href={linkInsta} target="_blank">
