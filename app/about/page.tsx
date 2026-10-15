@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowDownToLine, ArrowLeftCircle, MessageSquare } from "lucide-react"
+import { ArrowLeftCircle, MessageSquare } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavBar from "../Components/NavBar"
 import Footer from "../Components/Footer"
@@ -8,6 +8,7 @@ import { linkGithub, linkIconGithubBlack, linkIconLinkedinBlack, linkLinkedin, l
 import { useEffect, useRef } from "react"
 import { ListTech } from "../Components/MoreAboutMe"
 import { aboutSkillsTec } from "../Utils/skillsTec"
+import DownloadResume from "../Components/DownloadResume"
 
 const AboutMePage = () => {
     const router = useRouter()
@@ -161,10 +162,7 @@ const AboutMePage = () => {
                                             me envie uma mensagem <MessageSquare size={20} />
                                         </a>
 
-                                        <a href="CurriculoMathen.pdf" download="CurriculoMathen.pdf"
-                                            className="reveal opacity-0 p-3 pr-4 pl-4 lg:pr-6 lg:pl-6 w-3/4 lg:w-max self-center flex items-center text-sm justify-center gap-2 font-black tracking-wider text-white bg-black rounded-md hover:bg-emerald-500 hover:text-black hover:outline-black hover:outline transition-all duration-200">
-                                            Baixe meu currículo <ArrowDownToLine />
-                                        </a>
+                                        <DownloadResume />
                                     </div>
 
                                 </div>
