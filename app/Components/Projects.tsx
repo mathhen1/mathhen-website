@@ -10,10 +10,10 @@ const Projects = () => {
         <section className="min-h-screen flex flex-col items-center justify-center bg-black py-14 font-mono tracking-tighter text-white">
             <div className="flex w-full max-w-6xl flex-col gap-8 px-5 sm:px-8">
                 <header className="reveal opacity-0 flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">
-                    <p className="reveal opacity-0 text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
-                        Meus projetos
+                    <p className="reveal opacity-0 text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-base">
+                        Projetos
                     </p>
-                    <h2 className="reveal opacity-0 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                    <h2 className="reveal opacity-0 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
                         Projetos em destaque
                     </h2>
                     <p className="reveal opacity-0 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
