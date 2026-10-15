@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation"
 const Projects = () => {
     const router = useRouter()
     return (
-        <div className="min-h-screen flex flex-col justify-center gap-3 py-8 font-mono tracking-tighter bg-white text-black">
+        <div className="min-h-screen flex flex-col items-center justify-center gap-3 py-8 font-mono tracking-tighter bg-white text-black">
 
-            <div className="flex flex-col gap-3 lg:w-10/12 lg:mt-5">
-                <h1 className="reveal-l opacity-0 text-3xl pl-2 border-l-3 ml-2 font-bold lg:self-center">
+            <div className="flex w-full max-w-6xl flex-col gap-3 px-4 lg:mt-5">
+                <h1 className="reveal-l opacity-0 text-4xl pl-2 border-l-3 ml-2 font-bold lg:self-center">
                     Projetos
                 </h1>
 
-                <p className="reveal opacity-0 text-xs text-gray-800 self-center lg:text-base">
+                <p className="reveal opacity-0 text-sm text-gray-800 self-center lg:text-lg">
                     <span className="animate-pulse">
                         Confira alguns dos meus projetos
                     </span>
@@ -23,17 +23,17 @@ const Projects = () => {
                 border place-self-center bg-black text-white rounded-md">
                         <img src={listProjects[0].src} alt="" className="rounded-xl p-2" />
 
-                        <h1>
+                        <h1 className="text-lg">
                             {listProjects[0].name}
                         </h1>
 
-                        <p className="self-start text-start font-sans tracking-tight w-3/4 pl-3">
+                        <p className="self-start text-start font-sans tracking-tight text-lg w-3/4 pl-3">
                             {listProjects[0].desc}
                         </p>
 
                         <ul className="mt-1 mb-1 self-start pl-3 grid grid-flow-col grid-[4, max-content] gap-2">
                             {listProjects[0].stack.map(item =>
-                                <p key={item.id} className="text-xs p-1 pr-2 pl-2 border border-b-2 border-l-2 -skew-x-5">
+                                <p key={item.id} className="text-sm p-1 pr-2 pl-2 border border-b-2 border-l-2 -skew-x-5">
                                     {item.title}
                                 </p>
                             )}
@@ -46,17 +46,17 @@ const Projects = () => {
                 border place-self-center bg-black text-white rounded-md">
                         <img src={listProjects[2].src} alt="" className="rounded-xl p-2" />
 
-                        <h1>
+                        <h1 className="text-lg">
                             {listProjects[2].name}
                         </h1>
 
-                        <p className="self-start text-start font-sans tracking-tight w-3/4 pl-3">
+                        <p className="self-start text-start font-sans tracking-tight text-lg w-3/4 pl-3">
                             {listProjects[2].desc}
                         </p>
 
                         <ul className="mt-1 mb-1 self-start pl-3 grid grid-flow-col grid-[4, max-content] gap-2">
                             {listProjects[2].stack.map(item =>
-                                <p key={item.id} className="text-xs p-1 pr-2 pl-2 border border-b-2 border-l-2 -skew-x-5">
+                                <p key={item.id} className="text-sm p-1 pr-2 pl-2 border border-b-2 border-l-2 -skew-x-5">
                                     {item.title}
                                 </p>
                             )}
@@ -66,7 +66,7 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <span onClick={() => router.push("/projects")} className="reveal opacity-0 border-2 border-b-4 p-2 w-10/12 lg:w-1/3 self-center font-roboto font-black text-sm mb-10 flex flex-row justify-center items-center gap-2 hover:bg-gray-700 hover:border-black hover:text-white hover:cursor-pointer
+                <span onClick={() => router.push("/projects")} className="reveal opacity-0 border-2 border-b-4 p-2 w-10/12 lg:w-1/3 self-center font-roboto font-black text-base mb-10 flex flex-row justify-center items-center gap-2 hover:bg-gray-700 hover:border-black hover:text-white hover:cursor-pointer
                 transition duration-300 hover:transition hover:duration-300">
                     Ver todos os projetos <ArrowRightSquare className="w-5" />
                 </span>
@@ -82,7 +82,7 @@ const SeeMore = () => {
     const router = useRouter()
     return (
         <span onClick={() => router.push("/projects")} className="flex flex-row items-center self-end pr-3 gap-2 
-                    text-emerald-500 font-sans font-semibold tracking-wider text-sm mb-2
+                    text-emerald-500 font-sans font-semibold tracking-wider text-base mb-2
                     transition-all duration-300 hover:cursor-pointer hover:text-emerald-800">
             Veja mais aqui <ArrowUpRightSquare className="w-5" />
         </span>
