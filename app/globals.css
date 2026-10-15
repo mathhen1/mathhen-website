@@ -37,6 +37,27 @@
   }
 }
 
+@keyframes photo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+.photo-float {
+  animation: photo-float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-float {
+    animation: none;
+  }
+}
+
 @keyframes expansion {
   0% {
     width: 0.5px;

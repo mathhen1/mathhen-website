@@ -4,23 +4,30 @@ import heroMathen from "../../public/hero-mathen.jpg"
 
 const AboutMe = () => {
     return (
-        <div id="homepage" className="animate-hero relative min-h-[95vh] bg-black text-white flex flex-col lg:flex-row gap-5">
+        <div id="homepage" className="animate-hero relative min-h-screen bg-black text-white flex flex-col lg:flex-row gap-5">
 
             <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2 lg:pl-3">
                 <h1 className="text-5xl text-start lg:text-center mt-3 font-bold pl-2 text-wrap">
                     Construo sites <span className="font-extrabold text-emerald-500">modernos</span> e profissionais
                 </h1>
                 <h2 className="text-base lg:text-2xl text-start pl-2 font-light text-gray-300 tracking-tight">
-                    Prezando qualidade, estetica e desempenho.
+                    Com foco em qualidade, estética e desempenho.
                 </h2>
 
                 <p className="text-sm lg:text-lg text-start pl-2">
-                    <span className="text-emerald-500 font-black lg:font-bold lg:tracking-widest">&mdash;&gt; Sistemas digitais.</span> <span className="font-black lg:font-bold lg:tracking-widest bg-clip-text text-transparent
-                bg-gradient-to-r from-gray-500 via-gray-400 to-gray-300">Solucionando problemas.</span>
+                    <span className="text-emerald-500 font-black lg:font-bold lg:tracking-widest">Soluções digitais</span> <span className="font-black lg:font-bold lg:tracking-widest bg-clip-text text-transparent
+                bg-gradient-to-r from-gray-500 via-gray-400 to-gray-300">que resolvem problemas reais.</span>
                 </p>
 
-                <Image priority placeholder="blur" src={heroMathen} alt=""
-                    className="lg:hidden w-1/2 sm:w-1/4 rounded-full border-2 border-emerald-600 self-center backdrop-blur-md" />
+                <Image
+                    priority
+                    fetchPriority="high"
+                    placeholder="blur"
+                    src={heroMathen}
+                    alt="Matheus Henrique, desenvolvedor full stack"
+                    sizes="(max-width: 639px) 50vw, (max-width: 1023px) 25vw"
+                    className="photo-float lg:hidden w-1/2 sm:w-1/4 rounded-full border-2 border-emerald-600 self-center backdrop-blur-md"
+                />
 
                 <div className="grid grid-cols-4 self-center gap-2 w-1/2 sm:w-1/4">
                     <a className="group" href={linkInsta} target="_blank">
@@ -41,7 +48,7 @@ const AboutMe = () => {
                 </div>
 
                 <p className="text-xs lg:text-sm text-center font-bold w-10/12 self-center">
-                    Landing Pages. Portfolios. Sites institucionais. Sistemas Personalizados.
+                    Landing pages, portfólios, sites institucionais e sistemas personalizados.
                 </p>
 
                 <a href={linkWpp} target="_blank"
@@ -57,8 +64,15 @@ const AboutMe = () => {
                 <span className="mt-5 pt-5 h-px w-10/12 border-t border-gray-400 self-center"></span>
             </div>
             <div className="hidden lg:flex justify-center items-center lg:w-1/2 p-15">
-                <img src="hero-mathen.jpg" alt=""
-                    className="w-2/3 rounded-full border-3 border-emerald-600 self-center" />
+                <Image
+                    priority
+                    fetchPriority="high"
+                    placeholder="blur"
+                    src={heroMathen}
+                    alt="Matheus Henrique, desenvolvedor full stack"
+                    sizes="(min-width: 1024px) 33vw"
+                    className="photo-float w-2/3 rounded-full border-3 border-emerald-600 self-center"
+                />
             </div>
         </div>
     )
