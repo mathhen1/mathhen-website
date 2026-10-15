@@ -2,7 +2,7 @@ import { stackList } from "../Utils/stack"
 
 const MoreAboutMe = () => {
     return (
-        <div id="about-me" className="flex flex-col items-center gap-5 bg-white text-black border-t border-black">
+        <div id="about-me" className="min-h-screen flex flex-col items-center justify-center gap-5 bg-white py-8 text-black border-t border-black">
 
             <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-5 lg:gap-0 lg:w-11/12">
 

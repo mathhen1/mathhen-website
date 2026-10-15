@@ -2,7 +2,7 @@ import { linkWpp } from "../Utils/links"
 
 const MoreService = () => {
     return (
-        <div className="flex flex-col gap-3 bg-white text-black h-full">
+        <div className="min-h-screen flex flex-col justify-evenly gap-3 bg-white py-8 text-black">
 
             <div className="flex flex-col lg:flex-row gap-3 lg:w-11/12 lg:self-center lg:mt-5">
                 <div className="flex flex-col gap-3 lg:w-1/2">

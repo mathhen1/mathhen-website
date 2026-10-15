@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 const Projects = () => {
     const router = useRouter()
     return (
-        <div className="flex flex-col lg:items-center gap-3 font-mono tracking-tighter bg-white text-black">
+        <div className="min-h-screen flex flex-col justify-center gap-3 py-8 font-mono tracking-tighter bg-white text-black">
 
             <div className="flex flex-col gap-3 lg:w-10/12 lg:mt-5">
                 <h1 className="reveal-l opacity-0 text-3xl pl-2 border-l-3 ml-2 font-bold lg:self-center">

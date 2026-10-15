@@ -2,7 +2,7 @@ import { linkInsta, linkMailTo, linkWpp } from "../Utils/links"
 
 const Contact = () => {
     return (
-        <div className="bg-black text-white h-full flex flex-col gap-5 lg:gap-3">
+        <div className="min-h-screen bg-black text-white flex flex-col justify-evenly gap-5 py-8 lg:gap-3">
             <h1 className="reveal opacity-0 border-b-2 pt-2 self-center text-2xl font-bold">
                 Social
             </h1>

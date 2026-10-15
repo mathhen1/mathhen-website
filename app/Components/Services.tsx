@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 
 const Services = () => {
     return (
-        <div className="h-full flex flex-col gap-5 bg-black text-white">
+        <div className="min-h-screen flex flex-col justify-evenly gap-5 bg-black py-8 text-white">
 
             <h1 className="reveal opacity-0 text-2xl lg:tracking-widest font-bold border-b-2 self-center mt-6 mb-3">
                 Serviços

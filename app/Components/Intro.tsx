@@ -14,8 +14,8 @@ const Intro = () => {
     }, [])
 
     return (
-        <div className="h-[95vh] w-screen flex items-center justify-center bg-black">
-            <div ref={introRef} className="h-full w-screen flex items-center justify-center bg-black">
+        <div className="min-h-screen w-screen flex items-center justify-center bg-black">
+            <div ref={introRef} className="min-h-screen w-screen flex items-center justify-center bg-black">
                 <h1 className="animate-opacity text-3xl font-black lg:font-normal tracking-widest text-white">
                     <span className="flex flex-col gap-1 group">
                         mathen
@@ -27,4 +27,4 @@ const Intro = () => {
     )
 }
 
-export default Intro 
+export default Intro
