@@ -8,10 +8,12 @@ const AboutMe = () => {
         <div id="homepage" className="animate-hero relative min-h-screen bg-black text-white flex flex-col lg:flex-row gap-5">
 
             <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2 lg:pl-3">
-                <h1 className="text-6xl text-start mt-3 font-bold pl-2 text-wrap lg:pl-20">
-                    Construo sites <span className="font-extrabold text-emerald-500">modernos</span> e profissionais
-                </h1>
-                <h2 className="text-base lg:text-2xl text-start pl-2 font-light text-gray-300 tracking-tight">
+                <span className="w-5/6">
+                    <h1 className="text-4xl lg:text-7xl text-start mt-3 font-bold pl-2 text-wrap">
+                        Construo sites <span className="font-extrabold text-emerald-500">modernos</span> e profissionais
+                    </h1>
+                </span>
+                <h2 className="text-base lg:text-2xl text-start font-light text-gray-300 tracking-tight pl-2">
                     Com foco em qualidade, estética e desempenho.
                 </h2>
 
@@ -53,7 +55,7 @@ const AboutMe = () => {
                 </div>
 
 
-                <div className="flex w-10/12 flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <div className="flex w-3/4 flex-col items-center gap-3 sm:flex-row sm:justify-center self-center">
                     <a href={linkWpp} target="_blank"
                         className="self-center font-black border-emerald-500 border p-2 text-center w-full sm:w-1/2
                     border-2 rounded-md text-emerald-500 bg-gradient-to-r from-black via-gray-800 to-gray-700 animate-bg
@@ -66,9 +68,8 @@ const AboutMe = () => {
                     <DownloadResume className="flex w-full items-center justify-center gap-2 rounded-md border border-emerald-500 p-2 text-center font-bold text-emerald-500 transition duration-300 hover:border-white hover:bg-white hover:text-black sm:w-1/2" />
                 </div>
 
-                <span className="mt-5 pt-5 h-px w-10/12 border-t border-gray-400 self-center"></span>
             </div>
-            <div className="hidden lg:flex justify-center items-center lg:w-1/2 p-15">
+            <div className="hidden lg:flex justify-center items-center lg:w-1/2">
                 <Image
                     priority
                     fetchPriority="high"
