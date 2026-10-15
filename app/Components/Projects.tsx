@@ -1,90 +1,80 @@
-import { ArrowRightSquare, ArrowUpRightSquare } from "lucide-react"
-import { listProjects } from "../Utils/projects"
-import { useRouter } from "next/navigation"
+import Image from "next/image";
+import { ArrowRightSquare } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { listProjects } from "../Utils/projects";
 
 const Projects = () => {
-    const router = useRouter()
+    const router = useRouter();
+
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center gap-3 py-8 font-mono tracking-tighter bg-white text-black">
+        <section className="min-h-screen flex flex-col items-center justify-center bg-black py-14 font-mono tracking-tighter text-white">
+            <div className="flex w-full max-w-6xl flex-col gap-8 px-5 sm:px-8">
+                <header className="flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">
+                    <p className="text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
+                        Projetos
+                    </p>
+                    <h2 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                        Trabalhos em destaque
+                    </h2>
+                    <p className="max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
+                        Conheça alguns dos projetos que desenvolvi e as soluções criadas para cada negócio.
+                    </p>
+                </header>
 
-            <div className="flex w-full max-w-6xl flex-col gap-3 px-4 lg:mt-5">
-                <h1 className="reveal-l opacity-0 text-4xl pl-2 border-l-3 ml-2 font-bold lg:self-center">
-                    Projetos
-                </h1>
+                <div className="flex flex-col divide-y divide-white/15">
+                    {listProjects.map(project => (
+                        <article
+                            key={project.id}
+                            className="reveal opacity-0 grid gap-6 py-7 sm:py-9 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:gap-12 lg:py-11"
+                        >
+                            <div className="group/image relative aspect-[16/9] overflow-hidden rounded-lg border border-white/10 bg-zinc-900 lg:aspect-[16/10]">
+                                <Image
+                                    src={`/${project.src}`}
+                                    alt={`Prévia do projeto ${project.name}`}
+                                    fill
+                                    sizes="(max-width: 1023px) 100vw, 55vw"
+                                    className="object-cover transition-transform duration-500 ease-out group-hover/image:scale-105"
+                                />
+                            </div>
 
-                <p className="reveal opacity-0 text-sm text-gray-800 self-center lg:text-lg">
-                    <span className="animate-pulse">
-                        Confira alguns dos meus projetos
-                    </span>
-                </p>
+                            <div className="flex flex-col items-start gap-4 lg:gap-5 lg:pl-4 xl:pl-8">
+                                <span className="rounded-full border border-emerald-500/60 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-emerald-400">
+                                    {project.category}
+                                </span>
 
-                <div className="grid grid-row-2 gap-3 mb-6 sm:flex sm:justify-center sm:flex-row sm:w-11/12 sm:self-center">
-                    <div className="reveal-r opacity-0 flex flex-col items-center gap-2 justify-center w-11/12 
-                border place-self-center bg-black text-white rounded-md">
-                        <img src={listProjects[0].src} alt="" className="rounded-xl p-2" />
+                                <h3 className="text-2xl font-bold leading-tight tracking-normal text-emerald-400 sm:text-3xl">
+                                    {project.name}
+                                </h3>
 
-                        <h1 className="text-lg">
-                            {listProjects[0].name}
-                        </h1>
-
-                        <p className="self-start text-start font-sans tracking-tight text-lg w-3/4 pl-3">
-                            {listProjects[0].desc}
-                        </p>
-
-                        <ul className="mt-1 mb-1 self-start pl-3 grid grid-flow-col grid-[4, max-content] gap-2">
-                            {listProjects[0].stack.map(item =>
-                                <p key={item.id} className="text-sm p-1 pr-2 pl-2 border border-b-2 border-l-2 -skew-x-5">
-                                    {item.title}
+                                <p className="max-w-xl text-sm leading-7 tracking-normal text-gray-300 sm:text-base">
+                                    {project.desc}
                                 </p>
-                            )}
-                        </ul>
 
-                        <SeeMore />
-                    </div>
-
-                    <div className="reveal-l opacity-0 flex flex-col items-center gap-2 justify-center w-11/12 
-                border place-self-center bg-black text-white rounded-md">
-                        <img src={listProjects[2].src} alt="" className="rounded-xl p-2" />
-
-                        <h1 className="text-lg">
-                            {listProjects[2].name}
-                        </h1>
-
-                        <p className="self-start text-start font-sans tracking-tight text-lg w-3/4 pl-3">
-                            {listProjects[2].desc}
-                        </p>
-
-                        <ul className="mt-1 mb-1 self-start pl-3 grid grid-flow-col grid-[4, max-content] gap-2">
-                            {listProjects[2].stack.map(item =>
-                                <p key={item.id} className="text-sm p-1 pr-2 pl-2 border border-b-2 border-l-2 -skew-x-5">
-                                    {item.title}
-                                </p>
-                            )}
-                        </ul>
-
-                        <SeeMore />
-                    </div>
+                                <ul aria-label="Tecnologias utilizadas" className="flex flex-wrap gap-2 pt-1">
+                                    {project.stack.map(technology => (
+                                        <li
+                                            key={technology.id}
+                                            className="rounded-md bg-white/10 px-3 py-1.5 text-xs font-semibold tracking-normal text-gray-100 sm:text-sm"
+                                        >
+                                            {technology.title}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </article>
+                    ))}
                 </div>
 
-                <span onClick={() => router.push("/projects")} className="reveal opacity-0 border-2 border-b-4 p-2 w-10/12 lg:w-1/3 self-center font-roboto font-black text-base mb-10 flex flex-row justify-center items-center gap-2 hover:bg-gray-700 hover:border-black hover:text-white hover:cursor-pointer
-                transition duration-300 hover:transition hover:duration-300">
-                    Ver todos os projetos <ArrowRightSquare className="w-5" />
-                </span>
+                <button
+                    type="button"
+                    onClick={() => router.push("/projects")}
+                    className="flex items-center justify-center gap-2 self-center rounded-md border-2 border-emerald-500 px-6 py-3 text-sm font-bold text-emerald-400 transition-colors duration-300 hover:bg-emerald-500 hover:text-black sm:text-base"
+                >
+                    Ver todos os projetos <ArrowRightSquare className="h-5 w-5" />
+                </button>
             </div>
+        </section>
+    );
+};
 
-        </div>
-    )
-}
-
-export default Projects
-
-const SeeMore = () => {
-    const router = useRouter()
-    return (
-        <span onClick={() => router.push("/projects")} className="flex flex-row items-center self-end pr-3 gap-2 
-                    text-emerald-500 font-sans font-semibold tracking-wider text-base mb-2
-                    transition-all duration-300 hover:cursor-pointer hover:text-emerald-800">
-            Veja mais aqui <ArrowUpRightSquare className="w-5" />
-        </span>
-    )
-}
+export default Projects;
