@@ -9,15 +9,15 @@ const Projects = () => {
     return (
         <section className="min-h-screen flex flex-col items-center justify-center bg-black py-14 font-mono tracking-tighter text-white">
             <div className="flex w-full max-w-6xl flex-col gap-8 px-5 sm:px-8">
-                <header className="flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">
-                    <p className="text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
-                        Projetos
+                <header className="reveal opacity-0 flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">
+                    <p className="reveal opacity-0 text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
+                        Meus projetos
                     </p>
-                    <h2 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                        Trabalhos em destaque
+                    <h2 className="reveal opacity-0 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                        Projetos em destaque
                     </h2>
-                    <p className="max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
-                        Conheça alguns dos projetos que desenvolvi e as soluções criadas para cada negócio.
+                    <p className="reveal opacity-0 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
+                        Conheça alguns dos sistemas que desenvolvi e as soluções criadas para cada negócio.
                     </p>
                 </header>
 
@@ -68,7 +68,7 @@ const Projects = () => {
                 <button
                     type="button"
                     onClick={() => router.push("/projects")}
-                    className="flex items-center justify-center gap-2 self-center rounded-md border-2 border-emerald-500 px-6 py-3 text-sm font-bold text-emerald-400 transition-colors duration-300 hover:bg-emerald-500 hover:text-black sm:text-base"
+                    className="flex items-center justify-center gap-2 self-center rounded-md border-2 border-emerald-500 px-6 py-3 text-sm font-bold text-emerald-400 transition-colors duration-300 hover:bg-emerald-500 hover:text-black sm:text-base hover:cursor-pointer"
                 >
                     Ver todos os projetos <ArrowRightSquare className="h-5 w-5" />
                 </button>
