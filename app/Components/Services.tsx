@@ -1,167 +1,123 @@
-import { ArrowUpRight } from "lucide-react"
-import { linkWpp } from "../Utils/links"
-import { useRouter } from "next/navigation"
+import { ArrowUpRight, BriefcaseBusiness, Building2, Check, PanelsTopLeft, Terminal } from "lucide-react";
+import { linkWpp } from "../Utils/links";
+
+const services = [
+    {
+        title: "Landing page",
+        headline: "Transforme visitas em oportunidades",
+        description: "Apresente uma oferta com clareza e conduza cada visitante até uma ação, como pedir um orçamento ou conhecer seu produto.",
+        benefits: ["Conteúdo direto ao ponto", "Chamadas para ação bem posicionadas", "Experiência adaptada ao celular"],
+        icon: PanelsTopLeft,
+    },
+    {
+        title: "Portfólio profissional",
+        headline: "Mostre seu trabalho com confiança",
+        description: "Reúna projetos, experiência e formas de contato em uma vitrine digital que valoriza o que você faz.",
+        benefits: ["Projetos apresentados com destaque", "Experiência e serviços organizados", "Contato fácil para novos clientes"],
+        icon: BriefcaseBusiness,
+    },
+    {
+        title: "Site institucional",
+        headline: "Fortaleça a presença da sua empresa",
+        description: "Apresente sua empresa, seus serviços e diferenciais em um site profissional, claro e acessível em qualquer dispositivo.",
+        benefits: ["Informações centralizadas", "Identidade alinhada à sua marca", "Estrutura pronta para crescer"],
+        icon: Building2,
+    },
+    {
+        title: "Sistema personalizado",
+        headline: "Simplifique processos do seu negócio",
+        description: "Tenha uma solução desenvolvida para suas necessidades, com funcionalidades pensadas para a rotina da sua equipe.",
+        benefits: ["Recursos definidos para o seu fluxo", "Mais organização no dia a dia", "Evolução conforme novas demandas"],
+        icon: Terminal,
+    },
+];
 
 const Services = () => {
     return (
-        <div className="h-full flex flex-col gap-5 bg-black text-white">
+        <section className="min-h-screen bg-gradient-to-br from-gray-300 via-gray-200 to-gray-500 px-5 py-16 text-black sm:px-8 lg:py-20">
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
 
-            <h1 className="reveal opacity-0 text-2xl lg:tracking-widest font-bold border-b-2 self-center mt-6 mb-3">
-                Serviços
-            </h1>
-
-            <div className="flex flex-col lg:flex-row gap-5 lg:h-full lg:items-stretch lg:gap-3 lg:w-10/12 lg:self-center">
-
-                {/* Landing Pages */}
-
-                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
-                    <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
-                        Landing Page
-                    </h1>
-
-                    <h3 className="reveal opacity-0 text-base w-10/12 text-center font-semibold">
-                        Direcione seus clientes até a venda do seu produto
-                    </h3>
-
-                    <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
-                        Site objetivo e atraente. O foco está na conversão, que direciona o usuario até uma ação, convertendo-o em um consumidor.
+                <header className="reveal opacity-0 flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">
+                    <p className="reveal opacity-0 text-xs font-bold uppercase tracking-[0.24em] text-emerald-700 sm:text-lg">
+                        Serviços
                     </p>
+                    <h2 className="reveal opacity-0 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+                        Soluções digitais para o seu negócio
+                    </h2>
+                    <p className="reveal opacity-0 max-w-2xl text-base leading-relaxed text-gray-900 sm:text-lg">
+                        Do primeiro contato à operação do dia a dia, escolha o formato que melhor atende ao seu objetivo.
+                    </p>
+                </header>
 
-                    <ul className="reveal opacity-0 pl-1 text-xs font-semibold font-roboto self-start gap-1">
-                        <li>
-                            &bull; Call To Action
-                        </li>
-                        <li>
-                            &bull; Design limpo
-                        </li>
-                        <li>
-                            &bull; Foco na conversão
-                        </li>
-                    </ul>
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+                    {services.map(service => {
+                        const ServiceIcon = service.icon;
+                        const message = encodeURIComponent(`Olá, gostaria de conversar sobre ${service.title.toLowerCase()}.`);
 
-                    <SeeMore />
+                        return (
+                            <article
+                                key={service.title}
+                                className="reveal opacity-0 group flex h-full flex-col rounded-2xl border border-gray-200 border-t-4 border-t-emerald-500 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/10 sm:p-7"
+                            >
+                                <div className="mb-5 flex items-center justify-between gap-4">
+                                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 transition-colors group-hover:bg-emerald-100">
+                                        <ServiceIcon aria-hidden="true" className="h-6 w-6" />
+                                    </span>
+                                    <span className="text-xs font-black uppercase tracking-[0.16em] text-emerald-800">
+                                        {service.title}
+                                    </span>
+                                </div>
+
+                                <h3 className="mb-3 text-xl font-bold leading-snug sm:text-2xl">
+                                    {service.headline}
+                                </h3>
+                                <p className="mb-5 text-sm leading-relaxed text-gray-900 sm:text-base">
+                                    {service.description}
+                                </p>
+
+                                <ul className="mb-7 flex flex-col gap-3">
+                                    {service.benefits.map(benefit => (
+                                        <li key={benefit} className="flex items-start gap-2 text-sm leading-relaxed text-gray-900">
+                                            <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" />
+                                            <span>{benefit}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <a
+                                    href={`${linkWpp}?text=${message}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="mt-auto inline-flex items-center gap-2 self-start rounded-full bg-black px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-emerald-600 hover:text-black"
+                                >
+                                    Solicitar orçamento <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                                </a>
+                            </article>
+                        );
+                    })}
                 </div>
 
-                {/* portfolios */}
+                <div className="reveal opacity-0 flex flex-col items-center gap-4 rounded-2xl bg-white border-b px-5 py-8 text-center sm:px-8">
 
-                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
-                    <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
-                        Portfolio
-                    </h1>
-
-                    <h3 className="reveal opacity-0 text-base w-10/12 text-center font-semibold">
-                        Construa sua vitrine profissional de forma digital
+                    <h3 className="text-2xl font-bold sm:text-3xl text-gray-900">
+                        Tem um projeto em mente?
                     </h3>
 
-                    <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
-                        Demonstre suas capacidades, experiência e conhecimentos de forma chamativa por meio de um curriculo digital.
+                    <p className="max-w-2xl leading-relaxed text-gray-800">
+                        Conte o que você precisa. Vamos conversar sobre a melhor solução para transformar sua ideia em um projeto digital.
                     </p>
-
-                    <ul className="pl-1 text-xs font-semibold font-roboto self-start gap-1">
-                        <li>
-                            &bull; Visibilidade no Google
-                        </li>
-                        <li>
-                            &bull; Centraliza informações
-                        </li>
-                        <li>
-                            &bull; Estabilidade
-                        </li>
-                    </ul>
-
-                    <SeeMore />
+                    <a
+                        href={linkWpp}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-1 inline-flex items-center gap-2 rounded-md bg-black px-6 py-3 font-black text-emerald-400 transition-colors hover:bg-emerald-700 hover:text-white"
+                    >
+                        Fale comigo <ArrowUpRight aria-hidden="true" className="h-5 w-5" />
+                    </a>
                 </div>
             </div>
+        </section>
+    );
+};
 
-            <div className="flex flex-col lg:flex-row gap-5 lg:gap-3 lg:h-full lg:items-stretch lg:gap-3 lg:w-10/12 lg:self-center">
-
-                {/* site institucional */}
-
-                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
-                    <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
-                        Site Institucional
-                    </h1>
-
-                    <h3 className="reveal opacity-0 text-base w-10/12 text-center font-semibold">
-                        Consolide o valor do seu negócio criando uma forte presença digital
-                    </h3>
-
-                    <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
-                        Transmita credibilidade para o seu negocio com uma identidade online, apresentando seus valores e serviços.
-                    </p>
-
-                    <ul className="pl-1 text-xs font-semibold font-roboto self-start gap-1">
-                        <li>
-                            &bull; Centraliza Informações
-                        </li>
-                        <li>
-                            &bull; Autonomia e Controle
-                        </li>
-                        <li>
-                            &bull; Visibilidade no Google
-                        </li>
-                    </ul>
-
-                    <SeeMore />
-                </div>
-
-                {/* site personalizado */}
-
-                <div className="lg:relative reveal opacity-0 w-11/12 sm:w-3/4 max-lg:self-center bg-slate-900 rounded-md flex flex-col gap-5 items-center p-2">
-                    <h1 className="reveal opacity-0 text-center pt-2 text-lg font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400">
-                        Site Personalizado
-                    </h1>
-
-                    <h3 className="reveal opacity-0 text-base w-10/12 text-center font-semibold">
-                        Garanta que a sua marca tenha um serviço digital único
-                    </h3>
-
-                    <p className="reveal opacity-0 text-sm text-start self-start font-light tracking-tighter font-mono w-10/12 pl-2">
-                        Sistema desenvolvido de forma exclusiva para refletir os objetivos de um produto ou marca.
-                    </p>
-
-                    <ul className="pl-1 text-xs font-semibold font-roboto self-start gap-1">
-                        <li>
-                            &bull; Funcionalidades Específicas
-                        </li>
-                        <li>
-                            &bull; Design único
-                        </li>
-                        <li>
-                            &bull; Perfomance e Escalabidade
-                        </li>
-                    </ul>
-
-                    <SeeMore />
-                </div>
-
-            </div>
-
-            <span className="reveal opacity-0 h-px w-10/12 lg:w-1/3 border-t-2 border-gray-400 self-center mt-3 mb-5"></span>
-        </div>
-    )
-}
-
-const SeeMore = () => {
-    const router = useRouter()
-    return (
-        <div className="relative bottom-0 flex flex-row w-full mt-auto">
-            <div className="w-full flex flex-row items-center gap-1 pl-2 text-sm text-emerald-500 text-start w-1/2">
-                <span onClick={() => router.push("/projects")}
-                    className="flex lg:flex-col hover:cursor-pointer transition-all duration-300 hover:text-emerald-800">
-                    <span className="flex flex-row gap-1 flex items-center">
-                        Veja meus projetos <ArrowUpRight className="w-5" />
-                    </span>
-                </span>
-            </div>
-            <a className="reveal opacity-0 pr-2 text-sm text-black bg-emerald-500 text-center border rounded-4xl p-1 w-full sm:w-1/2 transition duration-200 hover:transition hover:duration-200
-            hover:bg-emerald-800" href={linkWpp} target="_blank">
-                <span className="animate-pulse font-black">
-                    Quero meu site
-                </span>
-            </a>
-        </div>
-    )
-}
-
-export default Services
+export default Services;

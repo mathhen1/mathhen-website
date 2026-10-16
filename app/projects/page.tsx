@@ -1,166 +1,192 @@
 "use client"
 
-import { useRouter } from "next/navigation"
-import { listProjects } from "../Utils/projects"
-import { ArrowLeftCircle } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowLeft, ArrowUpRight, ExternalLink, Layers3 } from "lucide-react"
+import { useState } from "react"
 import Footer from "../Components/Footer"
-import React, { useEffect, useRef, useState } from "react"
 import NavBar from "../Components/NavBar"
+import { linkWpp } from "../Utils/links"
+import { listProjects } from "../Utils/projects"
+import { FaGithub } from "react-icons/fa"
 
 const ProjectsPage = () => {
-    const [list, setList] = useState<any>(listProjects)
-    const rootRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        setList(list)
-
-        const obs = new IntersectionObserver(entries => entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (entry.target.classList.contains("reveal")) entry.target.classList.add("animate-reveal")
-
-                if (entry.target.classList.contains("reveal-r")) entry.target.classList.add("animate-reveal-r")
-
-                if (entry.target.classList.contains("reveal-l")) entry.target.classList.add("animate-reveal-l")
-            }
-        }))
-
-        if (rootRef.current) {
-            const root = rootRef.current.querySelectorAll(".reveal, .reveal-r, .reveal-l")
-            root.forEach(node => {
-                obs.observe(node)
-            })
-
-        }
-    }, [list])
-
-    const filterList = (e: React.PointerEvent<HTMLInputElement>) => {
-        const refreshedList = listProjects.filter(p => p.category.includes(e.currentTarget.value.toLowerCase()))
-        setList(refreshedList)
-        console.log(refreshedList)
-
-        if (e.currentTarget.value.includes("Todos")) setList(listProjects)
-    }
-
-    const categoriesStyle = "animate-reveal block peer-checked:bg-emerald-500 peer-checked:text-black p-2 border text-center bg-black text-emerald-500 font-black peer-checked:transition transition peer-checked:duration-500 duration-500 transition-all hover:bg-emerald-500 hover:text-black"
-    const router = useRouter()
+    const [selectedCategory, setSelectedCategory] = useState("all")
+    const categories = Array.from(new Set(listProjects.map(project => project.category)))
+    const visibleProjects = selectedCategory === "all"
+        ? listProjects
+        : listProjects.filter(project => project.category === selectedCategory)
 
     return (
-        <div ref={rootRef} className="overflow-x-hidden w-screen min-h-screen flex flex-col gap-3 bg-black text-white font-mono">
+        <main className="min-h-screen overflow-hidden bg-black font-mono text-white">
             <NavBar />
-            <div className="w-full flex flex-row items-center sm:justify-center mb-3">
-                <span className="animate-reveal-r w-1/3 pl-3 sm:w-max sm:absolute sm:left-3 hover:cursor-pointer">
-                    <ArrowLeftCircle onClick={() => router.back()} />
-                </span>
-                <h1 className="animate-reveal-l text-start pb-1 text-3xl font-black text-emerald-500">
-                    Projetos
-                </h1>
-            </div>
 
-            <p className="animate-reveal pl-4 tracking-tighter text-start sm:text-center text-sm">
-                Conheça melhor <span className="font-black">todos</span> os meus <span className="text-emerald-400 font-black">projetos</span> em maiores detalhes
-            </p>
+            <section className="relative isolate px-5 pb-20 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pb-28 lg:pt-20">
+                <div aria-hidden="true" className="pointer-events-none absolute -right-36 top-0 -z-10 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
+                <div aria-hidden="true" className="pointer-events-none absolute -left-40 top-96 -z-10 h-80 w-80 rounded-full bg-emerald-900/20 blur-3xl" />
 
-            <span className="animate-reveal border-t w-3/4 sm:w-2/3 lg:w-1/4 mt-2 self-center border-gray-400"></span>
+                <div className="mx-auto max-w-7xl">
+                    <Link
+                        href="/"
+                        className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-gray-300 transition-colors hover:border-emerald-400/60 hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+                    >
+                        <ArrowLeft aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                        Voltar ao início
+                    </Link>
 
-            <p className="animate-reveal-r font-extralight text-center pl-4 text-xs w-10/12 self-center">
-                Filtro de categorias
-            </p>
+                    <header className="mt-12 grid gap-8 border-b border-white/10 pb-10 lg:mt-16 lg:grid-cols-[1fr_auto] lg:items-end lg:pb-14">
+                        <div className="max-w-3xl">
+                            <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-sm">
+                                <span className="h-px w-8 bg-emerald-400" /> Portfólio · Projetos
+                            </p>
+                            <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
+                                Ideias que viram <span className="text-emerald-400">experiências digitais.</span>
+                            </h1>
+                            <p className="mt-6 max-w-2xl text-base leading-7 text-gray-300 sm:text-lg sm:leading-8">
+                                Conheça projetos desenvolvidos para apresentar negócios, aproximar pessoas e resolver necessidades reais com tecnologia.
+                            </p>
+                        </div>
 
-            <div className="grid grid-cols-3 gap-2 text-xs w-10/12 sm:w-2/3 lg:w-1/3 self-center">
-                <label className="block cursor-pointer">
-                    <input type="radio" defaultChecked={true} value={"Todos"} onClick={filterList} name="btn" className="peer sr-only">
-                    </input>
-                    <span className={categoriesStyle}>
-                        Todos
-                    </span>
-                </label>
+                        <div className="flex gap-3 lg:pb-1">
+                            <div className="min-w-32 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                                <p className="text-3xl font-black text-emerald-400">{listProjects.length.toString().padStart(2, "0")}</p>
+                                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-gray-400">Projetos</p>
+                            </div>
+                            <div className="min-w-32 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                                <p className="text-3xl font-black text-white">{categories.length.toString().padStart(2, "0")}</p>
+                                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-gray-400">Categorias</p>
+                            </div>
+                        </div>
+                    </header>
 
-                <label className="block cursor-pointer">
-                    <input type="radio" name="btn" value={"Web"} onClick={filterList} className="peer sr-only">
-                    </input>
-                    <span className={categoriesStyle}>
-                        Web
-                    </span>
-                </label>
+                    <div className="flex flex-col gap-5 py-8 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">Uma seleção do meu trabalho</p>
+                            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Projetos em destaque</h2>
+                        </div>
 
-                <label className="block cursor-pointer">
-                    <input type="radio" name="btn" value={"Desktop"} onClick={filterList} className="peer sr-only">
-                    </input>
-                    <span className={categoriesStyle}>
-                        Desktop
-                    </span>
-                </label>
+                        <div role="group" aria-label="Filtrar projetos por categoria" className="flex flex-wrap gap-2">
+                            {[{ value: "all", label: "Todos" }, ...categories.map(category => ({ value: category, label: category }))].map(category => {
+                                const isSelected = selectedCategory === category.value
 
-                <label className="block cursor-pointer">
-                    <input type="radio" name="btn" value={"VibeCoding"} onClick={filterList} className="peer sr-only">
-                    </input>
-                    <span className={categoriesStyle} >
-                        VibeCoding
-                    </span>
-                </label>
-
-                <label className="block cursor-pointer">
-                    <input type="radio" name="btn" value={"IA"} onClick={filterList} className="peer sr-only">
-                    </input>
-                    <span className={categoriesStyle}>
-                        IA
-                    </span>
-                </label>
-
-                <label className="block cursor-pointer">
-                    <input type="radio" name="btn" value={"Mobile"} onClick={filterList} className="peer sr-only">
-                    </input>
-                    <span className={categoriesStyle}>
-                        Mobile
-                    </span>
-                </label>
-
-            </div>
-
-            <span className="animate-reveal border-t w-3/4 mt-2 mb-2 self-center border-gray-400"></span>
-
-            <span className="block lg:hidden animate-pulse text-gray-600 self-center text-xs">
-                &lt; arraste para os lados &gt;
-            </span>
-
-            <div className="bg-black h-full w-full sm:w-10/12 sm:self-center flex flex-row gap-2 p-2 items-stretch overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory 
-            lg:grid lg:grid-cols-3 lg:justify-items-center lg:p-0 min-h-[55vh]">
-
-                {list.map(p =>
-                    <div key={p.id} className="animate-reveal w-11/12 sm:w-5/6 lg:w-full border rounded-lg self-stretch
-                    flex-shrink-0 snap-center snap-always border
-                    flex flex-col gap-3 p-2 bg-white text-black">
-
-                        <img src={p.src} alt="" className="animate-reveal border rounded-md" />
-
-                        <h1 className="animate-reveal-r self-center font-black tracking-wide text-sm">
-                            {p.name}
-                        </h1>
-                        <p className="animate-reveal-l text-xs font-semibold">
-                            {p.desc}
-                        </p>
-
-                        <ul className="pl-2 grid grid-flow-col grid-[3,max-content] justify-start gap-2 w-3/4 text-center">
-                            {p.stack.map(node =>
-                                <p key={node.id} className="animate-reveal text-xs p-1 pr-2 pl-2 -skew-x-5 border-2 border-b-3 border-r-3 bg-gray-200 font-bold">
-                                    {node.title}
-                                </p>
-                            )}
-                        </ul>
-
-                        <p className="pl-2 ml-2 text-sm font-bold p-1 border-2 border-b-4 border-l-4 w-max">
-                            categoria do sistema: <span className="font-black text-base tracking-widest">{p.category}</span>
-                        </p>
-
+                                return (
+                                    <button
+                                        key={category.value}
+                                        type="button"
+                                        aria-pressed={isSelected}
+                                        onClick={() => setSelectedCategory(category.value)}
+                                        className={`rounded-full border px-4 py-2 text-sm font-semibold capitalize transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${isSelected
+                                            ? "border-emerald-400 bg-emerald-400 text-black shadow-[0_0_24px_rgba(52,211,153,0.16)]"
+                                            : "border-white/15 text-gray-300 hover:border-emerald-400/60 hover:text-emerald-300"
+                                            }`}
+                                    >
+                                        {category.label}
+                                    </button>
+                                )
+                            })}
+                        </div>
                     </div>
-                )}
 
-            </div>
+                    <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+                        {visibleProjects.map((project, index) => (
+                            <article
+                                key={project.id}
+                                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900/95 to-zinc-950 transition duration-300 hover:-translate-y-1 hover:border-emerald-400/40 hover:shadow-[0_24px_80px_rgba(0,0,0,0.35)]"
+                            >
+                                <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900">
+                                    <Image
+                                        src={`/${project.src}`}
+                                        alt={`Prévia do projeto ${project.name}`}
+                                        fill
+                                        sizes="(max-width: 1023px) 100vw, 50vw"
+                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
+                                    <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/15 bg-black/65 px-3 py-1.5 text-xs font-semibold capitalize text-white backdrop-blur-sm">
+                                        <Layers3 aria-hidden="true" className="h-3.5 w-3.5 text-emerald-400" />
+                                        {project.categoryLabel}
+                                    </div>
+                                    <span className="absolute bottom-5 right-5 text-xs font-bold tracking-[0.16em] text-white/70">{String(index + 1).padStart(2, "0")}</span>
+                                </div>
 
-            <span className="animate-reveal h-px w-3/4 border-t boder-gray-400 self-center mb-5 mt-5"></span>
+                                <div className="flex flex-1 flex-col p-5 sm:p-7">
+                                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-[0.13em] text-gray-500">
+                                        <span>{project.projectType}</span>
+                                        <span aria-hidden="true" className="h-1 w-1 rounded-full bg-emerald-500" />
+                                        <span>{project.status}</span>
+                                    </div>
+                                    <h3 className="mt-3 text-2xl font-bold leading-tight text-white sm:text-3xl">{project.name}</h3>
+                                    <p className="mt-2 text-sm font-semibold text-emerald-300 sm:text-base">{project.tagline}</p>
+                                    <p className="mt-4 text-sm leading-7 text-gray-300 sm:text-base">{project.desc}</p>
+
+                                    <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                                        {project.highlights.map(highlight => (
+                                            <li key={highlight} className="flex items-start gap-2 text-sm leading-6 text-gray-300">
+                                                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                                                {highlight}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <ul aria-label="Tecnologias utilizadas" className="mt-6 flex flex-wrap gap-2">
+                                        {project.stack.map(technology => (
+                                            <li key={technology.id} className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-gray-200">
+                                                {technology.title}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="mt-7 flex flex-wrap gap-3 border-t border-white/10 pt-5">
+                                        {project.liveUrl ? (
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="group/button inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-2.5 text-sm font-bold text-black transition duration-200 hover:-translate-y-0.5 hover:bg-emerald-300 hover:shadow-[0_8px_24px_rgba(52,211,153,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                                            >
+                                                Acessar projeto <ArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover/button:translate-x-0.5 group-hover/button:-translate-y-0.5" />
+                                            </a>
+                                        ) : (
+                                            <span aria-disabled="true" title="O link será adicionado quando o deploy estiver disponível" className="inline-flex min-h-11 cursor-not-allowed items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-gray-500">
+                                                <ExternalLink aria-hidden="true" className="h-4 w-4" /> Deploy em breve
+                                            </span>
+                                        )}
+                                        {project.repoUrl && (
+                                            <a
+                                                href={project.repoUrl}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 text-sm font-semibold text-gray-200 transition-colors hover:border-emerald-400/50 hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+                                            >
+                                                <FaGithub aria-hidden="true" className="h-4 w-4" /> Código-fonte
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+
+                    <aside className="mt-12 flex flex-col gap-5 rounded-3xl border border-emerald-400/20 bg-emerald-400/[0.07] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+                        <div>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">Vamos construir o próximo?</p>
+                            <h2 className="mt-2 text-xl font-bold sm:text-2xl">Tem uma ideia para tirar do papel?</h2>
+                            <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-300">Conte o que você precisa e vamos encontrar uma solução digital que faça sentido para o seu negócio.</p>
+                        </div>
+                        <a
+                            href={linkWpp}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 py-3 text-sm font-bold text-black transition duration-200 hover:-translate-y-0.5 hover:bg-emerald-300 hover:shadow-[0_8px_24px_rgba(52,211,153,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                        >
+                            Vamos conversar <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                        </a>
+                    </aside>
+                </div>
+            </section>
 
             <Footer />
-        </div>
+        </main>
     )
 }
 

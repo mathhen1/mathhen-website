@@ -31,10 +31,10 @@ const NavBar = () => {
     }, [valueNav])
 
     return (
-        <div className="animate-hero lg:font-roboto relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white">
-            <div className="flex flex-row items-center w-11/12">
-                <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 pl-2 lg:pl-5 p-2">
-                    <a href="/">
+        <div className="animate-hero lg:font-roboto relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white lg:h-20 lg:items-center">
+            <div className="flex flex-row items-center w-11/12 lg:h-full">
+                <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 lg:text-3xl pl-2 lg:pl-10 p-2">
+                    <a href="/" className="inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1 lg:focus-visible:-translate-y-1">
                         dev mathen
                     </a>
                 </h3>
@@ -45,12 +45,12 @@ const NavBar = () => {
 
                 {/* Desktop Bar */}
 
-                <ul className="hidden lg:flex lg:flex-row lg:gap-10">
+                <ul className="hidden lg:flex lg:flex-row lg:items-center lg:gap-12">
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
                                 value={"HomePage"} onChange={(e) => e.target.checked} checked={valueNav?.includes("/")} />
-                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => {
+                            <span className="group text-lg font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500 lg:inline-block lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1" onClick={() => {
                                 const a = scrollTo("homepage")
                                 if (a === false) {
                                     router.push("/")
@@ -66,7 +66,7 @@ const NavBar = () => {
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
                                 value={"projects"} onChange={(e) => e.target.checked} checked={valueNav?.includes("projects")} />
-                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/projects")}>
+                            <span className="group text-lg font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500 lg:inline-block lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1" onClick={() => router.push("/projects")}>
                                 Projetos
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
                             </span>
@@ -77,7 +77,7 @@ const NavBar = () => {
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
                                 value={"about"} onChange={(e) => e.target.checked} checked={valueNav?.includes("about")} />
-                            <span className="group transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500" onClick={() => router.push("/about")}>
+                            <span className="group text-lg font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500 lg:inline-block lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1" onClick={() => router.push("/about")}>
                                 Sobre mim
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
                             </span>
