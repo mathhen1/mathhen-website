@@ -34,7 +34,7 @@ const services = [
 
 const Services = () => {
     return (
-        <section className="min-h-screen bg-gray-200 px-5 py-16 text-black sm:px-8 lg:py-20">
+        <section className="min-h-screen bg-gradient-to-br from-gray-300 via-gray-200 to-gray-500 px-5 py-16 text-black sm:px-8 lg:py-20">
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
 
                 <header className="reveal opacity-0 flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">

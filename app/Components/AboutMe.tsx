@@ -8,7 +8,7 @@ const socialLinkClass = "group mx-auto flex aspect-square w-full max-w-12 items-
 
 const AboutMe = () => {
     return (
-        <div id="homepage" className="animate-hero relative min-h-screen bg-gradient-to-br from-[#0a0a0a] via-black to-[#0b1712] text-white flex flex-col lg:flex-row gap-5">
+        <div id="homepage" className="animate-hero relative min-h-screen bg-gradient-to-br from-[#0a0a0a] via-black to-[#0b1712] text-white flex flex-col lg:flex-row gap-5 lg:-mt-5 lg:pb-3">
 
             <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2 lg:pl-3">
                 <span className="w-5/6">

@@ -41,7 +41,7 @@ const Contact = () => {
     };
 
     return (
-        <section className="min-h-screen bg-white px-5 py-16 text-black sm:px-8 lg:py-20">
+        <section className="min-h-screen bg-gradient-to-br from-gray-200 via-gray-100 to-gray-300 px-5 py-16 text-black sm:px-8 lg:py-20">
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
                 <header className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
                     <p className="text-xs font-bold uppercase tracking-[0.22em] text-emerald-700 sm:text-sm">
@@ -57,8 +57,8 @@ const Contact = () => {
 
                 <div className="grid overflow-hidden rounded-3xl border border-gray-200 shadow-xl shadow-black/5 lg:grid-cols-[0.9fr_1.1fr]">
                     <aside className="relative flex flex-col justify-between overflow-hidden bg-black p-6 text-white sm:p-8 lg:p-10">
-                        <div aria-hidden="true" className="absolute -right-20 -top-20 h-44 w-44 rounded-md border-3 border-emerald-500/50" />
-                        <div aria-hidden="true" className="absolute -right-12 -top-12 h-30 w-30 rounded-md border-3 border-emerald-500/50" />
+                        <div aria-hidden="true" className="absolute -right-20 -top-20 h-44 w-44 max-lg:h-36 max-lg:w-36 rounded-md border-3 border-emerald-500/50" />
+                        <div aria-hidden="true" className="absolute -right-12 -top-12 h-30 w-30 max-lg:h-22 max-lg:w-22 rounded-md border-3 border-emerald-500/50" />
 
                         <div className="relative z-10">
                             <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">

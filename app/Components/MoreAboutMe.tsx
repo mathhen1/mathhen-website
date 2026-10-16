@@ -4,7 +4,7 @@ const MoreAboutMe = () => {
     return (
         <section
             id="about-me"
-            className="min-h-screen border-t border-gray-200 bg-gradient-to-br from-gray-400 via-gray-200 to-gray-400 px-5 py-16 text-black sm:px-8 lg:py-20"
+            className="min-h-screen bg-gradient-to-br from-gray-400 via-gray-200 to-gray-400 px-5 py-16 text-black sm:px-8 lg:py-20"
         >
             <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
                 <div className="reveal opacity-0 flex flex-col gap-7 rounded-3xl border border-gray-200/80 bg-white/80 p-6 shadow-[0_16px_50px_-35px_rgba(0,0,0,0.18)] sm:p-8">
