@@ -59,7 +59,7 @@ const MoreService = () => {
     const contactMessage = encodeURIComponent("Olá, quero conversar sobre um projeto para o meu negócio.");
 
     return (
-        <section className="min-h-screen bg-black px-5 py-16 text-white sm:px-8 lg:py-20">
+        <section className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-black to-[#0b1712] px-5 py-16 text-white sm:px-8 lg:py-20">
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-12">
                 <header className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
                     <p className="reveal opacity-0 text-xs font-bold uppercase tracking-[0.22em] text-emerald-400 sm:text-sm">

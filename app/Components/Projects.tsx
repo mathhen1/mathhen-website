@@ -7,7 +7,7 @@ const Projects = () => {
     const router = useRouter();
 
     return (
-        <section className="min-h-screen flex flex-col items-center justify-center bg-black py-14 font-mono tracking-tighter text-white">
+        <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0a0a0a] via-black to-[#0b1712] py-14 font-mono tracking-tighter text-white">
             <div className="flex w-full max-w-6xl flex-col gap-8 px-5 sm:px-8">
                 <header className="reveal opacity-0 flex flex-col items-start gap-3 border-l-2 border-emerald-500 pl-5 sm:pl-7">
                     <p className="reveal opacity-0 text-xs font-bold uppercase tracking-[0.24em] text-emerald-400 sm:text-base">
