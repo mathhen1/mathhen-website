@@ -4,6 +4,8 @@ import { linkGithub, linkInsta, linkLinkedin, linkWpp } from "../Utils/links"
 import heroMathen from "../../public/hero-mathen.jpg"
 import DownloadResume from "./DownloadResume"
 
+const socialLinkClass = "group mx-auto flex aspect-square w-full max-w-12 items-center justify-center rounded-xl border border-emerald-400/30 bg-white/5 text-emerald-300 shadow-sm shadow-emerald-950/30 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-emerald-300 hover:text-black hover:shadow-md hover:shadow-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+
 const AboutMe = () => {
     return (
         <div id="homepage" className="animate-hero relative min-h-screen bg-black text-white flex flex-col lg:flex-row gap-5">
@@ -38,20 +40,20 @@ const AboutMe = () => {
                 </p>
 
                 <div className="grid grid-cols-4 self-center gap-2 w-1/2 sm:w-1/4">
-                    <a className="group" href={linkInsta} target="_blank">
-                        <FaInstagram aria-hidden="true" className="h-6 w-6 p-1 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                    <a aria-label="Instagram" className={socialLinkClass} href={linkInsta} target="_blank" rel="noreferrer">
+                        <FaInstagram aria-hidden="true" className="h-7 w-7" />
                     </a>
 
-                    <a className="group" href={linkLinkedin} target="_blank">
-                        <FaLinkedin aria-hidden="true" className="h-6 w-6 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                    <a aria-label="LinkedIn" className={socialLinkClass} href={linkLinkedin} target="_blank" rel="noreferrer">
+                        <FaLinkedin aria-hidden="true" className="h-7 w-7" />
                     </a>
 
-                    <a className="group" href={linkWpp} target="_blank">
-                        <FaWhatsapp aria-hidden="true" className="h-6 w-6 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                    <a aria-label="WhatsApp" className={socialLinkClass} href={linkWpp} target="_blank" rel="noreferrer">
+                        <FaWhatsapp aria-hidden="true" className="h-7 w-7" />
                     </a>
 
-                    <a className="group" href={linkGithub} target="_blank">
-                        <FaGithub aria-hidden="true" className="h-6 w-6 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                    <a aria-label="GitHub" className={socialLinkClass} href={linkGithub} target="_blank" rel="noreferrer">
+                        <FaGithub aria-hidden="true" className="h-7 w-7" />
                     </a>
                 </div>
 
