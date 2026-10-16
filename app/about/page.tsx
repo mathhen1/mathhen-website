@@ -4,7 +4,8 @@ import { ArrowLeftCircle, MessageSquare } from "lucide-react"
 import { useRouter } from "next/navigation"
 import NavBar from "../Components/NavBar"
 import Footer from "../Components/Footer"
-import { linkGithub, linkIconGithubBlack, linkIconLinkedinBlack, linkLinkedin, linkWpp } from "../Utils/links"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { linkGithub, linkLinkedin, linkWpp } from "../Utils/links"
 import { useEffect, useRef } from "react"
 import { ListTech } from "../Components/MoreAboutMe"
 import { aboutSkillsTec } from "../Utils/skillsTec"
@@ -143,11 +144,11 @@ const AboutMePage = () => {
                                     <div className="flex flex-col gap-2 lg:w-max">
                                         <div className="flex gap-2 items-center justify-center 
                                 w-1/3 sm:w-1/6 lg:w-2/3 self-center">
-                                            <a className="reveal opacity-0 group" href={linkLinkedin} target="_blank">
-                                                <img src={linkIconLinkedinBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
+                                            <a aria-label="LinkedIn" className="reveal opacity-0 group" href={linkLinkedin} target="_blank" rel="noreferrer">
+                                                <FaLinkedin aria-hidden="true" className="h-6 w-6 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
                                             </a>
-                                            <a className="reveal opacity-0 group" href={linkGithub} target="_blank">
-                                                <img src={linkIconGithubBlack} alt="" className="rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
+                                            <a aria-label="GitHub" className="reveal opacity-0 group" href={linkGithub} target="_blank" rel="noreferrer">
+                                                <FaGithub aria-hidden="true" className="h-6 w-6 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-gray-300 group-hover:cursor-pointer" />
                                             </a>
                                         </div>
 

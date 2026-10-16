@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { linkGithub, linkInsta, linkLinkedin, linkMailTo, linkWpp } from "../Utils/links";
 
 const navigationLinks = [
@@ -9,9 +10,9 @@ const navigationLinks = [
 ];
 
 const socialLinks = [
-    { label: "Instagram", href: linkInsta, icon: Instagram },
-    { label: "LinkedIn", href: linkLinkedin, icon: Linkedin },
-    { label: "GitHub", href: linkGithub, icon: Github },
+    { label: "Instagram", href: linkInsta, icon: FaInstagram },
+    { label: "LinkedIn", href: linkLinkedin, icon: FaLinkedin },
+    { label: "GitHub", href: linkGithub, icon: FaGithub },
     { label: "E-mail", href: linkMailTo, icon: Mail },
 ];
 

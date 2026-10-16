@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { ArrowRight, ArrowUpRight, Instagram, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import { linkInsta, linkMailTo, linkWpp } from "../Utils/links";
 
 const contactMethods = [
@@ -10,7 +11,7 @@ const contactMethods = [
         value: "@theteuzz",
         detail: "Acompanhe meu trabalho",
         href: linkInsta,
-        icon: Instagram,
+        icon: FaInstagram,
         external: true,
     },
     {

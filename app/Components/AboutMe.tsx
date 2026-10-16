@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { linkGithub, linkIconGithubBlack, linkIconInstaBlack, linkIconLinkedinBlack, linkIconWppBlack, linkInsta, linkLinkedin, linkWpp } from "../Utils/links"
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa"
+import { linkGithub, linkInsta, linkLinkedin, linkWpp } from "../Utils/links"
 import heroMathen from "../../public/hero-mathen.jpg"
 import DownloadResume from "./DownloadResume"
 
@@ -38,19 +39,19 @@ const AboutMe = () => {
 
                 <div className="grid grid-cols-4 self-center gap-2 w-1/2 sm:w-1/4">
                     <a className="group" href={linkInsta} target="_blank">
-                        <img src={linkIconInstaBlack} alt="" className="p-1 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                        <FaInstagram aria-hidden="true" className="h-6 w-6 p-1 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
                     </a>
 
                     <a className="group" href={linkLinkedin} target="_blank">
-                        <img src={linkIconLinkedinBlack} alt="" className="bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                        <FaLinkedin aria-hidden="true" className="h-6 w-6 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
                     </a>
 
                     <a className="group" href={linkWpp} target="_blank">
-                        <img src={linkIconWppBlack} alt="" className="bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                        <FaWhatsapp aria-hidden="true" className="h-6 w-6 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
                     </a>
 
                     <a className="group" href={linkGithub} target="_blank">
-                        <img src={linkIconGithubBlack} alt="" className="bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
+                        <FaGithub aria-hidden="true" className="h-6 w-6 bg-emerald-300 rounded-md transition duration-300 group-hover:transition group-hover:durantion-300 group-hover:bg-emerald-600 group-hover:cursor-pointer" />
                     </a>
                 </div>
 
