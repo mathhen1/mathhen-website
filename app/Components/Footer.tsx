@@ -20,10 +20,10 @@ const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="bg-white px-5 pb-5 font-mono text-black ">
+        <footer className="bg-white px-5 pb-5 font-mono text-black">
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
 
-                <div className="grid gap-9 border-b border-gray-200 pb-9 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr] lg:gap-12">
+                <div className="grid gap-9 border-b border-gray-200 lg:pb-9 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr] lg:gap-12 lg:pt-5">
                     <div>
                         <Logo />
                         <p className="mt-4 max-w-md leading-relaxed text-gray-600">
@@ -105,7 +105,7 @@ export default Footer;
 const Logo = () => {
     return (
         <Link href="/" className="inline-flex flex-col items-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
-            <span className="font-nz bg-gradient-to-b from-slate-600 via-slate-500 to-black bg-clip-text text-5xl font-black text-transparent">
+            <span className="font-nz bg-gradient-to-b from-slate-600 via-slate-500 to-black bg-clip-text text-5xl font-black text-transparent max-lg:pt-3">
                 Mathhen
             </span>
             <span className="font-roboto text-sm tracking-tight">
