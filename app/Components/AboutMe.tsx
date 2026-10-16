@@ -8,7 +8,7 @@ const socialLinkClass = "group mx-auto flex aspect-square w-full max-w-12 items-
 
 const AboutMe = () => {
     return (
-        <div id="homepage" className="animate-hero relative min-h-screen bg-black text-white flex flex-col lg:flex-row gap-5">
+        <div id="homepage" className="animate-hero relative min-h-screen bg-gradient-to-br from-[#0a0a0a] via-black to-[#0b1712] text-white flex flex-col lg:flex-row gap-5">
 
             <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2 lg:pl-3">
                 <span className="w-5/6">
@@ -60,15 +60,14 @@ const AboutMe = () => {
 
                 <div className="flex w-3/4 flex-col items-center gap-3 sm:flex-row sm:justify-center self-center">
                     <a href={linkWpp} target="_blank"
-                        className="self-center font-black border-emerald-500 border p-2 text-center w-full sm:w-1/2
-                    border-2 rounded-md text-emerald-500 bg-gradient-to-r from-black via-gray-800 to-gray-700 animate-bg
-                    transition duration-300 hover:transition hover:duration-300
-                    hover:[animation-play-state:paused] hover:text-white hover:border-white">
-                        <span className="animate-pulse">
+                        rel="noreferrer"
+                        className="group inline-flex min-h-12 w-full items-center justify-center gap-2 self-center rounded-xl border border-emerald-300 bg-emerald-400 px-4 text-center text-sm font-bold tracking-wide text-black shadow-lg shadow-emerald-950/40 transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:bg-emerald-300 hover:shadow-xl hover:shadow-emerald-500/20 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:w-1/2">
+                        <FaWhatsapp aria-hidden="true" className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                        <span>
                             Entre em contato
                         </span>
                     </a>
-                    <DownloadResume className="flex w-full items-center justify-center gap-2 rounded-md border border-emerald-500 p-2 text-center font-bold text-emerald-500 transition duration-300 hover:border-white hover:bg-white hover:text-black sm:w-1/2" />
+                    <DownloadResume className="group flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/60 bg-white/5 px-4 text-center font-bold text-white shadow-md shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-300/10 hover:text-emerald-200 hover:shadow-lg hover:shadow-emerald-500/10 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:w-1/2 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:transition-transform [&>svg]:duration-300 [&:hover>svg]:translate-y-0.5" />
                 </div>
 
             </div>
