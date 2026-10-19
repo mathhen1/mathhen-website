@@ -43,7 +43,7 @@ export default function Home() {
           }
         }
       })
-    }, { threshold: 0.8 })
+    }, { threshold: 0.2 })
     root.forEach(node => {
       obs.observe(node)
     })
