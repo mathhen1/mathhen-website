@@ -12,7 +12,7 @@ const AboutMe = () => {
 
             <div className="flex flex-col lg:justify-center lg:items-center gap-5 lg:w-1/2 lg:pl-3">
                 <span className="w-5/6">
-                    <h1 className="reveal opacity-0 text-4xl lg:text-7xl text-start mt-3 font-bold pl-2 text-wrap">
+                    <h1 className="animate-hero text-4xl lg:text-7xl text-start mt-3 font-bold pl-2 text-wrap">
                         Construo sites <span className="font-extrabold text-emerald-500">modernos</span> e profissionais
                     </h1>
                 </span>
