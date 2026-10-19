@@ -31,7 +31,7 @@ const NavBar = () => {
     }, [valueNav])
 
     return (
-        <div className="animate-hero lg:font-roboto relative sticky z-10 top-0 h-12 flex flex-row gap-2 bg-black text-white lg:h-20 lg:items-center">
+        <div className="animate-hero lg:font-roboto relative sticky z-20 top-0 h-12 flex flex-row gap-2 bg-black text-white lg:h-20 lg:items-center">
             <div className="flex flex-row items-center w-11/12 lg:h-full">
                 <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 lg:text-3xl pl-2 lg:pl-10 p-2">
                     <a href="/" className="inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1 lg:focus-visible:-translate-y-1">
