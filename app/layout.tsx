@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mathen - Dev Fullstack",
-  description: "FullStackk Developer",
+  title: "Matheus Henrique - Desenvolvedor Fullstack",
+  description: "Fullstack Developer",
 };
 
 export default function RootLayout({
