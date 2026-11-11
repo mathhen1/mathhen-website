@@ -3,12 +3,32 @@
 import { useEffect, useRef, useState } from "react";
 
 const SESSION_KEY = "mathen-cinematic-intro";
-const INTRO_DURATION_SECONDS = 8;
+const INTRO_DURATION_SECONDS = 12;
+
+type ParticleCapabilities = Navigator & { deviceMemory?: number };
+
+function getParticleCount(width: number, height: number, isMobile: boolean) {
+  const capabilities = navigator as ParticleCapabilities;
+  const hasLimitedResources = (capabilities.deviceMemory ?? 8) <= 4
+    || (navigator.hardwareConcurrency || 8) <= 4;
+  const minimum = isMobile ? 4_500 : 10_000;
+  const maximum = hasLimitedResources
+    ? (isMobile ? 7_000 : 15_000)
+    : (isMobile ? 12_000 : 28_000);
+
+  return Math.min(maximum, Math.max(minimum, Math.round((width * height) / 55)));
+}
+
+function getCameraDistance(aspectRatio: number, fieldOfView: number) {
+  const outerRadius = 3.9;
+  const halfFieldOfView = (fieldOfView * Math.PI) / 360;
+  const narrowDimension = Math.min(1, aspectRatio);
+
+  return Math.max(13, (outerRadius * 1.23) / (Math.tan(halfFieldOfView) * narrowDimension));
+}
 
 export default function CinematicIntro() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isSceneReady, setIsSceneReady] = useState(false);
-  const [sceneFailed, setSceneFailed] = useState(false);
   const hostRef = useRef<HTMLDivElement>(null);
   const finishRef = useRef<(() => void) | null>(null);
 
@@ -22,28 +42,22 @@ export default function CinematicIntro() {
       // Storage can be unavailable in private browsing or restricted contexts.
     }
 
-    try {
-      window.sessionStorage.setItem(SESSION_KEY, "seen");
-    } catch {
-      // Continue without session persistence when storage is unavailable.
-    }
-
     const visibilityFrame = requestAnimationFrame(() => setIsVisible(true));
-
     const handleMotionPreference = (event: MediaQueryListEvent) => {
       if (event.matches) finishRef.current?.();
     };
     reducedMotion.addEventListener("change", handleMotionPreference);
 
     let cancelled = false;
+    let hasFinished = false;
     let timeline: ReturnType<(typeof import("gsap"))["default"]["timeline"]> | undefined;
     let renderer: import("three").WebGLRenderer | undefined;
     let geometry: import("three").BufferGeometry | undefined;
     let material: import("three").ShaderMaterial | undefined;
     let frameId = 0;
-    let hasFinished = false;
     let removeResizeListener = () => {};
     let removeContextLossListener = () => {};
+    let resetPresentationStyles = () => {};
 
     const finish = () => {
       if (cancelled || hasFinished) return;
@@ -52,6 +66,8 @@ export default function CinematicIntro() {
       cancelAnimationFrame(frameId);
       removeResizeListener();
       removeContextLossListener();
+      resetPresentationStyles();
+
       if (renderer) {
         renderer.setAnimationLoop(null);
         geometry?.dispose();
@@ -60,11 +76,13 @@ export default function CinematicIntro() {
         renderer.domElement.remove();
         renderer = undefined;
       }
+
       try {
         window.sessionStorage.setItem(SESSION_KEY, "seen");
       } catch {
         // The animation still completes when storage is unavailable.
       }
+
       setIsVisible(false);
     };
 
@@ -78,36 +96,99 @@ export default function CinematicIntro() {
         ]);
         if (cancelled || hasFinished || !hostRef.current) return;
 
+        try {
+          window.sessionStorage.setItem(SESSION_KEY, "seen");
+        } catch {
+          // Continue without session persistence when storage is unavailable.
+        }
+
         const width = window.innerWidth;
         const height = window.innerHeight;
         const isMobile = width < 768;
-        const particleCount = isMobile ? 950 : 1900;
-        const positions = new Float32Array(particleCount * 3);
+        const particleCount = getParticleCount(width, height, isMobile);
+        const startPositions = new Float32Array(particleCount * 3);
+        const targetPositions = new Float32Array(particleCount * 3);
         const phases = new Float32Array(particleCount);
+        const majorAngles = new Float32Array(particleCount);
         const sizes = new Float32Array(particleCount);
+        const colors = new Float32Array(particleCount * 3);
+
+        const emerald = new THREE.Color("#10b981");
+        const mint = new THREE.Color("#d1fae5");
+        const particleColor = new THREE.Color();
+        const strandCount = 6;
+        const particlesPerStrand = Math.ceil(particleCount / strandCount);
+        const torusMajorRadius = 2.75;
+        const tilt = 0.78;
+        const yaw = -0.2;
+        const cosTilt = Math.cos(tilt);
+        const sinTilt = Math.sin(tilt);
+        const cosYaw = Math.cos(yaw);
+        const sinYaw = Math.sin(yaw);
+        const fullTurn = Math.PI * 2;
 
         for (let index = 0; index < particleCount; index += 1) {
           const offset = index * 3;
-          const angle = Math.random() * Math.PI * 2;
-          const radius = 2.3 + Math.random() * 7.5;
-          positions[offset] = Math.cos(angle) * radius;
-          positions[offset + 1] = (Math.random() - 0.5) * 7;
-          positions[offset + 2] = (Math.random() - 0.5) * 13;
-          phases[index] = Math.random() * Math.PI * 2;
-          sizes[index] = 1 + Math.random() * (isMobile ? 2.3 : 3.4);
+          const strand = Math.floor(index / particlesPerStrand);
+          const positionInStrand = index % particlesPerStrand;
+          const majorAngle = ((positionInStrand + Math.random() * 0.8) / particlesPerStrand) * fullTurn;
+          const seed = Math.random() * fullTurn;
+
+          // Six interlaced helical lanes form a thick toroidal shell with a clear center.
+          const minorAngle = majorAngle * 2.4
+            + (strand / strandCount) * fullTurn
+            + (Math.random() - 0.5) * 0.82;
+          const tubeRadius = 0.68 + Math.random() * 0.52;
+          const localMajorRadius = torusMajorRadius
+            + 0.1 * Math.sin(minorAngle * 2)
+            + 0.08 * Math.sin(majorAngle * 5 + strand);
+          const radialDistance = localMajorRadius + tubeRadius * Math.cos(minorAngle);
+          const localX = radialDistance * Math.cos(majorAngle);
+          const localY = radialDistance * Math.sin(majorAngle);
+          const localZ = tubeRadius * Math.sin(minorAngle);
+          const tiltedY = localY * cosTilt - localZ * sinTilt;
+          const tiltedZ = localY * sinTilt + localZ * cosTilt;
+
+          targetPositions[offset] = localX * cosYaw - tiltedY * sinYaw;
+          targetPositions[offset + 1] = localX * sinYaw + tiltedY * cosYaw;
+          targetPositions[offset + 2] = tiltedZ;
+
+          const startRadius = 4.5 + Math.random() * 5;
+          const startAzimuth = Math.random() * fullTurn;
+          const startElevation = (Math.random() - 0.5) * Math.PI;
+          startPositions[offset] = Math.cos(startAzimuth) * Math.cos(startElevation) * startRadius;
+          startPositions[offset + 1] = Math.sin(startElevation) * startRadius;
+          startPositions[offset + 2] = Math.sin(startAzimuth) * Math.cos(startElevation) * startRadius;
+
+          phases[index] = seed;
+          majorAngles[index] = majorAngle;
+          sizes[index] = 0.7 + Math.random() * (isMobile ? 0.7 : 0.95);
+
+          const occasionalHighlight = Math.random() > 0.994;
+          particleColor.lerpColors(emerald, mint, occasionalHighlight ? 0.88 : Math.random() * 0.3);
+          const colorVariation = 0.48 + Math.random() * 0.65;
+          colors[offset] = particleColor.r * colorVariation;
+          colors[offset + 1] = particleColor.g * colorVariation;
+          colors[offset + 2] = particleColor.b * colorVariation;
         }
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color("#050807");
-        const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 80);
-        camera.position.z = 14;
+        const fieldOfView = 42;
+        const camera = new THREE.PerspectiveCamera(fieldOfView, width / height, 0.1, 120);
+        camera.position.z = getCameraDistance(width / height, fieldOfView);
 
-        renderer = new THREE.WebGLRenderer({ alpha: false, antialias: !isMobile, powerPreference: "low-power" });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.6));
+        renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: !isMobile,
+          powerPreference: "low-power",
+        });
+        renderer.setClearColor(0x000000, 0);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.2 : 1.5));
         renderer.setSize(width, height);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         renderer.domElement.className = "cinematic-intro__canvas";
         renderer.domElement.setAttribute("aria-hidden", "true");
+
         const handleContextLost = (event: Event) => {
           event.preventDefault();
           finishRef.current?.();
@@ -117,51 +198,84 @@ export default function CinematicIntro() {
         hostRef.current.appendChild(renderer.domElement);
 
         geometry = new THREE.BufferGeometry();
-        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute("position", new THREE.BufferAttribute(startPositions, 3));
+        geometry.setAttribute("aTarget", new THREE.BufferAttribute(targetPositions, 3));
         geometry.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
+        geometry.setAttribute("aMajor", new THREE.BufferAttribute(majorAngles, 1));
         geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
+        geometry.setAttribute("aColor", new THREE.BufferAttribute(colors, 3));
 
         const particleMaterial = new THREE.ShaderMaterial({
           transparent: true,
           depthWrite: false,
           uniforms: {
             uTime: { value: 0 },
-            uProgress: { value: 0 },
+            uBirth: { value: 0 },
+            uAssemble: { value: 0 },
+            uDisperse: { value: 0 },
             uPixelRatio: { value: renderer.getPixelRatio() },
           },
           vertexShader: `
+            attribute vec3 aTarget;
             attribute float aPhase;
+            attribute float aMajor;
             attribute float aSize;
+            attribute vec3 aColor;
             uniform float uTime;
-            uniform float uProgress;
+            uniform float uBirth;
+            uniform float uAssemble;
+            uniform float uDisperse;
             uniform float uPixelRatio;
+            varying vec3 vColor;
             varying float vAlpha;
             void main() {
-              vec3 point = position;
-              float converge = smoothstep(0.18, 0.53, uProgress);
-              float disperse = smoothstep(0.72, 1.0, uProgress);
-              float angle = atan(point.y, point.x) + uTime * 0.13 + aPhase * 0.08;
-              float ringRadius = 1.1 + 0.72 * sin(aPhase * 2.0 + uTime * 0.8);
-              vec3 orbit = vec3(cos(angle) * ringRadius, sin(angle * 1.35) * 1.3, sin(angle) * ringRadius * 0.45);
-              point.xy = mix(point.xy, orbit.xy, converge * (1.0 - disperse * 0.25));
-              point.z = mix(point.z, orbit.z, converge * (1.0 - disperse * 0.25));
-              point += vec3(sin(uTime * 0.45 + aPhase), cos(uTime * 0.38 + aPhase * 1.4), sin(uTime * 0.32 + aPhase * 0.7)) * 0.14;
-              point *= 1.0 + disperse * (0.55 + 0.3 * sin(aPhase));
+              float assemble = clamp(uAssemble, 0.0, 1.0);
+              float disperse = clamp(uDisperse, 0.0, 1.0);
+              vec3 orbitalDrift = vec3(
+                sin(uTime * 0.34 + aPhase) * 0.34,
+                cos(uTime * 0.29 + aPhase * 1.4) * 0.28,
+                sin(uTime * 0.25 + aPhase * 0.8) * 0.42
+              );
+              vec3 point = mix(position + orbitalDrift, aTarget, assemble);
+              point += vec3(
+                sin(aMajor * 2.4 + uTime * 0.55 + aPhase) * 0.07,
+                cos(aMajor * 1.8 + uTime * 0.42 + aPhase) * 0.065,
+                sin(aPhase + uTime * 0.48) * 0.06
+              ) * assemble;
+
+              float yaw = uTime * 0.075;
+              float yawCos = cos(yaw);
+              float yawSin = sin(yaw);
+              point.xz = mat2(yawCos, -yawSin, yawSin, yawCos) * point.xz;
+
+              vec3 tangent = normalize(vec3(-aTarget.y, aTarget.x, 0.3 * sin(aPhase)));
+              vec3 escapeDirection = normalize(aTarget + tangent * 0.78 + vec3(0.0, 0.0, (aPhase / 6.28318 - 0.5) * 1.5));
+              float escapeDistance = pow(disperse, 1.18) * (13.0 + 14.0 * (aPhase / 6.28318));
+              point += escapeDirection * escapeDistance;
+              point += tangent * disperse * sin(aPhase * 2.7 + uTime * 1.3) * 1.25;
+
               vec4 viewPosition = modelViewMatrix * vec4(point, 1.0);
               gl_Position = projectionMatrix * viewPosition;
-              gl_PointSize = aSize * uPixelRatio * (24.0 / -viewPosition.z) * (1.0 + converge * 0.55);
-              vAlpha = (0.16 + 0.62 * (1.0 - abs(sin(aPhase)))) * (0.22 + 0.78 * smoothstep(0.02, 0.24, uProgress)) * (1.0 - disperse * 0.35);
+              gl_PointSize = clamp(aSize * uPixelRatio * (34.0 / -viewPosition.z), 1.0, 3.8);
+
+              float birthAlpha = smoothstep(0.0, 0.9, uBirth);
+              float exitAlpha = 1.0 - smoothstep(0.58, 1.0, disperse) * 0.16;
+              float shimmer = 0.78 + 0.22 * sin(aPhase * 2.1 + uTime * 1.4);
+              vColor = aColor * shimmer;
+              vAlpha = birthAlpha * exitAlpha * (0.42 + 0.5 * shimmer);
             }
           `,
           fragmentShader: `
+            varying vec3 vColor;
             varying float vAlpha;
             void main() {
-              vec2 centered = gl_PointCoord - vec2(0.5);
-              float distanceFromCenter = length(centered);
-              float core = smoothstep(0.5, 0.03, distanceFromCenter);
-              float glow = exp(-distanceFromCenter * 10.0) * 0.3;
-              vec3 emerald = vec3(0.20, 0.83, 0.56);
-              gl_FragColor = vec4(emerald, (core + glow) * vAlpha);
+              float distanceFromCenter = length(gl_PointCoord - vec2(0.5));
+              float core = 1.0 - smoothstep(0.12, 0.5, distanceFromCenter);
+              float softEdge = 1.0 - smoothstep(0.28, 0.5, distanceFromCenter);
+              float glow = exp(-distanceFromCenter * 9.0) * 0.12;
+              gl_FragColor = vec4(vColor * (0.92 + glow), (core * 0.9 + softEdge * 0.1) * vAlpha);
+              #include <tonemapping_fragment>
+              #include <colorspace_fragment>
             }
           `,
         });
@@ -169,7 +283,16 @@ export default function CinematicIntro() {
 
         const particles = new THREE.Points(geometry, particleMaterial);
         scene.add(particles);
-        setIsSceneReady(true);
+
+        const homeContent = document.querySelector<HTMLElement>("[data-home-intro-content]");
+        resetPresentationStyles = () => {
+          gsap.set(hostRef.current, { clearProps: "opacity" });
+          if (homeContent) gsap.set(homeContent, { clearProps: "transform,opacity" });
+        };
+
+        if (homeContent) {
+          gsap.set(homeContent, { y: Math.min(window.innerHeight * 0.16, 140) });
+        }
 
         const startedAt = performance.now();
         const drawFrame = (now: number) => {
@@ -178,7 +301,6 @@ export default function CinematicIntro() {
           try {
             renderer.render(scene, camera);
           } catch {
-            setSceneFailed(true);
             finishRef.current?.();
             return;
           }
@@ -187,25 +309,34 @@ export default function CinematicIntro() {
         frameId = requestAnimationFrame(drawFrame);
 
         timeline = gsap.timeline({ onComplete: finish });
-        timeline.to(particleMaterial.uniforms.uProgress, { value: 1, duration: INTRO_DURATION_SECONDS, ease: "none" }, 0);
-        timeline.to(camera.position, { z: 10.8, duration: 4, ease: "power2.inOut" }, 2);
-        timeline.to(camera.rotation, { z: 0.035, duration: 4, ease: "sine.inOut" }, 2);
-        timeline.to(hostRef.current, { opacity: 0, duration: 1.25, ease: "power2.inOut" }, 6.7);
+        timeline.to(particleMaterial.uniforms.uBirth, { value: 1, duration: 2.5, ease: "power2.out" }, 0);
+        timeline.to(particleMaterial.uniforms.uAssemble, { value: 1, duration: 3, ease: "power3.inOut" }, 2.5);
+        timeline.to(camera.rotation, { z: 0.055, duration: 3, ease: "sine.inOut" }, 5.5);
+        timeline.to(camera.rotation, { z: 0, duration: 3, ease: "sine.inOut" }, 8.5);
+        timeline.to(particleMaterial.uniforms.uDisperse, { value: 1, duration: 1.5, ease: "power3.in" }, 8.5);
+        if (homeContent) {
+          timeline.to(homeContent, { y: 0, duration: 2.65, ease: "power4.out" }, 9.35);
+        }
+        timeline.to(hostRef.current, {
+          opacity: 0,
+          duration: INTRO_DURATION_SECONDS - 9.5,
+          ease: "power3.inOut",
+        }, 9.5);
 
         const handleResize = () => {
           if (!renderer) return;
           const nextWidth = window.innerWidth;
           const nextHeight = window.innerHeight;
           camera.aspect = nextWidth / nextHeight;
+          camera.position.z = getCameraDistance(camera.aspect, fieldOfView);
           camera.updateProjectionMatrix();
           renderer.setSize(nextWidth, nextHeight);
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, nextWidth < 768 ? 1.25 : 1.6));
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, nextWidth < 768 ? 1.2 : 1.5));
         };
         window.addEventListener("resize", handleResize, { passive: true });
         removeResizeListener = () => window.removeEventListener("resize", handleResize);
       } catch {
         if (cancelled || hasFinished) return;
-        setSceneFailed(true);
         finishRef.current?.();
       }
     };
@@ -221,6 +352,7 @@ export default function CinematicIntro() {
       cancelAnimationFrame(frameId);
       removeResizeListener();
       removeContextLossListener();
+      resetPresentationStyles();
       geometry?.dispose();
       material?.dispose();
       renderer?.dispose();
@@ -232,15 +364,9 @@ export default function CinematicIntro() {
   if (!isVisible) return null;
 
   return (
-    <div
-      className="cinematic-intro"
-      data-scene-failed={sceneFailed}
-      data-scene-ready={isSceneReady}
-      ref={hostRef}
-    >
+    <div className="cinematic-intro" ref={hostRef}>
       <button
         type="button"
-        tabIndex={0}
         className="cinematic-intro__skip"
         onClick={() => finishRef.current?.()}
       >

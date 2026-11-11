@@ -16,7 +16,9 @@ export default function Home() {
       <HomeRevealObserver />
       <NavBar />
       <main>
-        <AboutMe />
+        <div data-home-intro-content>
+          <AboutMe />
+        </div>
         <MoreAboutMe />
         <Projects />
         <Services />
