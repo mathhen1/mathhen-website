@@ -1,15 +1,15 @@
 "use client"
 
 import { Home, Laptop, Menu, StickyNoteCheck, X } from "lucide-react"
-import { useParams, usePathname, useRouter } from "next/navigation"
-import React, { useEffect, useState } from "react"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import React, { useState } from "react"
 import { scrollTo } from "../Utils/funcs"
 import { linkWpp } from "../Utils/links"
 
 const NavBar = () => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
-    const [valueNav, setValueNav] = useState<string>("/")
     const menuIsOpen = menuOpen ? "block" : "hidden"
     const router = useRouter()
 
@@ -25,18 +25,13 @@ const NavBar = () => {
 
     const path = usePathname()
 
-    useEffect(() => {
-        setValueNav(path)
-
-    }, [valueNav])
-
     return (
         <div className="animate-hero lg:font-roboto relative sticky z-20 top-0 h-12 flex flex-row gap-2 bg-black text-white lg:h-20 lg:items-center">
             <div className="flex flex-row items-center w-11/12 lg:h-full">
                 <h3 className="text-2xl font-black tracking-wider max-lg:flex-1 lg:w-1/2 lg:text-3xl pl-2 lg:pl-10 p-2">
-                    <a href="/" className="inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1 lg:focus-visible:-translate-y-1">
+                    <Link href="/" className="inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-4 focus-visible:ring-offset-black lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1 lg:focus-visible:-translate-y-1">
                         dev mathen
-                    </a>
+                    </Link>
                 </h3>
 
                 {/* Mobile Bar */}
@@ -49,7 +44,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"HomePage"} onChange={(e) => e.target.checked} checked={valueNav?.includes("/")} />
+                                value={"HomePage"} onChange={(e) => e.target.checked} checked={path === "/"} />
                             <span className="group text-lg font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500 lg:inline-block lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1" onClick={() => {
                                 const a = scrollTo("homepage")
                                 if (a === false) {
@@ -65,7 +60,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"projects"} onChange={(e) => e.target.checked} checked={valueNav?.includes("projects")} />
+                                value={"projects"} onChange={(e) => e.target.checked} checked={path.includes("projects")} />
                             <span className="group text-lg font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500 lg:inline-block lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1" onClick={() => router.push("/projects")}>
                                 Projetos
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
@@ -76,7 +71,7 @@ const NavBar = () => {
                     <li>
                         <label>
                             <input type="radio" name="btn-nav" className="peer sr-only"
-                                value={"about"} onChange={(e) => e.target.checked} checked={valueNav?.includes("about")} />
+                                value={"about"} onChange={(e) => e.target.checked} checked={path.includes("about")} />
                             <span className="group text-lg font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:text-emerald-500 peer-checked:text-emerald-500 lg:inline-block lg:transition-transform lg:duration-300 lg:ease-out lg:hover:-translate-y-1" onClick={() => router.push("/about")}>
                                 Sobre mim
                                 <span className="block w-0 h-0.5 bg-emerald-500 transition-all duration-500 group-hover:w-full"></span>
@@ -102,7 +97,7 @@ const NavBar = () => {
 
                         <ul className="text-base flex flex-col gap-3 text-lg items-center font-extralight font-mono">
                             <label>
-                                <input type="radio" onChange={(e) => e.target.checked} checked={valueNav.includes("/")} name="btn-nav-mobile" className="sr-only peer" />
+                                <input type="radio" onChange={(e) => e.target.checked} checked={path === "/"} name="btn-nav-mobile" className="sr-only peer" />
                                 <span onClick={() => {
                                     const a = scrollTo("homepage")
                                     if (a === false) {
@@ -115,7 +110,7 @@ const NavBar = () => {
                             </label>
 
                             <label>
-                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("projects")} name="btn-nav-mobile" />
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={path.includes("projects")} name="btn-nav-mobile" />
                                 <span onClick={() => {
                                     router.push("/projects")
                                     setMenuOpen(false)
@@ -125,7 +120,7 @@ const NavBar = () => {
                             </label>
 
                             <label>
-                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={valueNav.includes("about")} name="btn-nav-mobile" />
+                                <input type="radio" className="sr-only peer" onChange={e => e.target.checked} checked={path.includes("about")} name="btn-nav-mobile" />
                                 <span onClick={() => {
                                     router.push("/about")
                                     setMenuOpen(false)
