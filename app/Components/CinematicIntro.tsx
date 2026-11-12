@@ -39,13 +39,18 @@ export default function CinematicIntro() {
 
     if (reducedMotion.matches) {
       root.classList.remove("cinematic-intro-pending");
+      root.classList.add("cinematic-intro-skip-cover");
       return;
     }
-    if (!root.classList.contains("cinematic-intro-pending")) return;
+    if (!root.classList.contains("cinematic-intro-pending")) {
+      root.classList.add("cinematic-intro-skip-cover");
+      return;
+    }
 
     try {
       if (window.sessionStorage.getItem(SESSION_KEY)) {
         root.classList.remove("cinematic-intro-pending");
+        root.classList.add("cinematic-intro-skip-cover");
         return;
       }
     } catch {
@@ -378,6 +383,7 @@ export default function CinematicIntro() {
         hostRef.current.dataset.active = "true";
         setIsVisible(true);
         root.classList.remove("cinematic-intro-pending");
+        root.classList.add("cinematic-intro-skip-cover");
         window.clearTimeout(initializationTimer);
         try {
           window.sessionStorage.setItem(SESSION_KEY, "seen");
@@ -409,6 +415,7 @@ export default function CinematicIntro() {
       renderer?.domElement.remove();
       cleanupFrameRef.current = requestAnimationFrame(() => {
         root.classList.remove("cinematic-intro-pending");
+        root.classList.add("cinematic-intro-skip-cover");
       });
     };
   }, []);

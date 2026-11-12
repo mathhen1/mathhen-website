@@ -33,21 +33,35 @@ export default function RootLayout({
         <Script id="cinematic-intro-prepaint" strategy="beforeInteractive">
           {`(() => {
             const root = document.documentElement;
-            if (window.location.pathname !== "/") return;
-            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const skipCover = () => root.classList.add("cinematic-intro-skip-cover");
+            if (window.location.pathname !== "/") {
+              skipCover();
+              return;
+            }
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              skipCover();
+              return;
+            }
 
             try {
-              if (window.sessionStorage.getItem("mathen-cinematic-intro")) return;
+              if (window.sessionStorage.getItem("mathen-cinematic-intro")) {
+                skipCover();
+                return;
+              }
             } catch {
               // The intro can still run when session storage is unavailable.
             }
 
+            root.classList.remove("cinematic-intro-skip-cover");
             root.classList.add("cinematic-intro-pending");
-            window.setTimeout(() => root.classList.remove("cinematic-intro-pending"), 10000);
+            window.setTimeout(() => {
+              root.classList.remove("cinematic-intro-pending");
+              skipCover();
+            }, 10000);
           })();`}
         </Script>
         <noscript>
-          <style>{`.reveal,.reveal-r,.reveal-l{opacity:1!important;transform:none!important}`}</style>
+          <style>{`.reveal,.reveal-r,.reveal-l{opacity:1!important;transform:none!important}[data-intro-boot-cover]{display:none!important}`}</style>
         </noscript>
         {children}
       </body>

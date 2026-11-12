@@ -62,6 +62,18 @@
   pointer-events: none;
 }
 
+.cinematic-intro-boot-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: #050807;
+  pointer-events: none;
+}
+
+html.cinematic-intro-skip-cover [data-intro-boot-cover] {
+  display: none;
+}
+
 html.cinematic-intro-pending::after {
   position: fixed;
   z-index: 49;

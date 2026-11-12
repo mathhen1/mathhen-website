@@ -12,6 +12,7 @@ import HomeRevealObserver from "./Components/HomeRevealObserver";
 export default function Home() {
   return (
     <div className="relative flex h-full w-screen flex-col lg:font-roboto">
+      <div aria-hidden="true" className="cinematic-intro-boot-cover" data-intro-boot-cover />
       <CinematicIntro />
       <HomeRevealObserver />
       <NavBar />
