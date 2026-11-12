@@ -74,6 +74,12 @@ html.cinematic-intro-skip-cover [data-intro-boot-cover] {
   display: none;
 }
 
+html.cinematic-intro-scroll-locked,
+html.cinematic-intro-scroll-locked body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 html.cinematic-intro-pending::after {
   position: fixed;
   z-index: 49;

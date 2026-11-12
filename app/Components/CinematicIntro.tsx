@@ -39,10 +39,12 @@ export default function CinematicIntro() {
 
     if (reducedMotion.matches) {
       root.classList.remove("cinematic-intro-pending");
+      root.classList.remove("cinematic-intro-scroll-locked");
       root.classList.add("cinematic-intro-skip-cover");
       return;
     }
     if (!root.classList.contains("cinematic-intro-pending")) {
+      root.classList.remove("cinematic-intro-scroll-locked");
       root.classList.add("cinematic-intro-skip-cover");
       return;
     }
@@ -50,12 +52,16 @@ export default function CinematicIntro() {
     try {
       if (window.sessionStorage.getItem(SESSION_KEY)) {
         root.classList.remove("cinematic-intro-pending");
+        root.classList.remove("cinematic-intro-scroll-locked");
         root.classList.add("cinematic-intro-skip-cover");
         return;
       }
     } catch {
       // Continue with the intro when session storage is unavailable.
     }
+
+    // React Strict Mode may run cleanup once before the real mount in development.
+    root.classList.add("cinematic-intro-scroll-locked");
 
     let cancelled = false;
     let hasFinished = false;
@@ -75,6 +81,7 @@ export default function CinematicIntro() {
     const finish = () => {
       if (cancelled || hasFinished) return;
       hasFinished = true;
+      root.classList.remove("cinematic-intro-scroll-locked");
       window.clearTimeout(initializationTimer);
       timeline?.kill();
       cancelAnimationFrame(frameId);
@@ -431,6 +438,7 @@ export default function CinematicIntro() {
       trailMaterial?.dispose();
       renderer?.dispose();
       renderer?.domElement.remove();
+      root.classList.remove("cinematic-intro-scroll-locked");
       cleanupFrameRef.current = requestAnimationFrame(() => {
         root.classList.remove("cinematic-intro-pending");
         root.classList.add("cinematic-intro-skip-cover");
