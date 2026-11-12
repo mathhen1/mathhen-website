@@ -355,16 +355,16 @@ export default function CinematicIntro() {
         frameId = requestAnimationFrame(drawFrame);
 
         timeline = gsap.timeline({ onComplete: finish });
-        timeline.to(uniforms.uBirth, { value: 1, duration: 2.5, ease: "power2.out" }, 0);
-        timeline.to(uniforms.uAssemble, { value: 1, duration: 3, ease: "power3.inOut" }, 2.5);
-        timeline.to(camera.position, { x: 0.38, y: 1.38, duration: 3, ease: "sine.inOut" }, 5.5);
-        timeline.to(camera.position, { x: 0, y: 1.1, duration: 3, ease: "sine.inOut" }, 8.5);
-        timeline.to(uniforms.uDisperse, { value: 1, duration: 1.5, ease: "power3.in" }, 8.5);
+        timeline.to(uniforms.uBirth, { value: 1, duration: 1.6, ease: "power2.out" }, 0);
+        timeline.to(uniforms.uAssemble, { value: 1, duration: 2, ease: "power3.inOut" }, 1.5);
+        timeline.to(camera.position, { x: 0.38, y: 1.38, duration: 1.9, ease: "sine.inOut" }, 3.5);
+        timeline.to(camera.position, { x: 0, y: 1.1, duration: 1.7, ease: "sine.inOut" }, 5.2);
+        timeline.to(uniforms.uDisperse, { value: 1, duration: 1.5, ease: "power3.in" }, 5.5);
         if (homeContent) {
-          timeline.call(revealHeroContent, [], 9.35);
-          timeline.to(homeContent, { y: 0, duration: 2.65, ease: "power4.out" }, 9.35);
+          timeline.call(revealHeroContent, [], 6.1);
+          timeline.to(homeContent, { y: 0, duration: 1.9, ease: "power4.out" }, 6.1);
         }
-        timeline.to(hostRef.current, { opacity: 0, duration: 2.5, ease: "power3.inOut" }, 9.5);
+        timeline.to(hostRef.current, { opacity: 0, duration: 2, ease: "power3.inOut" }, 6);
 
         const handleResize = () => {
           if (!renderer) return;
