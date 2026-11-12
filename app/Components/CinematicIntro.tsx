@@ -128,15 +128,17 @@ export default function CinematicIntro() {
         const visibleHeight = 2 * Math.tan((fieldOfView * Math.PI) / 360) * cameraDistance;
         const visibleWidth = visibleHeight * aspectRatio;
         const particleCount = getParticleCount(width, height, isMobile);
+        const ambientParticleCount = Math.floor(particleCount * (isMobile ? 0.12 : 0.14));
+        const totalParticleCount = particleCount + ambientParticleCount;
         const trailCount = Math.floor(particleCount * (isMobile ? 0.2 : 0.28));
-        const startPositions = new Float32Array(particleCount * 3);
-        const radii = new Float32Array(particleCount);
-        const angles = new Float32Array(particleCount);
-        const heights = new Float32Array(particleCount);
-        const speeds = new Float32Array(particleCount);
-        const phases = new Float32Array(particleCount);
-        const sizes = new Float32Array(particleCount);
-        const colors = new Float32Array(particleCount * 3);
+        const startPositions = new Float32Array(totalParticleCount * 3);
+        const radii = new Float32Array(totalParticleCount);
+        const angles = new Float32Array(totalParticleCount);
+        const heights = new Float32Array(totalParticleCount);
+        const speeds = new Float32Array(totalParticleCount);
+        const phases = new Float32Array(totalParticleCount);
+        const sizes = new Float32Array(totalParticleCount);
+        const colors = new Float32Array(totalParticleCount * 3);
 
         const emerald = new THREE.Color("#10b981");
         const mint = new THREE.Color("#d1fae5");
@@ -144,17 +146,28 @@ export default function CinematicIntro() {
         const armCount = 6;
         const innerRadius = 1.55;
         const outerRadius = 5.05;
+        const ambientInnerRadius = outerRadius + 1;
+        const ambientOuterRadius = Math.hypot(visibleWidth * 0.54, visibleHeight * 0.54);
         const spiralTightness = 0.43;
         const fullTurn = Math.PI * 2;
 
-        for (let index = 0; index < particleCount; index += 1) {
+        for (let index = 0; index < totalParticleCount; index += 1) {
           const offset = index * 3;
+          const isAmbientFlow = index >= particleCount;
           const phase = Math.random() * fullTurn;
           const arm = Math.floor(Math.random() * armCount);
-          const radiusProgress = Math.pow(Math.random(), 0.78);
-          const radius = innerRadius + radiusProgress * (outerRadius - innerRadius);
-          const armSpread = (0.055 + radiusProgress * 0.12) * (Math.random() - 0.5);
-          const interArmStream = Math.random() > 0.92 ? (Math.random() - 0.5) * 0.72 : 0;
+          const radiusProgress = isAmbientFlow
+            ? Math.sqrt(Math.random())
+            : Math.pow(Math.random(), 0.78);
+          const radius = isAmbientFlow
+            ? ambientInnerRadius + radiusProgress * Math.max(0, ambientOuterRadius - ambientInnerRadius)
+            : innerRadius + radiusProgress * (outerRadius - innerRadius);
+          const armSpread = isAmbientFlow
+            ? (Math.random() - 0.5) * 2.8
+            : (0.055 + radiusProgress * 0.12) * (Math.random() - 0.5);
+          const interArmStream = !isAmbientFlow && Math.random() > 0.92
+            ? (Math.random() - 0.5) * 0.72
+            : 0;
 
           // Logarithmic winding creates narrow streams while leaving a clear central void.
           angles[index] = arm * (fullTurn / armCount)
@@ -162,14 +175,18 @@ export default function CinematicIntro() {
             + armSpread
             + interArmStream;
           radii[index] = radius + Math.sin(phase * 2.1) * 0.08;
-          heights[index] = (Math.random() - 0.5) * (0.16 + radiusProgress * 0.48);
+          heights[index] = (Math.random() - 0.5) * (isAmbientFlow ? 1.15 : 0.16 + radiusProgress * 0.48);
           speeds[index] = (0.075 + 0.29 / Math.pow(radius, 0.66)) * (0.9 + Math.random() * 0.2);
           phases[index] = phase;
-          sizes[index] = 0.65 + Math.random() * (isMobile ? 0.7 : 0.95);
+          sizes[index] = isAmbientFlow
+            ? 0.4 + Math.random() * 0.55
+            : 0.65 + Math.random() * (isMobile ? 0.7 : 0.95);
 
-          const occasionalHighlight = Math.random() > 0.993;
+          const occasionalHighlight = !isAmbientFlow && Math.random() > 0.993;
           particleColor.lerpColors(emerald, mint, occasionalHighlight ? 0.88 : Math.random() * 0.3);
-          const colorVariation = 0.42 + Math.random() * 0.68;
+          const colorVariation = isAmbientFlow
+            ? 0.28 + Math.random() * 0.35
+            : 0.42 + Math.random() * 0.68;
           colors[offset] = particleColor.r * colorVariation;
           colors[offset + 1] = particleColor.g * colorVariation;
           colors[offset + 2] = particleColor.b * colorVariation;
