@@ -54,8 +54,10 @@ export default function RootLayout({
 
             root.classList.remove("cinematic-intro-skip-cover");
             root.classList.add("cinematic-intro-pending");
+            root.classList.add("cinematic-intro-scroll-locked");
             window.setTimeout(() => {
               root.classList.remove("cinematic-intro-pending");
+              root.classList.remove("cinematic-intro-scroll-locked");
               skipCover();
             }, 10000);
           })();`}
