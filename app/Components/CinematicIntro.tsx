@@ -99,6 +99,7 @@ export default function CinematicIntro() {
       }
 
       root.classList.remove("cinematic-intro-pending");
+      root.classList.add("cinematic-intro-skip-cover");
       setIsVisible(false);
     };
 
