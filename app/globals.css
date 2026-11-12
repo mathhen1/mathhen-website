@@ -7,7 +7,6 @@
   --font-roboto: "Roboto Mono", monospace;
   --font-nz: "Playwrite NZ Basic", cursive;
 
-  --animate-intro: intro 1.5s forwards;
   --animate-opacity: opacity 0.8s ease-in-out;
   --animate-hero: opacity 1.6s ease-in-out;
   --animate-reveal: reveal 1.2s ease-in-out forwards;
@@ -52,9 +51,62 @@
   animation: photo-float 5s ease-in-out infinite;
 }
 
+.cinematic-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  background: #050807;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cinematic-intro-boot-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: #050807;
+  pointer-events: none;
+}
+
+html.cinematic-intro-skip-cover [data-intro-boot-cover] {
+  display: none;
+}
+
+html.cinematic-intro-pending::after {
+  position: fixed;
+  z-index: 49;
+  inset: 0;
+  background: #050807;
+  content: "";
+  pointer-events: none;
+}
+
+.cinematic-intro[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cinematic-intro__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .photo-float {
     animation: none;
+  }
+
+  .reveal,
+  .reveal-r,
+  .reveal-l {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }
 
@@ -112,16 +164,6 @@
 
   to {
     opacity: 1;
-  }
-}
-
-@keyframes intro {
-  0% {
-    transform: translateY(0%);
-  }
-
-  100% {
-    transform: translateY(-150%);
   }
 }
 

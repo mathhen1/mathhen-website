@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRightSquare } from "lucide-react";
 import { useRouter } from "next/navigation";

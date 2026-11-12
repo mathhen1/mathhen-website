@@ -1,78 +1,31 @@
-"use client"
-
 import NavBar from "./Components/NavBar";
 import AboutMe from "./Components/AboutMe";
 import Services from "./Components/Services";
-import { useEffect, useState } from "react";
-import Intro from "./Components/Intro";
 import MoreAboutMe from "./Components/MoreAboutMe";
 import MoreService from "./Components/MoreService";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import Projects from "./Components/Projects";
+import CinematicIntro from "./Components/CinematicIntro";
+import HomeRevealObserver from "./Components/HomeRevealObserver";
 
 export default function Home() {
-
-  const [useIntro, setUseIntro] = useState<boolean | null>(null)
-  const [verifyIntro, setVerifyIntro] = useState<string | null>(null)
-
-  useEffect(() => {
-
-    // setting intro used or not used
-    const used = sessionStorage.getItem("init")
-    if (used) {
-      setVerifyIntro(used)
-      setUseIntro(false)
-    } else {
-      setUseIntro(true)
-    }
-
-    // ANIMATION REVEAL W/ INTERSECTION OBSERVER
-    const root = document.querySelectorAll(".reveal, .reveal-r, .reveal-l")
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (entry.target.classList.contains("reveal")) {
-            entry.target.classList.add("animate-reveal")
-          }
-          if (entry.target.classList.contains("reveal-r")) {
-            entry.target.classList.add("animate-reveal-r")
-          }
-          if (entry.target.classList.contains("reveal-l")) {
-            entry.target.classList.add("animate-reveal-l")
-          }
-        }
-      })
-    }, { threshold: 0.2 })
-    root.forEach(node => {
-      obs.observe(node)
-    })
-
-    // INTRO ANIMATION
-    setTimeout(() => {
-      setUseIntro(false)
-    }, 2200);
-
-  }, [useIntro])
-
-  if (useIntro === null) {
-    return <></>
-  }
-
-  if (useIntro && verifyIntro === null) {
-    return (
-      <Intro />
-    )
-  }
   return (
-    <div className="relative h-full w-screen flex flex-col lg:font-roboto">
+    <div className="relative flex h-full w-screen flex-col lg:font-roboto">
+      <div aria-hidden="true" className="cinematic-intro-boot-cover" data-intro-boot-cover />
+      <CinematicIntro />
+      <HomeRevealObserver />
       <NavBar />
-      <AboutMe />
-      <MoreAboutMe />
-      <Projects />
-      <Services />
-      <MoreService />
-      <Contact />
+      <main>
+        <div data-home-intro-content>
+          <AboutMe />
+        </div>
+        <MoreAboutMe />
+        <Projects />
+        <Services />
+        <MoreService />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
